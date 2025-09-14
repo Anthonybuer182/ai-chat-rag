@@ -77,6 +77,8 @@ DEEPSEEK_API_KEY=your_deepseek_api_key_here
 ```
 
 > **注意**: 项目使用 DeepSeek API，需要注册并获取 API 密钥
+> 
+> **获取 API 密钥**: 访问 [DeepSeek 平台](https://platform.deepseek.com/) 注册账号并获取 API 密钥
 
 ### 4. 启动应用
 ```bash

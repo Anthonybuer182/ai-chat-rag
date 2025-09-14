@@ -15,6 +15,10 @@ from chromadb.config import Settings
 from sentence_transformers import SentenceTransformer, CrossEncoder
 from text_chunk import recursive_text_split
 from utils.stream_llm import stream_llm
+from dotenv import load_dotenv
+
+# 加载环境变量
+load_dotenv()
 
 # 配置日志
 logging.basicConfig(

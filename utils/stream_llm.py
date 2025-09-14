@@ -2,7 +2,7 @@ import os
 from openai import AsyncOpenAI
 
 async def stream_llm(messages):
-    client = AsyncOpenAI( api_key=os.environ.get("OPENAI_API_KEY"),
+    client = AsyncOpenAI( api_key=os.environ.get("DEEPSEEK_API_KEY"),
         base_url="https://api.deepseek.com/v1")
     
     stream = await client.chat.completions.create(

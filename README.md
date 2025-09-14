@@ -71,9 +71,9 @@ pip install -r requirements.txt
 ```
 
 ### 3. 配置环境变量
-创建 `.env` 文件并设置 OpenAI API 密钥：
+创建 `.env` 文件并设置 DeepSeek API 密钥：
 ```bash
-OPENAI_API_KEY=your_deepseek_api_key_here
+DEEPSEEK_API_KEY=your_deepseek_api_key_here
 ```
 
 > **注意**: 项目使用 DeepSeek API，需要注册并获取 API 密钥

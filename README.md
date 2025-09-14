@@ -65,12 +65,24 @@ git clone https://github.com/Anthonybuer182/ai-chat-rag.git
 cd ai-chat-rag
 ```
 
-### 2. 安装依赖
+### 2. 创建虚拟环境（推荐）
+```bash
+# 使用 venv 创建虚拟环境
+python -m venv venv
+
+# 激活虚拟环境
+# Windows:
+venv\Scripts\activate
+# Linux/MacOS:
+source venv/bin/activate
+```
+
+### 3. 安装依赖
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. 配置环境变量
+### 4. 配置环境变量
 创建 `.env` 文件并设置 OpenAI API 密钥：
 ```bash
 OPENAI_API_KEY=your_deepseek_api_key_here
@@ -78,14 +90,14 @@ OPENAI_API_KEY=your_deepseek_api_key_here
 
 > **注意**: 项目使用 DeepSeek API，需要注册并获取 API 密钥
 
-### 4. 启动应用
+### 5. 启动应用
 ```bash
 python main.py
 ```
 
 应用将在 `http://0.0.0.0:8000` 启动，访问该地址即可使用。
 
-### 5. API 文档
+### 6. API 文档
 访问 `http://0.0.0.0:8000/docs` 查看完整的 API 文档。
 
 ## 🚀 使用指南

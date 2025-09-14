@@ -61,8 +61,8 @@
 
 ### 1. 克隆项目
 ```bash
-git clone https://github.com/Anthonybuer182/PocketFlow.git
-cd PocketFlow/cookbook/pocketflow-fastapi-websocket-rag2
+git clone https://github.com/Anthonybuer182/ai-chat-rag.git
+cd ai-chat-rag
 ```
 
 ### 2. 安装依赖
@@ -114,7 +114,6 @@ pocketflow-fastapi-websocket-rag2/
 ├── main.py                 # 主应用文件
 ├── requirements.txt        # 依赖包列表
 ├── text_chunk.py          # 文本分块处理
-├── cleanup_chroma.py      # ChromaDB 清理工具
 ├── app.log                # 应用日志
 ├── .gitignore            # Git 忽略文件
 ├── data/                 # 数据存储目录
@@ -283,11 +282,6 @@ reranker = CrossEncoder('your-reranker-model')
 # 更换 LLM 服务
 async def stream_llm(messages):
     # 实现自定义 LLM 调用
-```
-
-### 清理数据
-```bash
-python cleanup_chroma.py
 ```
 
 ## 📊 性能优化

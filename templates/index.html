@@ -1,0 +1,2747 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG 知识库系统</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        :root {
+            --primary: #6e8efb;
+            --secondary: #a777e3;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --border: #dee2e6;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .tabs {
+            display: flex;
+            background: white;
+            padding: 0 20px;
+        }
+        
+        .tab {
+            padding: 20px 30px;
+            cursor: pointer;
+            flex: 1;
+            text-align: center;
+            transition: var(--transition);
+            font-weight: 600;
+            color: #6c757d;
+            border-bottom: 3px solid transparent;
+            position: relative;
+        }
+        
+        .tab.active {
+            color: var(--primary);
+        }
+        
+        .tab:hover {
+            background: linear-gradient(to bottom, rgba(110, 142, 251, 0.05), transparent);
+            color: var(--primary);
+        }
+        
+        .tab::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .tab.active::after {
+            width: 80%;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 30px;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+            color: var(--dark);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #fafbfc;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(110, 142, 251, 0.15);
+            background: white;
+        }
+        
+        input::placeholder, textarea::placeholder {
+            color: #adb5bd;
+        }
+        
+        select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236e8efb' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 16px;
+            padding-right: 40px;
+            appearance: none;
+        }
+        
+        button {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            padding: 16px 28px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(110, 142, 251, 0.3);
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(110, 142, 251, 0.4);
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+        }
+        
+        button:active {
+            transform: translateY(-1px);
+        }
+        
+        button.secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(110, 142, 251, 0.2);
+        }
+        
+        button.secondary:hover {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(110, 142, 251, 0.3);
+        }
+        
+        .kb-list {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .kb-item {
+            background: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+        
+        .kb-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .kb-item h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .kb-item p {
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+        
+        .kb-item .meta {
+            font-size: 0.85rem;
+            color: #adb5bd;
+        }
+        
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 600px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .document-container {
+            display: flex;
+            flex-direction: column;
+            height: 600px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: white;
+        }
+        
+        .document-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 25px;
+            background: linear-gradient(135deg, #fafbfc 0%, #f1f3f5 100%);
+            scroll-behavior: smooth;
+        }
+        
+        .document-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .document-content::-webkit-scrollbar-track {
+            background: #f1f3f5;
+            border-radius: 3px;
+        }
+        
+        .document-content::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 3px;
+        }
+        
+        .chat-header {
+            padding: 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 25px;
+            background: linear-gradient(135deg, #fafbfc 0%, #f1f3f5 100%);
+            scroll-behavior: smooth;
+        }
+        
+        .chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .chat-messages::-webkit-scrollbar-track {
+            background: #f1f3f5;
+            border-radius: 3px;
+        }
+        
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 3px;
+        }
+        
+        .message {
+            margin-bottom: 20px;
+            padding: 18px;
+            border-radius: 20px;
+            max-width: 80%;
+            position: relative;
+            animation: messageAppear 0.4s ease;
+            line-height: 1.5;
+        }
+        
+        @keyframes messageAppear {
+            from { 
+                opacity: 0; 
+                transform: translateY(15px) scale(0.95);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .user-message {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            margin-left: auto;
+            border-bottom-right-radius: 8px;
+            box-shadow: 0 4px 15px rgba(110, 142, 251, 0.3);
+        }
+        
+        .bot-message {
+            background: white;
+            color: var(--dark);
+            margin-right: auto;
+            border-bottom-left-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(110, 142, 251, 0.1);
+        }
+        
+        .context-message {
+            background: linear-gradient(135deg, rgba(110, 142, 251, 0.1) 0%, rgba(167, 119, 227, 0.1) 100%);
+            color: var(--primary);
+            font-size: 0.9rem;
+            padding: 10px 18px;
+            border-radius: 20px;
+            margin: 15px 0;
+            border: 1px solid rgba(110, 142, 251, 0.1);
+            text-align: left;
+            max-width: 80%;
+            margin-right: auto;
+            border-bottom-left-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .context-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 5px 0;
+        }
+
+        .toggle-details-btn {
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 4px;
+            margin-left: auto;
+            transition: var(--transition);
+        }
+
+        .toggle-details-btn:hover {
+            background: rgba(110, 142, 251, 0.1);
+        }
+
+        .context-details {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(110, 142, 251, 0.2);
+        }
+
+        .document-info {
+            margin-bottom: 12px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .doc-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px;
+            background: rgba(110, 142, 251, 0.05);
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: 6px;
+        }
+
+        .doc-header:hover {
+            background: rgba(110, 142, 251, 0.1);
+        }
+
+        .doc-number {
+            font-weight: 600;
+            color: var(--primary);
+            min-width: 20px;
+        }
+
+        .doc-name {
+            flex: 1;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .doc-info-count {
+            font-size: 0.8rem;
+            color: #6c757d;
+            background: rgba(110, 142, 251, 0.1);
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+
+        .doc-content {
+            padding: 10px 15px;
+            background: rgba(110, 142, 251, 0.02);
+            border-radius: 0 0 6px 6px;
+            margin-top: 2px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 8px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(110, 142, 251, 0.1);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-number {
+            font-weight: 600;
+            color: var(--primary);
+            min-width: 20px;
+        }
+
+        .info-text {
+            flex: 1;
+            color: #495057;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .no-documents, .no-content {
+            text-align: center;
+            color: #6c757d;
+            font-style: italic;
+            padding: 10px;
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 20px;
+            background: white;
+            border-top: 1px solid rgba(110, 142, 251, 0.1);
+            gap: 12px;
+            align-items: center;
+            position: relative;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            margin: 0;
+            padding: 16px 20px;
+            border: 2px solid rgba(110, 142, 251, 0.2);
+            border-radius: 25px;
+            background: #fafbfc;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .chat-input input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(110, 142, 251, 0.15);
+            background: white;
+        }
+        
+        .chat-input button {
+            border-radius: 25px;
+            padding: 16px 24px;
+        }
+        
+        .kb-selector {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .kb-selector-btn {
+            background: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .kb-selector-icon-btn {
+            background: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            transition: var(--transition);
+        }
+        
+        .kb-selector-icon-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .kb-selector-content {
+            display: none;
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: var(--radius) var(--radius) 0 0;
+            padding: 15px;
+            z-index: 100;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .kb-selector-content.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .kb-selector-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .kb-selector-item:hover {
+            background: rgba(110, 142, 251, 0.05);
+            padding-left: 8px;
+            padding-right: 8px;
+            margin: 0 -8px;
+            border-radius: 8px;
+        }
+        
+        .kb-selector-item:last-child {
+            border-bottom: none;
+        }
+        
+        .document-selector-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .document-selector-item:hover {
+            background: rgba(110, 142, 251, 0.05);
+            padding-left: 8px;
+            padding-right: 8px;
+            margin: 0 -8px;
+            border-radius: 8px;
+        }
+        
+        .document-selector-item:last-child {
+            border-bottom: none;
+        }
+        
+        .document-selector-item.selected {
+            background: rgba(110, 142, 251, 0.1);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .document-selector-item label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--dark);
+            flex: 1;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .document-selector-item.selected label {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .kb-selector-item:last-child {
+            border-bottom: none;
+        }
+        
+        .status-message {
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .success {
+            background: #e6f7ee;
+            color: #28a745;
+        }
+        
+        .error {
+            background: #fde8e8;
+            color: #dc3545;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+        }
+        
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #adb5bd;
+        }
+        
+        /* 加载动画 */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(110, 142, 251, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* 悬停效果增强 */
+        .kb-item {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .kb-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(110, 142, 251, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .kb-item:hover::before {
+            left: 100%;
+        }
+        
+        /* 上传区域样式 */
+        .upload-area {
+            border: 2px dashed var(--border);
+            border-radius: var(--radius);
+            padding: 40px;
+            text-align: center;
+            transition: var(--transition);
+            background: #fafbfc;
+            cursor: pointer;
+        }
+        
+        .upload-area:hover, .upload-area.dragover {
+            border-color: var(--primary);
+            background: rgba(110, 142, 251, 0.05);
+        }
+        
+        .upload-area i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .upload-area h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .upload-area p {
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .upload-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            padding: 16px 28px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(110, 142, 251, 0.3);
+            line-height: 1;
+        }
+        
+        .upload-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(110, 142, 251, 0.4);
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+        }
+        
+        .upload-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        /* 文档列表样式 */
+        .document-list {
+            margin-top: 30px;
+        }
+        
+        .document-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-radius: var(--radius);
+            background: white;
+            box-shadow: var(--shadow);
+            margin-bottom: 15px;
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .document-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(110, 142, 251, 0.2);
+            background: linear-gradient(to right, rgba(110, 142, 251, 0.02), transparent);
+        }
+        
+        .document-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(110, 142, 251, 0.1) 0%, rgba(167, 119, 227, 0.1) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+        }
+        
+        .document-icon i {
+            color: var(--primary);
+            font-size: 1.4rem;
+        }
+        
+        .document-info {
+            flex: 1;
+        }
+        
+        .document-name {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+        
+        .document-meta {
+            font-size: 0.9rem;
+            color: #6c757d;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .document-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .upload-status {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+        
+        .status-uploading {
+            background: rgba(76, 201, 240, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(76, 201, 240, 0.3);
+        }
+        
+        .status-completed {
+            background: rgba(40, 167, 69, 0.1);
+            color: #28a745;
+            border: 1px solid rgba(40, 167, 69, 0.3);
+        }
+        
+        .status-error {
+            background: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+            border: 1px solid rgba(220, 53, 69, 0.3);
+        }
+        
+        .document-actions {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .action-btn {
+            background: linear-gradient(135deg, rgba(110, 142, 251, 0.1) 0%, rgba(167, 119, 227, 0.1) 100%);
+            border: 1px solid rgba(110, 142, 251, 0.2);
+            color: var(--primary);
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+        }
+        
+        .action-btn:hover {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(110, 142, 251, 0.3);
+        }
+        
+        /* 响应式设计增强 */
+        @media (max-width: 1024px) {
+            .container {
+                margin: 10px;
+                max-width: none;
+            }
+            
+            .tabs {
+                flex-wrap: wrap;
+            }
+            
+            .tab {
+                flex: 1 0 50%;
+                padding: 15px 20px;
+            }
+            
+            .kb-list {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                flex: none;
+                padding: 15px;
+            }
+            
+            .tab-content {
+                padding: 20px;
+            }
+            
+            .chat-container {
+                height: 500px;
+                border-radius: 15px;
+            }
+            
+            .chat-header {
+                padding: 15px;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .chat-messages {
+                padding: 15px;
+            }
+            
+            .message {
+                max-width: 90%;
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .chat-input {
+                padding: 15px;
+                flex-direction: column;
+            }
+            
+            .chat-input input {
+                margin-bottom: 10px;
+            }
+            
+            .kb-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .kb-selector {
+                width: 100%;
+            }
+            
+            .kb-selector-content {
+                left: 0;
+                right: 0;
+                min-width: 100%;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            header p {
+                font-size: 1rem;
+            }
+            
+            button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                padding: 20px 15px;
+            }
+            
+            .tab {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+            
+            .chat-container {
+                height: 400px;
+            }
+            
+            .message {
+                max-width: 95%;
+                padding: 12px;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+                margin-bottom: 15px;
+            }
+            
+            .form-group {
+                margin-bottom: 15px;
+            }
+            
+            /* 移动端markdown优化 */
+            .bot-message .markdown-content {
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+            
+            .bot-message .markdown-content h1 {
+                font-size: 1.2em;
+            }
+            
+            .bot-message .markdown-content h2 {
+                font-size: 1.1em;
+            }
+            
+            .bot-message .markdown-content pre {
+                padding: 0.8em;
+                font-size: 0.8em;
+            }
+            
+            .bot-message .markdown-content table {
+                font-size: 0.8em;
+            }
+            
+            .bot-message .markdown-content th,
+            .bot-message .markdown-content td {
+                padding: 0.4em 0.6em;
+            }
+        }
+        
+        /* 滚动条美化 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f3f5;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+        
+        /* 焦点样式改进 */
+        *:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+        
+        /* 平滑滚动 */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* 自定义弹框样式 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .modal-overlay.show .modal {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+        
+        .modal-body {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .modal-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .modal-message {
+            color: var(--dark);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .modal-footer {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            padding: 0 25px 25px;
+        }
+        
+        .modal-btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            min-width: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-btn-cancel {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .modal-btn-cancel:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .modal-btn-confirm {
+            background: linear-gradient(135deg, var(--accent) 0%, #ff6b9d 100%);
+            color: white;
+        }
+        
+        .modal-btn-confirm:hover {
+            background: linear-gradient(135deg, #ff6b9d 0%, var(--accent) 100%);
+            transform: translateY(-2px);
+        }
+        
+        /* 文档名称高亮 */
+        .document-name-highlight {
+            font-weight: 600;
+            color: var(--accent);
+            background: rgba(247, 37, 133, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin: 0 2px;
+        }
+
+        /* 搜索弹框样式 */
+        .search-input-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(110, 142, 251, 0.15);
+        }
+        
+        .search-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(110, 142, 251, 0.3);
+        }
+        
+        .search-results {
+            max-height: 300px;
+            overflow-y: auto;
+            overflow-x: hidden;  /* 禁止横向滚动 */
+            margin-top: 20px;
+        }
+        
+        .search-result-item {
+            padding: 15px;
+            border-radius: 8px;
+            background: #f8f9fa;
+            margin-bottom: 10px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .search-result-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .search-result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .search-result-score {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+.search-result-content {
+    color: #495057;
+    line-height: 1.5;
+    font-size: 0.9rem;
+    text-align: left;
+}
+        
+        .search-result-meta {
+            margin-top: 8px;
+            font-size: 0.8rem;
+            color: #6c757d;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .search-loading {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .search-loading i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .search-no-results {
+            text-align: center;
+            padding: 30px;
+            color: #6c757d;
+        }
+        
+        .search-no-results i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #adb5bd;
+        }
+        
+        /* 搜索关键词高亮 */
+        .search-highlight {
+            background: linear-gradient(135deg, rgba(247, 37, 133, 0.2) 0%, rgba(255, 107, 157, 0.2) 100%);
+            color: var(--accent);
+            font-weight: 600;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+
+        /* Markdown 样式 - 优化版 */
+        .bot-message .markdown-content {
+            line-height: 1.6; /* 更舒适的行高 */
+            font-size: 0.95rem; /* 稍微调整字体大小 */
+            color: #2d3748; /* 更柔和的文本颜色 */
+        }
+        
+        /* 优化段落间距 */
+        .bot-message .markdown-content p {
+            margin: 0.8em 0;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        /* 优化列表样式 */
+        .bot-message .markdown-content ul,
+        .bot-message .markdown-content ol {
+            margin: 0.8em 0;
+            padding-left: 1.8em;
+        }
+        
+        .bot-message .markdown-content li {
+            margin: 0.4em 0;
+            line-height: 1.5;
+        }
+        
+        /* 优化标题样式 */
+        .bot-message .markdown-content h1,
+        .bot-message .markdown-content h2,
+        .bot-message .markdown-content h3,
+        .bot-message .markdown-content h4,
+        .bot-message .markdown-content h5,
+        .bot-message .markdown-content h6 {
+            margin: 1em 0 0.5em 0;
+            font-weight: 600;
+            color: var(--dark);
+            line-height: 1.3;
+        }
+        
+        .bot-message .markdown-content h1 {
+            font-size: 1.4em;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.3em;
+        }
+        
+        .bot-message .markdown-content h2 {
+            font-size: 1.3em;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.2em;
+        }
+        
+        .bot-message .markdown-content h3 {
+            font-size: 1.2em;
+        }
+        
+        .bot-message .markdown-content h4 {
+            font-size: 1.1em;
+        }
+        
+        /* 优化引用块 */
+        .bot-message .markdown-content blockquote {
+            border-left: 4px solid var(--primary);
+            margin: 1em 0;
+            padding: 0.8em 1em;
+            background: rgba(110, 142, 251, 0.05);
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #4a5568;
+        }
+        
+        .bot-message .markdown-content blockquote p {
+            margin: 0;
+        }
+        
+        /* 优化代码样式 */
+        .bot-message .markdown-content code {
+            background: rgba(110, 142, 251, 0.1);
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace;
+            font-size: 0.9em;
+            color: #e53e3e;
+        }
+        
+        .bot-message .markdown-content pre {
+            background: rgba(110, 142, 251, 0.05);
+            padding: 1em;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1em 0;
+            border: 1px solid rgba(110, 142, 251, 0.1);
+            line-height: 1.4;
+        }
+        
+        .bot-message .markdown-content pre code {
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            color: inherit;
+            font-size: 0.85em;
+        }
+        
+        /* 语法高亮支持 */
+        .bot-message .markdown-content .language-javascript { color: #805ad5; }
+        .bot-message .markdown-content .language-python { color: #319795; }
+        .bot-message .markdown-content .language-html { color: #dd6b20; }
+        .bot-message .markdown-content .language-css { color: #38a169; }
+        .bot-message .markdown-content .language-bash { color: #3182ce; }
+        
+        /* 优化表格样式 */
+        .bot-message .markdown-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1em 0;
+            border: 1px solid var(--border);
+            font-size: 0.9em;
+        }
+        
+        .bot-message .markdown-content th,
+        .bot-message .markdown-content td {
+            padding: 0.6em 0.8em;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+        
+        .bot-message .markdown-content th {
+            background: rgba(110, 142, 251, 0.1);
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .bot-message .markdown-content tr:nth-child(even) {
+            background: rgba(110, 142, 251, 0.02);
+        }
+        
+        /* 优化链接样式 */
+        .bot-message .markdown-content a {
+            color: var(--primary);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(110, 142, 251, 0.3);
+            transition: all 0.2s ease;
+        }
+        
+        .bot-message .markdown-content a:hover {
+            color: var(--secondary);
+            border-bottom-color: var(--secondary);
+        }
+        
+        /* 优化强调文本 */
+        .bot-message .markdown-content strong {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .bot-message .markdown-content em {
+            font-style: italic;
+            color: #4a5568;
+        }
+        
+        /* 优化水平分割线 */
+        .bot-message .markdown-content hr {
+            border: none;
+            border-top: 2px solid var(--border);
+            margin: 2em 0;
+            height: 0;
+        }
+        
+        /* 流式渲染动画 */
+        .bot-message .markdown-content.rendering {
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+        
+        /* 思考指示器样式 */
+        .thinking-indicator {
+            color: #6c757d;
+            font-weight: 600;
+            animation: blink 1.5s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+
+        /* 确保普通文本消息的样式一致性 */
+        .user-message p,
+        .bot-message:not(.markdown-content) p {
+            line-height: 1.5;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-brain"></i> RAG 知识库系统</h1>
+            <p>上传文档构建知识库，并与AI助手进行智能对话</p>
+        </header>
+
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('chat-tab')"><i class="fas fa-comments"></i> 智能聊天</div>
+            <div class="tab" onclick="switchTab('document-tab')"><i class="fas fa-file-upload"></i> 文档管理</div>
+        </div>
+
+        <div id="document-tab" class="tab-content">
+            <div class="document-container">
+                <div class="document-content">
+                    <div class="upload-section">
+                        <div class="upload-area" id="upload-area">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <h3>拖拽文件到这里</h3>
+                            <p>支持 TXT, MD, HTML... 格式</p>
+                            <input type="file" id="file-input" class="file-input" multiple>
+                            <button class="upload-btn" onclick="document.getElementById('file-input').click()">
+                                选择文件
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="document-list-section">
+                        <div class="document-list" id="document-list">
+                            <div class="empty-state">
+                                <i class="fas fa-inbox"></i>
+                                <p>暂无文档，请上传文件</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="chat-tab" class="tab-content active">
+            <div class="chat-container">
+                <div id="chat-messages" class="chat-messages">
+                </div>
+                    <div class="chat-input">
+                    <div class="kb-selector">
+                        <div class="kb-selector-icon-btn" onclick="toggleDocumentSelector()">
+                            <i class="fas fa-book"></i>
+                            <span id="selected-docs-count" style="position: absolute; top: -5px; right: -5px; background: var(--accent); color: white; border-radius: 50%; width: 18px; height: 18px; font-size: 10px; display: flex; align-items: center; justify-content: center; display: none;">0</span>
+                        </div>
+                    </div>
+                    <input type="text" id="message-input" placeholder="输入您的问题..." onkeypress="handleKeyPress(event)">
+                    <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i> 发送</button>
+                    <div id="document-selector" class="kb-selector-content">
+                        <div class="empty-state">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>加载中...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 删除确认弹框 -->
+    <div id="delete-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-exclamation-triangle"></i> 确认删除</h3>
+            </div>
+            <div class="modal-body">
+                <div class="modal-icon">
+                    <i class="fas fa-trash-alt"></i>
+                </div>
+                <p class="modal-message">
+                    确定要删除文档 <span id="delete-document-name" class="document-name-highlight"></span> 吗？
+                </p>
+                <p class="modal-message" style="color: #6c757d; font-size: 0.9rem;">
+                    此操作不可恢复，所有相关的数据和向量索引都将被永久删除。
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-cancel" onclick="hideDeleteModal()">取消</button>
+                <button class="modal-btn modal-btn-confirm" onclick="confirmDelete()">确认删除</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 搜索弹框 -->
+    <div id="search-modal" class="modal-overlay">
+        <div class="modal" style="max-width: 800px;">
+            <div class="modal-header">
+                <h3><i class="fas fa-search"></i> 搜索文档内容</h3>
+            </div>
+            <div class="modal-body">
+                <div class="search-input-container">
+                    <input type="text" id="search-query" placeholder="输入搜索关键词..." class="search-input" onkeypress="handleSearchKeyPress(event)">
+                    <button class="search-btn" onclick="performSearch()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div id="search-results" class="search-results">
+                    <div class="empty-state">
+                        <i class="fas fa-search"></i>
+                        <p>请输入关键词搜索文档内容</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-cancel" onclick="hideSearchModal()">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let websocket = null;
+        let selectedDocs = []; // 存储选中的文档ID列表
+        let lastUserMessage = ''; // 存储用户最后发送的消息，用于关键词高亮
+
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDocuments();
+            initWebSocket();
+            initDocumentUpload();
+        });
+
+        // 切换标签页
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            document.getElementById(tabId).classList.add('active');
+            document.querySelector(`.tab:nth-child(${tabId === 'chat-tab' ? 1 : 2})`).classList.add('active');
+            
+            if (tabId === 'chat-tab') {
+                loadDocuments();
+            }
+        }
+
+        // 加载文档列表
+        async function loadDocuments() {
+            try {
+                const response = await fetch('/api/documents');
+                const documents = await response.json();
+                
+                // 更新聊天页面的文档选择器
+                const docSelector = document.getElementById('document-selector');
+                if (documents.length === 0) {
+                    docSelector.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <p>暂无文档，请先上传文档</p>
+                        </div>
+                    `;
+                } else {
+                    docSelector.innerHTML = '';
+                    documents.forEach(doc => {
+                        const docItem = document.createElement('div');
+                        docItem.className = 'document-selector-item';
+                        docItem.setAttribute('data-doc-id', doc.id);
+                        docItem.innerHTML = `
+                            <label>${doc.original_filename}</label>
+                        `;
+                        
+                        // 添加点击事件
+                        docItem.addEventListener('click', function() {
+                            this.classList.toggle('selected');
+                            const docId = this.getAttribute('data-doc-id');
+                            
+                            // 更新选中文档列表
+                            if (this.classList.contains('selected')) {
+                                if (!selectedDocs.includes(docId)) {
+                                    selectedDocs.push(docId);
+                                }
+                            } else {
+                                selectedDocs = selectedDocs.filter(id => id !== docId);
+                            }
+                            
+                            console.log('当前选中的文档:', selectedDocs);
+                        });
+                        
+                        docSelector.appendChild(docItem);
+                    });
+                }
+                
+                // 更新文档管理页面的文档列表
+                updateDocumentList(documents);
+                
+            } catch (error) {
+                console.error('加载文档失败:', error);
+            }
+        }
+
+        // 更新文档管理页面的文档列表
+        function updateDocumentList(documents) {
+            const documentList = document.getElementById('document-list');
+            
+            if (documents.length === 0) {
+                documentList.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <p>暂无文档，请上传文件</p>
+                    </div>
+                `;
+            } else {
+                documentList.innerHTML = '';
+                documents.forEach(doc => {
+                    const uploadDate = new Date(doc.uploaded_at);
+                    const documentItem = document.createElement('div');
+                    documentItem.className = 'document-item';
+                    documentItem.setAttribute('data-doc-id', doc.id);
+                    documentItem.innerHTML = `
+                        <div class="document-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="document-info">
+                            <div class="document-name">${doc.original_filename}</div>
+                            <div class="document-meta">
+                                <span><i class="fas fa-calendar"></i> ${uploadDate.toLocaleDateString()}</span>
+                                <span><i class="fas fa-clock"></i> ${uploadDate.toLocaleTimeString()}</span>
+                                <span><i class="fas fa-database"></i> ${doc.id.substring(0, 8)}</span>
+                            </div>
+                        </div>
+                        <div class="document-actions">
+                            <button class="action-btn" title="搜索" onclick="searchDocument('${doc.id}', '${doc.original_filename}')"><i class="fas fa-search"></i></button>
+                            <button class="action-btn" title="展示" onclick="viewDocument('${doc.id}')"><i class="fas fa-eye"></i></button>
+                            <button class="action-btn" title="下载" onclick="downloadDocument('${doc.id}')"><i class="fas fa-download"></i></button>
+                            <button class="action-btn" title="删除" onclick="deleteDocument('${doc.id}')"><i class="fas fa-trash"></i></button>
+                        </div>
+                    `;
+                    documentList.appendChild(documentItem);
+                });
+            }
+        }
+
+
+        // 显示/隐藏文档选择器
+        function toggleDocumentSelector() {
+            const selector = document.getElementById('document-selector');
+            selector.classList.toggle('show');
+        }
+
+        // 点击外部关闭选择器
+        window.addEventListener('click', function(e) {
+            const selector = document.getElementById('document-selector');
+            const selectorBtn = document.querySelector('.kb-selector-icon-btn');
+            if (!selector.contains(e.target) && !selectorBtn.contains(e.target)) {
+                selector.classList.remove('show');
+            }
+        });
+
+
+        // 初始化WebSocket连接
+        function initWebSocket() {
+            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsUrl = `${protocol}//${window.location.host}/ws/chat`;
+            
+            websocket = new WebSocket(wsUrl);
+            
+            websocket.onopen = function() {
+                console.log('WebSocket连接已建立');
+            };
+            
+            websocket.onmessage = function(event) {
+                const data = JSON.parse(event.data);
+                if (data.type === 'response_start') {
+                    // 开始新的响应消息
+                    startBotMessage();
+                } else if (data.type === 'response_chunk') {
+                    // 添加响应片段
+                    appendBotMessageChunk(data.chunk);
+                } else if (data.type === 'response_end') {
+                    // 完成响应消息
+                    completeBotMessage(data.full_response);
+                } else if (data.type === 'context') {
+                    addContextMessage(data.context);
+                }
+            };
+            
+            websocket.onclose = function() {
+                console.log('WebSocket连接已关闭，尝试重新连接...');
+                setTimeout(initWebSocket, 3000);
+            };
+            
+            websocket.onerror = function(error) {
+                console.error('WebSocket错误:', error);
+            };
+        }
+
+        // 发送消息
+        function sendMessage() {
+            const input = document.getElementById('message-input');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // 保存用户消息用于后续关键词高亮
+            lastUserMessage = message;
+            
+            // 添加用户消息到聊天界面
+            addMessage(message, 'user');
+            input.value = '';
+            
+            // 通过WebSocket发送消息
+            if (websocket && websocket.readyState === WebSocket.OPEN) {
+                websocket.send(JSON.stringify({
+                    type: 'message',
+                    message: message,
+                    selected_docs: selectedDocs
+                }));
+            } else {
+                addMessage('连接已断开，请刷新页面重试', 'bot');
+            }
+        }
+
+        // 处理按键事件
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // 添加消息到聊天界面
+        function addMessage(text, sender) {
+            const messagesContainer = document.getElementById('chat-messages');
+            const messageElement = document.createElement('div');
+            messageElement.className = `message ${sender}-message`;
+            messageElement.innerHTML = `
+                <strong>${sender === 'user' ? '您' : 'AI助手'}</strong>
+                <p>${text}</p>
+            `;
+            messagesContainer.appendChild(messageElement);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // 添加上下文消息 - 显示引用的文档信息
+        function addContextMessage(contextData) {
+            const messagesContainer = document.getElementById('chat-messages');
+            
+            // 创建上下文消息容器
+            const messageElement = document.createElement('div');
+            messageElement.className = 'context-message';
+            
+            // 解析上下文数据
+            let contextInfo;
+            try {
+                contextInfo = typeof contextData === 'string' ? JSON.parse(contextData) : contextData;
+            } catch (e) {
+                // 如果不是JSON格式，直接显示原始文本
+                messageElement.innerHTML = `<i class="fas fa-info-circle"></i> ${contextData}`;
+                messagesContainer.appendChild(messageElement);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                return;
+            }
+            
+            // 提取文档信息
+            const documents = contextInfo.documents || [];
+            const totalDocs = documents.length;
+            
+        // 构建消息内容
+        let html = `
+            <div class="context-header">
+                <span>引用了 ${totalDocs} 个文档</span>
+                <button class="toggle-details-btn" onclick="toggleContextDetails(this)">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+            <div class="context-details" style="display: none;">
+        `;
+            
+            if (totalDocs === 0) {
+                html += `<div class="no-documents">未引用任何文档</div>`;
+            } else {
+                documents.forEach((doc, index) => {
+                    const docName = doc.document_name || '未知文档';
+                    const relevantInfo = doc.relevant_content || [];
+                    
+                    html += `
+                        <div class="document-info">
+                            <div class="doc-header" onclick="toggleDocumentContent(this)">
+                                <span class="doc-number">${index + 1}.</span>
+                                <span class="doc-name">${docName}</span>
+                                <span class="doc-info-count">${relevantInfo.length} 条相关信息</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="doc-content" style="display: none;">
+                    `;
+                    
+                    if (relevantInfo.length === 0) {
+                        html += `<div class="no-content">暂无相关信息</div>`;
+                    } else {
+                        relevantInfo.forEach((info, infoIndex) => {
+                            // 使用关键词高亮功能处理信息文本
+                            const highlightedInfo = highlightKeywords(info, lastUserMessage);
+                            html += `
+                                <div class="info-item">
+                                    <span class="info-number">${infoIndex + 1}.</span>
+                                    <span class="info-text">${highlightedInfo}</span>
+                                </div>
+                            `;
+                        });
+                    }
+                    
+                    html += `
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+            
+            html += `</div>`;
+            messageElement.innerHTML = html;
+            messagesContainer.appendChild(messageElement);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+        
+        // 切换上下文详细信息显示
+        function toggleContextDetails(button) {
+            const details = button.parentElement.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            if (details.style.display === 'none') {
+                details.style.display = 'block';
+                icon.className = 'fas fa-chevron-up';
+            } else {
+                details.style.display = 'none';
+                icon.className = 'fas fa-chevron-down';
+            }
+        }
+        
+        // 切换文档内容显示
+        function toggleDocumentContent(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('i');
+            
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+                icon.className = 'fas fa-chevron-up';
+            } else {
+                content.style.display = 'none';
+                icon.className = 'fas fa-chevron-down';
+            }
+        }
+
+        // 开始新的机器人消息（流式响应）
+        function startBotMessage() {
+            const messagesContainer = document.getElementById('chat-messages');
+            const messageId = 'streaming-message-' + Date.now();
+            const contentId = 'streaming-content-' + Date.now();
+            
+            const messageElement = document.createElement('div');
+            messageElement.className = 'message bot-message';
+            messageElement.id = messageId;
+            messageElement.innerHTML = `
+                <strong>AI助手</strong>
+                <div id="${contentId}" class="markdown-content">
+                    <span class="thinking-indicator">...</span>
+                </div>
+            `;
+            messagesContainer.appendChild(messageElement);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            // 存储当前消息ID用于后续操作
+            window.currentStreamingMessage = {
+                messageId: messageId,
+                contentId: contentId,
+                accumulatedText: '',
+                hasStarted: false // 标记是否已经开始显示实际内容
+            };
+        }
+
+        // 添加机器人消息片段（流式响应）
+        function appendBotMessageChunk(chunk) {
+            if (window.currentStreamingMessage) {
+                const { contentId } = window.currentStreamingMessage;
+                const contentElement = document.getElementById(contentId);
+                
+                // 累积文本
+                window.currentStreamingMessage.accumulatedText += chunk;
+                
+                // 如果是第一次收到数据，移除思考指示器
+                if (!window.currentStreamingMessage.hasStarted) {
+                    window.currentStreamingMessage.hasStarted = true;
+                    // 移除思考指示器，直接在三个点后面显示内容
+                    contentElement.innerHTML = renderMarkdownWithFallback(window.currentStreamingMessage.accumulatedText);
+                } else {
+                    // 更新现有内容
+                    contentElement.innerHTML = renderMarkdownWithFallback(window.currentStreamingMessage.accumulatedText);
+                }
+                
+                // 应用流式渲染动画
+                applyStreamingAnimation(contentElement);
+                
+                // 自动滚动到底部
+                const messagesContainer = document.getElementById('chat-messages');
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+        }
+
+        // 智能markdown渲染，处理不完整的markdown语法
+        function renderMarkdownWithFallback(text) {
+            try {
+                // 配置marked选项
+                marked.setOptions({
+                    breaks: true,           // 将换行符转换为<br>
+                    gfm: true,              // 启用GitHub风格的Markdown
+                    smartypants: true,      // 使用智能引号等
+                    sanitize: false         // 不清理HTML
+                });
+                
+                // 先尝试正常渲染
+                let result = marked.parse(text);
+                
+                // 检查是否有未闭合的代码块
+                const codeBlockCount = (text.match(/```/g) || []).length;
+                if (codeBlockCount % 2 !== 0) {
+                    // 有未闭合的代码块，添加临时闭合标记
+                    result = result.replace(/(<pre><code[^>]*>)([\s\S]*?)(?=<\/code><\/pre>|$)/g, 
+                        (match, openTag, content) => {
+                            // 如果内容以未闭合的代码块结束，添加临时样式
+                            if (!content.trim().endsWith('```')) {
+                                return `${openTag}${content}`;
+                            }
+                            return match;
+                        });
+                }
+                
+                // 添加语法高亮支持
+                result = addSyntaxHighlighting(result);
+                
+                return result;
+            } catch (error) {
+                console.error('Markdown解析失败:', error);
+                // 如果解析失败，返回原始文本但保持markdown样式
+                return `<div style="white-space: pre-wrap;">${escapeHtml(text)}</div>`;
+            }
+        }
+        
+        // 添加语法高亮支持
+        function addSyntaxHighlighting(html) {
+            // 简单的语法高亮实现
+            return html.replace(/<pre><code class="language-(\w+)">([\s\S]*?)<\/code><\/pre>/g, 
+                (match, lang, code) => {
+                    // 为不同语言添加特定的样式类
+                    return `<pre><code class="language-${lang} hljs">${escapeHtml(code)}</code></pre>`;
+                });
+        }
+        
+        // 添加流式渲染动画效果
+        function applyStreamingAnimation(element) {
+            element.classList.add('rendering');
+            setTimeout(() => {
+                element.classList.remove('rendering');
+            }, 300);
+        }
+
+        // HTML转义函数
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // 高亮文本中的关键词
+        function highlightKeywords(text, query) {
+            if (!query || !text) return escapeHtml(text);
+            
+            // 将查询拆分为单词，过滤掉空字符串
+            const keywords = query.split(/\s+/).filter(word => word.length > 0);
+            
+            if (keywords.length === 0) return escapeHtml(text);
+            
+            // 为每个关键词创建正则表达式，不区分大小写
+            const regexPatterns = keywords.map(keyword => 
+                new RegExp(keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi')
+            );
+            
+            let highlightedText = escapeHtml(text);
+            
+            // 对每个关键词进行高亮处理
+            regexPatterns.forEach(regex => {
+                highlightedText = highlightedText.replace(regex, 
+                    match => `<span class="search-highlight">${match}</span>`
+                );
+            });
+            
+            return highlightedText;
+        }
+
+        // 渲染Markdown内容
+        function renderMarkdown(text) {
+            try {
+                // 使用marked.js解析markdown
+                return marked.parse(text);
+            } catch (error) {
+                console.error('Markdown解析失败:', error);
+                // 如果解析失败，返回原始文本
+                return text;
+            }
+        }
+
+        // 检测是否为Markdown内容
+        function isMarkdownContent(text) {
+            // 简单的Markdown检测逻辑
+            const markdownPatterns = [
+                /^#+\s/,                     // 标题
+                /\*\*.+?\*\*/,               // 粗体
+                /\*.+?\*/,                   // 斜体
+                /\[.+?\]\(.+?\)/,            // 链接
+                /^- /,                       // 无序列表
+                /^\d+\. /,                   // 有序列表
+                /```[\s\S]*?```/,            // 代码块
+                /`[^`]+?`/,                  // 行内代码
+                />\s/,                       // 引用
+                /\|.+\|/                     // 表格
+            ];
+            
+            return markdownPatterns.some(pattern => pattern.test(text));
+        }
+
+        // 完成机器人消息（流式响应）
+        function completeBotMessage(fullResponse) {
+            if (window.currentStreamingMessage) {
+                const { messageId, contentId } = window.currentStreamingMessage;
+                const messageElement = document.getElementById(messageId);
+                if (messageElement) {
+                    messageElement.removeAttribute('id');
+                    
+                    // 确保最终内容正确渲染
+                    const contentElement = document.getElementById(contentId);
+                    if (contentElement) {
+                        contentElement.innerHTML = renderMarkdownWithFallback(fullResponse);
+                    }
+                }
+                // 清除当前消息引用
+                window.currentStreamingMessage = null;
+            }
+        }
+
+        // 初始化文档上传功能
+        function initDocumentUpload() {
+            const uploadArea = document.getElementById('upload-area');
+            const fileInput = document.getElementById('file-input');
+            
+            // 处理文件选择
+            fileInput.addEventListener('change', function(e) {
+                const files = e.target.files;
+                if (files.length > 0) {
+                    handleFiles(files);
+                }
+            });
+            
+            // 拖拽上传功能
+            uploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+            
+            uploadArea.addEventListener('dragleave', function() {
+                uploadArea.classList.remove('dragover');
+            });
+            
+            uploadArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+                
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    handleFiles(files);
+                }
+            });
+        }
+
+        // 处理上传的文件
+        function handleFiles(files) {
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                console.log('上传文件:', file.name);
+                
+                // 上传文件到服务器
+                uploadFileToServer(file);
+            }
+            
+            // 清空文件选择框，允许重复选择相同文件
+            document.getElementById('file-input').value = '';
+        }
+        
+        // 添加上传中的文档项
+        function addUploadingDocument(filename) {
+            const documentList = document.getElementById('document-list');
+            
+            // 移除空状态提示（如果有）
+            const emptyState = documentList.querySelector('.empty-state');
+            if (emptyState) {
+                documentList.removeChild(emptyState);
+            }
+            
+            const uploadId = 'upload-' + Date.now();
+            const documentItem = document.createElement('div');
+            documentItem.className = 'document-item';
+            documentItem.setAttribute('data-upload-id', uploadId);
+            documentItem.innerHTML = `
+                <div class="document-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="document-info">
+                    <div class="document-name">${filename}</div>
+                    <div class="document-meta">
+                        <span><i class="fas fa-clock"></i> 刚刚</span>
+                        <span class="upload-status status-uploading">
+                            <i class="fas fa-spinner fa-spin"></i> 上传中...
+                        </span>
+                    </div>
+                </div>
+                <div class="document-actions">
+                    <button class="action-btn" title="取消" onclick="cancelUpload('${uploadId}')"><i class="fas fa-times"></i></button>
+                </div>
+            `;
+            
+            documentList.insertBefore(documentItem, documentList.firstChild);
+            return uploadId;
+        }
+        
+        // 更新上传状态
+        function updateUploadStatus(uploadId, status, message) {
+            const documentItem = document.querySelector(`[data-upload-id="${uploadId}"]`);
+            if (documentItem) {
+                const statusElement = documentItem.querySelector('.upload-status');
+                if (statusElement) {
+                    statusElement.className = `upload-status status-${status}`;
+                    statusElement.innerHTML = message;
+                    
+                    // 如果是完成状态，移除取消按钮
+                    if (status === 'completed') {
+                        const cancelBtn = documentItem.querySelector('.action-btn');
+                        if (cancelBtn) {
+                            cancelBtn.remove();
+                        }
+                    }
+                }
+            }
+        }
+        
+        // 取消上传
+        function cancelUpload(uploadId) {
+            const documentItem = document.querySelector(`[data-upload-id="${uploadId}"]`);
+            if (documentItem) {
+                documentItem.remove();
+                
+                // 如果没有文档了，显示空状态
+                const documentList = document.getElementById('document-list');
+                if (documentList.children.length === 0) {
+                    showEmptyState();
+                }
+            }
+        }
+
+        // 上传文件到服务器
+        async function uploadFileToServer(file) {
+            const formData = new FormData();
+            formData.append('file', file);
+            
+            // 创建上传ID并显示上传状态
+            const uploadId = addUploadingDocument(file.name);
+            
+            try {
+                const response = await fetch('/api/documents', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    // 更新上传状态为完成
+                    updateUploadStatus(uploadId, 'completed', '<i class="fas fa-check"></i> 上传完成');
+                    
+                    // 延迟一会儿再重新加载文档列表，让用户看到完成状态
+                    setTimeout(() => {
+                        // 重新加载文档列表（会同时更新聊天选择器和文档管理列表）
+                        loadDocuments();
+                    }, 1000);
+                } else {
+                    // 更新上传状态为错误
+                    updateUploadStatus(uploadId, 'error', '<i class="fas fa-exclamation-triangle"></i> 上传失败');
+                    
+                    // 显示错误Toast提示
+                    if (result.message) {
+                        showToast(result.message, 'error');
+                    } else {
+                        showToast('文件上传失败', 'error');
+                    }
+                    console.error('文件上传失败:', result);
+                    
+                    // 移除上传中的文档项（不显示在documentList中）
+                    setTimeout(() => {
+                        const documentItem = document.querySelector(`[data-upload-id="${uploadId}"]`);
+                        if (documentItem) {
+                            documentItem.remove();
+                        }
+                        
+                        // 如果没有文档了，显示空状态
+                        const documentList = document.getElementById('document-list');
+                        if (documentList.children.length === 0) {
+                            showEmptyState();
+                        }
+                    }, 2000);
+                }
+            } catch (error) {
+                // 更新上传状态为错误
+                updateUploadStatus(uploadId, 'error', '<i class="fas fa-exclamation-triangle"></i> 上传失败');
+                
+                // 显示错误Toast提示
+                showToast('上传文件时出错，请稍后重试', 'error');
+                console.error('上传文件时出错:', error);
+                
+                // 移除上传中的文档项（不显示在documentList中）
+                setTimeout(() => {
+                    const documentItem = document.querySelector(`[data-upload-id="${uploadId}"]`);
+                    if (documentItem) {
+                        documentItem.remove();
+                    }
+                    
+                    // 如果没有文档了，显示空状态
+                    const documentList = document.getElementById('document-list');
+                    if (documentList.children.length === 0) {
+                        showEmptyState();
+                    }
+                }, 2000);
+            }
+        }
+
+        // 显示空状态
+        function showEmptyState() {
+            const documentList = document.getElementById('document-list');
+            const emptyState = document.createElement('div');
+            emptyState.className = 'empty-state';
+            emptyState.innerHTML = `
+                <i class="fas fa-inbox"></i>
+                <p>暂无文档，请上传文件</p>
+            `;
+            documentList.appendChild(emptyState);
+        }
+
+        // 格式化文件大小
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 B';
+            const k = 1024;
+            const sizes = ['B', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        // 下载文档
+        async function downloadDocument(docId) {
+            try {
+                // 打开新窗口下载文件
+                window.open(`/api/documents/${docId}/download`, '_blank');
+            } catch (error) {
+                console.error('下载文档失败:', error);
+                alert('下载文档失败，请稍后重试');
+            }
+        }
+
+        // 删除文档弹框变量
+        let currentDeleteDocId = null;
+        let currentDeleteDocName = null;
+
+        // 显示删除确认弹框
+        function showDeleteModal(docId, docName) {
+            currentDeleteDocId = docId;
+            currentDeleteDocName = docName;
+            
+            // 更新弹框内容
+            document.getElementById('delete-document-name').textContent = docName;
+            
+            // 显示弹框
+            const modal = document.getElementById('delete-modal');
+            modal.classList.add('show');
+            
+            // 禁用页面滚动
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 隐藏删除确认弹框
+        function hideDeleteModal() {
+            const modal = document.getElementById('delete-modal');
+            modal.classList.remove('show');
+            
+            // 恢复页面滚动
+            document.body.style.overflow = '';
+            
+            // 清除当前文档信息
+            currentDeleteDocId = null;
+            currentDeleteDocName = null;
+        }
+
+        // 确认删除文档
+        async function confirmDelete() {
+            if (!currentDeleteDocId) return;
+            
+            try {
+                const response = await fetch(`/api/documents/${currentDeleteDocId}`, {
+                    method: 'DELETE'
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    // 从界面中移除文档项
+                    const documentItem = document.querySelector(`.document-item[data-doc-id="${currentDeleteDocId}"]`);
+                    if (documentItem) {
+                        documentItem.remove();
+                    }
+                    
+                    // 从选择器中移除文档项
+                    const selectorItem = document.querySelector(`.document-selector-item[data-doc-id="${currentDeleteDocId}"]`);
+                    if (selectorItem) {
+                        selectorItem.remove();
+                    }
+                    
+                    // 如果没有文档了，显示空状态
+                    const documentList = document.getElementById('document-list');
+                    const docSelector = document.getElementById('document-selector');
+                    
+                    if (documentList.children.length === 0) {
+                        showEmptyState();
+                    }
+                    
+                    if (docSelector.children.length === 0) {
+                        docSelector.innerHTML = `
+                            <div class="empty-state">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <p>暂无文档，请先上传文档</p>
+                            </div>
+                        `;
+                    }
+                    
+                    // 显示成功提示
+                    showToast('文档删除成功', 'success');
+                } else {
+                    showToast('删除文档失败: ' + result.message, 'error');
+                }
+            } catch (error) {
+                console.error('删除文档失败:', error);
+                showToast('删除文档失败，请稍后重试', 'error');
+            } finally {
+                // 隐藏弹框
+                hideDeleteModal();
+            }
+        }
+
+        // 删除文档（触发弹框）
+        function deleteDocument(docId) {
+            // 获取文档名称
+            const documentItem = document.querySelector(`.document-item[data-doc-id="${docId}"]`);
+            if (!documentItem) return;
+            
+            const docName = documentItem.querySelector('.document-name').textContent;
+            
+            // 显示删除确认弹框
+            showDeleteModal(docId, docName);
+        }
+
+        // 显示Toast提示
+        function showToast(message, type = 'success') {
+            // 创建Toast元素
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.innerHTML = `
+                <div class="toast-content">
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            // 添加到页面
+            document.body.appendChild(toast);
+            
+            // 显示动画
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 10);
+            
+            // 3秒后自动移除
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // 点击弹框外部关闭
+        document.getElementById('delete-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideDeleteModal();
+            }
+        });
+
+        // 搜索弹框变量
+        let currentSearchDocId = null;
+        let currentSearchDocName = null;
+
+        // 显示搜索弹框
+        function showSearchModal(docId, docName) {
+            currentSearchDocId = docId;
+            currentSearchDocName = docName;
+            
+            // 更新弹框标题
+            document.querySelector('#search-modal .modal-header h3').innerHTML = 
+                `<i class="fas fa-search"></i> 搜索文档内容 - ${docName}`;
+            
+            // 清空搜索框和结果
+            document.getElementById('search-query').value = '';
+            document.getElementById('search-results').innerHTML = `
+                <div class="empty-state">
+                    <i class="fas fa-search"></i>
+                    <p>请输入关键词搜索文档内容</p>
+                </div>
+            `;
+            
+            // 显示弹框
+            const modal = document.getElementById('search-modal');
+            modal.classList.add('show');
+            
+            // 禁用页面滚动
+            document.body.style.overflow = 'hidden';
+            
+            // 聚焦到搜索框
+            setTimeout(() => {
+                document.getElementById('search-query').focus();
+            }, 100);
+        }
+
+        // 隐藏搜索弹框
+        function hideSearchModal() {
+            const modal = document.getElementById('search-modal');
+            modal.classList.remove('show');
+            
+            // 恢复页面滚动
+            document.body.style.overflow = '';
+            
+            // 清除当前文档信息
+            currentSearchDocId = null;
+            currentSearchDocName = null;
+        }
+
+        // 处理搜索按键事件
+        function handleSearchKeyPress(event) {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        }
+
+        // 执行搜索
+        async function performSearch() {
+            const query = document.getElementById('search-query').value.trim();
+            
+            if (!query) {
+                showToast('请输入搜索关键词', 'error');
+                return;
+            }
+            
+            if (!currentSearchDocId) {
+                showToast('未选择文档', 'error');
+                return;
+            }
+            
+            // 显示加载状态
+            document.getElementById('search-results').innerHTML = `
+                <div class="search-loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>正在搜索...</p>
+                </div>
+            `;
+            
+            try {
+                const response = await fetch(`/api/documents/${currentSearchDocId}/search`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ query: query })
+                });
+                
+                const results = await response.json();
+                
+                if (results.status === 'success' && results.data && results.data.length > 0) {
+                    // 按分数排序（从高到低）
+                    results.data.sort((a, b) => b.score - a.score);
+                    
+                    // 显示搜索结果
+                    displaySearchResults(results.data, query);
+                } else {
+                    // 显示无结果
+                    document.getElementById('search-results').innerHTML = `
+                        <div class="search-no-results">
+                            <i class="fas fa-search"></i>
+                            <p>未找到相关结果</p>
+                            <p style="color: #adb5bd; font-size: 0.9rem; margin-top: 10px;">
+                                请尝试使用其他关键词搜索
+                            </p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('搜索失败:', error);
+                document.getElementById('search-results').innerHTML = `
+                    <div class="search-no-results">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>搜索失败，请稍后重试</p>
+                    </div>
+                `;
+            }
+        }
+
+        // 显示搜索结果
+        function displaySearchResults(results, query) {
+            const resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = '';
+            
+            results.forEach((result, index) => {
+                const resultItem = document.createElement('div');
+                resultItem.className = 'search-result-item';
+                
+                // 高亮搜索关键词
+                let highlightedContent = result.content;
+                if (query) {
+                    const regex = new RegExp(query, 'gi');
+                    highlightedContent = highlightedContent.replace(regex, 
+                        match => `<span class="search-highlight">${match}</span>`
+                    );
+                }
+                
+                resultItem.innerHTML = `
+                    <div class="search-result-header">
+                        <strong>结果 ${index + 1}</strong>
+                        <span class="search-result-score">${(result.score * 100).toFixed(1)}%</span>
+                    </div>
+                    <div class="search-result-content">${highlightedContent}</div>
+                    <div class="search-result-meta">
+                        <span><i class="fas fa-file-alt"></i> 第 ${result.page || 1} 页</span>
+                        <span><i class="fas fa-ruler"></i> ${result.content.length} 字符</span>
+                    </div>
+                `;
+                
+                resultsContainer.appendChild(resultItem);
+            });
+        }
+
+        // 搜索文档
+        function searchDocument(docId, docName) {
+            showSearchModal(docId, docName);
+        }
+
+        // 展示文档内容
+        function viewDocument(docId) {
+            // 在新标签页中打开文档查看页面
+            window.open(`/api/documents/${docId}/view`, '_blank');
+        }
+
+        // 点击搜索弹框外部关闭
+        document.getElementById('search-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideSearchModal();
+            }
+        });
+
+        // 添加Toast样式
+        const toastStyle = document.createElement('style');
+        toastStyle.textContent = `
+            .toast {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: white;
+                border-radius: var(--radius);
+                box-shadow: var(--shadow);
+                padding: 15px 20px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                z-index: 1001;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                border-left: 4px solid;
+            }
+            
+            .toast.show {
+                transform: translateX(0);
+            }
+            
+            .toast-success {
+                border-left-color: #28a745;
+            }
+            
+            .toast-error {
+                border-left-color: #dc3545;
+            }
+            
+            .toast-content {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .toast-success .toast-content i {
+                color: #28a745;
+            }
+            
+            .toast-error .toast-content i {
+                color: #dc3545;
+            }
+            
+            @media (max-width: 768px) {
+                .toast {
+                    top: 10px;
+                    right: 10px;
+                    left: 10px;
+                    transform: translateY(-100%);
+                }
+                
+                .toast.show {
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(toastStyle);
+    </script>
+</body>
+</html>

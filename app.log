@@ -1,0 +1,1687 @@
+2025-09-11 21:40:02,051 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-11 21:40:02,052 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-11 21:40:02,052 - __main__ - INFO - 静态文件挂载完成
+2025-09-11 21:40:02,108 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-11 21:40:02,610 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-11 21:40:02,611 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-11 21:40:02,614 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-11 21:40:02,616 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-11 21:40:10,935 - __main__ - INFO - 嵌入模型初始化完成: all-MiniLM-L6-v2
+2025-09-11 21:40:14,378 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-11 21:40:15,364 - __main__ - INFO - 重排模型初始化完成: cross-encoder/ms-marco-MiniLM-L-6-v2
+2025-09-11 21:40:15,376 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-11 21:40:15,413 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-11 21:40:15,414 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-11 21:40:15,414 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-11 21:40:46,572 - __main__ - INFO - WebSocket连接已建立
+2025-09-11 21:46:58,332 - __main__ - INFO - 开始处理文件上传: 文件名=新建文本文档.txt, 文件大小=2997
+2025-09-11 21:46:58,333 - __main__ - INFO - 文件保存成功: 存储路径=static/uploads/c1b77892-ff99-4dde-95a6-a17a82fc4182.txt
+2025-09-11 21:46:58,342 - __main__ - INFO - 添加文档记录: ID=e11b858a-e91c-4fef-a0c3-2f8fb3f2f523, 文件名=新建文本文档.txt, 存储名=c1b77892-ff99-4dde-95a6-a17a82fc4182.txt
+2025-09-11 21:46:58,343 - __main__ - INFO - 文件内容解码成功: 文档ID=e11b858a-e91c-4fef-a0c3-2f8fb3f2f523, 文本长度=1745
+2025-09-11 21:46:58,418 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2025-09-11 21:46:58,422 - __main__ - INFO - 创建新的向量集合: doc_e11b858a-e91c-4fef-a0c3-2f8fb3f2f523
+2025-09-11 21:46:58,423 - __main__ - INFO - 文档分块完成: 文档ID=e11b858a-e91c-4fef-a0c3-2f8fb3f2f523, 块数=4
+2025-09-11 21:46:59,202 - __main__ - INFO - 嵌入生成完成: 文档ID=e11b858a-e91c-4fef-a0c3-2f8fb3f2f523, 嵌入维度=(4, 384)
+2025-09-11 21:46:59,371 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+2025-09-11 21:46:59,374 - __main__ - INFO - 文档存储到向量数据库完成: 文档ID=e11b858a-e91c-4fef-a0c3-2f8fb3f2f523, 总块数=4
+2025-09-11 21:46:59,376 - __main__ - INFO - 文档处理完成: 文档ID=e11b858a-e91c-4fef-a0c3-2f8fb3f2f523, 原始文件名=新建文本文档.txt
+2025-09-11 21:47:49,737 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=0
+2025-09-11 21:47:49,739 - __main__ - INFO - 开始生成AI回复
+2025-09-11 21:47:51,891 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 21:47:55,911 - __main__ - INFO - AI回复生成完成: 回复长度=21
+2025-09-11 21:54:29,242 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=0
+2025-09-11 21:54:29,244 - __main__ - INFO - 开始生成AI回复
+2025-09-11 21:54:30,693 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 21:54:33,937 - __main__ - INFO - AI回复生成完成: 回复长度=21
+2025-09-11 22:00:33,084 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=0
+2025-09-11 22:00:33,086 - __main__ - INFO - 开始生成AI回复
+2025-09-11 22:00:34,601 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 22:00:38,414 - __main__ - INFO - AI回复生成完成: 回复长度=21
+2025-09-11 22:00:44,873 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-11 22:00:45,456 - __main__ - INFO - WebSocket连接已建立
+2025-09-11 22:01:02,391 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=0
+2025-09-11 22:01:02,391 - __main__ - INFO - 开始生成AI回复
+2025-09-11 22:01:03,544 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-11 22:01:07,477 - __main__ - INFO - AI回复生成完成: 回复长度=21
+2025-09-11 22:01:58,036 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-12 20:44:57,215 - __main__ - INFO - WebSocket连接已建立
+2025-09-12 20:51:55,581 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-12 20:51:55,581 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-12 20:51:55,582 - __main__ - INFO - 静态文件挂载完成
+2025-09-12 20:51:55,670 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-12 20:51:56,026 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-12 20:51:56,027 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-12 20:51:56,029 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-12 20:51:56,029 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-12 20:53:18,198 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-12 20:53:18,198 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-12 20:53:18,198 - __main__ - INFO - 静态文件挂载完成
+2025-09-12 20:53:18,248 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-12 20:53:18,402 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-12 20:53:18,402 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-12 20:53:18,404 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-12 20:53:18,404 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-12 20:53:35,816 - __main__ - INFO - 嵌入模型初始化完成: all-MiniLM-L6-v2
+2025-09-12 20:53:39,267 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-12 20:53:39,901 - __main__ - INFO - 重排模型初始化完成: cross-encoder/ms-marco-MiniLM-L-6-v2
+2025-09-12 20:53:39,910 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-12 20:53:40,032 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-12 20:53:40,032 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-12 20:53:40,032 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-12 20:57:42,037 - __main__ - INFO - WebSocket连接已建立
+2025-09-12 21:08:56,179 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-12 21:24:03,446 - __main__ - INFO - WebSocket连接已建立
+2025-09-12 21:26:13,073 - __main__ - INFO - 开始删除文档: ID=e11b858a-e91c-4fef-a0c3-2f8fb3f2f523, 文件名=c1b77892-ff99-4dde-95a6-a17a82fc4182.txt
+2025-09-12 21:26:13,073 - __main__ - INFO - 已删除文件: static/uploads/c1b77892-ff99-4dde-95a6-a17a82fc4182.txt
+2025-09-12 21:26:13,140 - __main__ - INFO - 已删除向量集合: doc_e11b858a-e91c-4fef-a0c3-2f8fb3f2f523
+2025-09-12 21:26:13,147 - __main__ - INFO - 已删除数据库记录: 文档ID=e11b858a-e91c-4fef-a0c3-2f8fb3f2f523
+2025-09-12 21:26:13,147 - __main__ - INFO - 删除操作结果: 成功
+2025-09-12 21:27:05,640 - __main__ - INFO - 开始处理文件上传: 文件名=发财树.txt, 文件大小=2290
+2025-09-12 21:27:05,643 - __main__ - INFO - 文件保存成功: 存储路径=static/uploads/34fda3fa-f1ec-4719-8977-c0e10e4cb74d.txt
+2025-09-12 21:27:05,652 - __main__ - INFO - 添加文档记录: ID=6206751e-d17f-45a8-bb68-cec6e6e37c84, 文件名=发财树.txt, 存储名=34fda3fa-f1ec-4719-8977-c0e10e4cb74d.txt
+2025-09-12 21:27:05,652 - __main__ - INFO - 文件内容解码成功: 文档ID=6206751e-d17f-45a8-bb68-cec6e6e37c84, 文本长度=836
+2025-09-12 21:27:05,695 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2025-09-12 21:27:05,696 - __main__ - INFO - 创建新的向量集合: doc_6206751e-d17f-45a8-bb68-cec6e6e37c84
+2025-09-12 21:27:05,696 - __main__ - INFO - 文档分块完成: 文档ID=6206751e-d17f-45a8-bb68-cec6e6e37c84, 块数=2
+2025-09-12 21:27:06,179 - __main__ - INFO - 嵌入生成完成: 文档ID=6206751e-d17f-45a8-bb68-cec6e6e37c84, 嵌入维度=(2, 384)
+2025-09-12 21:27:06,300 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+2025-09-12 21:27:06,301 - __main__ - INFO - 文档存储到向量数据库完成: 文档ID=6206751e-d17f-45a8-bb68-cec6e6e37c84, 总块数=2
+2025-09-12 21:27:06,303 - __main__ - INFO - 文档处理完成: 文档ID=6206751e-d17f-45a8-bb68-cec6e6e37c84, 原始文件名=发财树.txt
+2025-09-12 21:27:22,120 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-12 21:27:22,148 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 2, updating n_results = 2
+2025-09-12 21:27:22,156 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-12 21:37:33,516 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-12 21:37:33,516 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-12 21:37:33,516 - __main__ - INFO - 静态文件挂载完成
+2025-09-12 21:37:33,559 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-12 21:37:33,791 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-12 21:37:33,791 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-12 21:37:33,793 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-12 21:37:33,794 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-12 21:37:40,773 - __main__ - INFO - 嵌入模型初始化完成: all-MiniLM-L6-v2
+2025-09-12 21:37:45,867 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-12 21:37:46,632 - __main__ - INFO - 重排模型初始化完成: cross-encoder/ms-marco-MiniLM-L-6-v2
+2025-09-12 21:37:46,634 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-12 21:37:46,724 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-12 21:37:46,725 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-12 21:37:46,725 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-12 21:38:58,225 - __main__ - INFO - WebSocket连接已建立
+2025-09-12 21:39:07,946 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=1
+2025-09-12 21:39:08,024 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 2, updating n_results = 2
+2025-09-12 21:39:08,027 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-12 21:39:08,659 - __main__ - ERROR - 检索文档 6206751e-d17f-45a8-bb68-cec6e6e37c84 时出错: Compressed file ended before the end-of-stream marker was reached
+2025-09-12 21:39:08,659 - __main__ - INFO - 多路召回检索完成: 检索到 0 条结果
+2025-09-12 21:39:08,660 - __main__ - INFO - 重排完成: 保留 0 条最相关结果
+2025-09-12 21:39:08,660 - __main__ - INFO - 开始生成AI回复
+2025-09-12 21:39:09,572 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-12 21:39:43,223 - __main__ - INFO - AI回复生成完成: 回复长度=1144
+2025-09-12 21:42:22,442 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-12 21:42:22,473 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 2, updating n_results = 2
+2025-09-12 21:42:22,477 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-12 21:42:22,631 - __main__ - ERROR - 检索文档 6206751e-d17f-45a8-bb68-cec6e6e37c84 时出错: [ONNXRuntimeError] : 7 : INVALID_PROTOBUF : Load model from C:\Users\Administrator\.cache\chroma\onnx_models\all-MiniLM-L6-v2\onnx\model.onnx failed:Protobuf parsing failed.
+2025-09-12 21:42:22,632 - __main__ - INFO - 多路召回检索完成: 检索到 0 条结果
+2025-09-12 21:42:22,632 - __main__ - INFO - 重排完成: 保留 0 条最相关结果
+2025-09-12 21:42:22,632 - __main__ - INFO - 开始生成AI回复
+2025-09-12 21:42:22,814 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-12 21:42:55,253 - __main__ - INFO - AI回复生成完成: 回复长度=1125
+2025-09-12 21:43:03,299 - __main__ - INFO - 开始删除文档: ID=6206751e-d17f-45a8-bb68-cec6e6e37c84, 文件名=34fda3fa-f1ec-4719-8977-c0e10e4cb74d.txt
+2025-09-12 21:43:03,300 - __main__ - INFO - 已删除文件: static/uploads/34fda3fa-f1ec-4719-8977-c0e10e4cb74d.txt
+2025-09-12 21:43:03,336 - __main__ - INFO - 已删除向量集合: doc_6206751e-d17f-45a8-bb68-cec6e6e37c84
+2025-09-12 21:43:03,343 - __main__ - INFO - 已删除数据库记录: 文档ID=6206751e-d17f-45a8-bb68-cec6e6e37c84
+2025-09-12 21:43:03,344 - __main__ - INFO - 删除操作结果: 成功
+2025-09-12 21:43:22,932 - __main__ - INFO - 开始处理文件上传: 文件名=发财树.txt, 文件大小=2290
+2025-09-12 21:43:22,934 - __main__ - INFO - 文件保存成功: 存储路径=static/uploads/4a7ff5d1-aa85-434d-abf4-da3147c8753f.txt
+2025-09-12 21:43:22,943 - __main__ - INFO - 添加文档记录: ID=a31cd92a-3854-4076-b904-799bc4178664, 文件名=发财树.txt, 存储名=4a7ff5d1-aa85-434d-abf4-da3147c8753f.txt
+2025-09-12 21:43:22,946 - __main__ - INFO - 文件内容解码成功: 文档ID=a31cd92a-3854-4076-b904-799bc4178664, 文本长度=836
+2025-09-12 21:43:22,973 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2025-09-12 21:43:22,975 - __main__ - INFO - 创建新的向量集合: doc_a31cd92a-3854-4076-b904-799bc4178664
+2025-09-12 21:43:22,976 - __main__ - INFO - 文档分块完成: 文档ID=a31cd92a-3854-4076-b904-799bc4178664, 块数=2
+2025-09-12 21:43:23,121 - __main__ - INFO - 嵌入生成完成: 文档ID=a31cd92a-3854-4076-b904-799bc4178664, 嵌入维度=(2, 384)
+2025-09-12 21:43:23,184 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+2025-09-12 21:43:23,184 - __main__ - INFO - 文档存储到向量数据库完成: 文档ID=a31cd92a-3854-4076-b904-799bc4178664, 总块数=2
+2025-09-12 21:43:23,184 - __main__ - INFO - 文档处理完成: 文档ID=a31cd92a-3854-4076-b904-799bc4178664, 原始文件名=发财树.txt
+2025-09-12 21:43:39,509 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-12 21:43:39,510 - __main__ - ERROR - 检索文档 6206751e-d17f-45a8-bb68-cec6e6e37c84 时出错: Collection doc_6206751e-d17f-45a8-bb68-cec6e6e37c84 does not exist.
+2025-09-12 21:43:39,510 - __main__ - INFO - 多路召回检索完成: 检索到 0 条结果
+2025-09-12 21:43:39,510 - __main__ - INFO - 重排完成: 保留 0 条最相关结果
+2025-09-12 21:43:39,512 - __main__ - INFO - 开始生成AI回复
+2025-09-12 21:43:39,680 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-12 21:43:47,097 - __main__ - ERROR - WebSocket处理异常: received 1001 (going away); then sent 1001 (going away)
+2025-09-12 21:43:47,270 - __main__ - INFO - WebSocket连接已建立
+2025-09-12 21:43:57,181 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-12 21:43:57,203 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 2, updating n_results = 2
+2025-09-12 21:43:57,208 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-12 21:43:57,211 - __main__ - ERROR - 检索文档 a31cd92a-3854-4076-b904-799bc4178664 时出错: 'NoneType' object has no attribute 'run'
+2025-09-12 21:43:57,212 - __main__ - INFO - 多路召回检索完成: 检索到 0 条结果
+2025-09-12 21:43:57,212 - __main__ - INFO - 重排完成: 保留 0 条最相关结果
+2025-09-12 21:43:57,213 - __main__ - INFO - 开始生成AI回复
+2025-09-12 21:43:57,409 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-12 21:44:32,990 - __main__ - INFO - AI回复生成完成: 回复长度=1259
+2025-09-12 21:44:56,060 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-12 21:45:19,035 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-12 21:45:19,036 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-12 21:45:19,037 - __main__ - INFO - 静态文件挂载完成
+2025-09-12 21:45:19,092 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-12 21:45:19,272 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-12 21:45:19,273 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-12 21:45:19,274 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-12 21:45:19,275 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-12 21:57:15,857 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-12 21:57:15,858 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-12 21:57:15,858 - __main__ - INFO - 静态文件挂载完成
+2025-09-12 21:57:15,907 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-12 21:57:16,053 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-12 21:57:16,053 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-12 21:57:16,054 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-12 21:57:16,055 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-12 21:59:17,046 - __main__ - INFO - 嵌入模型初始化完成: all-MiniLM-L6-v2
+2025-09-12 21:59:57,572 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-12 22:00:07,857 - __main__ - INFO - 重排模型初始化完成: cross-encoder/ms-marco-MiniLM-L-6-v2
+2025-09-12 22:00:07,857 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-12 22:00:07,895 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-12 22:00:07,896 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-12 22:00:07,896 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-12 22:00:42,183 - __main__ - INFO - WebSocket连接已建立
+2025-09-12 22:02:56,703 - __main__ - INFO - 开始删除文档: ID=a31cd92a-3854-4076-b904-799bc4178664, 文件名=4a7ff5d1-aa85-434d-abf4-da3147c8753f.txt
+2025-09-12 22:02:56,704 - __main__ - INFO - 已删除文件: static/uploads/4a7ff5d1-aa85-434d-abf4-da3147c8753f.txt
+2025-09-12 22:02:56,734 - __main__ - INFO - 已删除向量集合: doc_a31cd92a-3854-4076-b904-799bc4178664
+2025-09-12 22:02:56,742 - __main__ - INFO - 已删除数据库记录: 文档ID=a31cd92a-3854-4076-b904-799bc4178664
+2025-09-12 22:02:56,742 - __main__ - INFO - 删除操作结果: 成功
+2025-09-12 22:04:01,429 - __main__ - INFO - 开始处理文件上传: 文件名=发财树.txt, 文件大小=2290
+2025-09-12 22:04:01,431 - __main__ - INFO - 文件保存成功: 存储路径=static/uploads/50564435-86bb-4f75-9dff-df7208e2b12c.txt
+2025-09-12 22:04:01,439 - __main__ - INFO - 添加文档记录: ID=85587ef2-fadd-4544-b7ec-ee67a98eef13, 文件名=发财树.txt, 存储名=50564435-86bb-4f75-9dff-df7208e2b12c.txt
+2025-09-12 22:04:01,440 - __main__ - INFO - 文件内容解码成功: 文档ID=85587ef2-fadd-4544-b7ec-ee67a98eef13, 文本长度=836
+2025-09-12 22:04:01,485 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2025-09-12 22:04:01,485 - __main__ - INFO - 创建新的向量集合: doc_85587ef2-fadd-4544-b7ec-ee67a98eef13
+2025-09-12 22:04:01,486 - __main__ - INFO - 文档分块完成: 文档ID=85587ef2-fadd-4544-b7ec-ee67a98eef13, 块数=2
+2025-09-12 22:04:01,628 - __main__ - INFO - 嵌入生成完成: 文档ID=85587ef2-fadd-4544-b7ec-ee67a98eef13, 嵌入维度=(2, 384)
+2025-09-12 22:04:01,685 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+2025-09-12 22:04:01,686 - __main__ - INFO - 文档存储到向量数据库完成: 文档ID=85587ef2-fadd-4544-b7ec-ee67a98eef13, 总块数=2
+2025-09-12 22:04:01,686 - __main__ - INFO - 文档处理完成: 文档ID=85587ef2-fadd-4544-b7ec-ee67a98eef13, 原始文件名=发财树.txt
+2025-09-12 22:04:11,037 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-12 22:04:11,059 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 2, updating n_results = 2
+2025-09-12 22:04:11,064 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-12 22:04:21,319 - __main__ - ERROR - 检索文档 85587ef2-fadd-4544-b7ec-ee67a98eef13 时出错: HTTPSConnectionPool(host='chroma-onnx-models.s3.amazonaws.com', port=443): Max retries exceeded with url: /all-MiniLM-L6-v2/onnx.tar.gz (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1002)')))
+2025-09-12 22:04:21,321 - __main__ - INFO - 多路召回检索完成: 检索到 0 条结果
+2025-09-12 22:04:21,322 - __main__ - INFO - 重排完成: 保留 0 条最相关结果
+2025-09-12 22:04:21,323 - __main__ - INFO - 开始生成AI回复
+2025-09-12 22:04:21,960 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-12 22:04:56,533 - __main__ - INFO - AI回复生成完成: 回复长度=1120
+2025-09-12 22:11:53,191 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 2, updating n_results = 2
+2025-09-12 22:11:53,197 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-12 22:12:04,490 - __main__ - ERROR - 检索文档 85587ef2-fadd-4544-b7ec-ee67a98eef13 时出错: HTTPSConnectionPool(host='chroma-onnx-models.s3.amazonaws.com', port=443): Max retries exceeded with url: /all-MiniLM-L6-v2/onnx.tar.gz (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1002)')))
+2025-09-12 22:12:04,492 - __main__ - INFO - 多路召回检索完成: 检索到 0 条结果
+2025-09-12 22:12:04,492 - __main__ - INFO - 重排完成: 保留 0 条最相关结果
+2025-09-12 22:20:46,204 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-12 22:20:46,429 - __main__ - INFO - WebSocket连接已建立
+2025-09-12 22:25:04,046 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-12 22:25:04,141 - __main__ - INFO - WebSocket连接已建立
+2025-09-12 22:25:17,414 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-12 22:25:17,502 - __main__ - INFO - WebSocket连接已建立
+2025-09-12 22:38:25,898 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-12 22:49:12,211 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-12 22:49:12,212 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-12 22:49:12,212 - __main__ - INFO - 静态文件挂载完成
+2025-09-12 22:49:12,292 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-12 22:49:12,468 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-12 22:49:12,468 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-12 22:49:12,470 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-12 22:49:12,470 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-12 22:51:13,538 - __main__ - INFO - 嵌入模型初始化完成: all-MiniLM-L6-v2
+2025-09-12 22:51:46,033 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-12 22:51:46,689 - __main__ - INFO - 重排模型初始化完成: cross-encoder/ms-marco-MiniLM-L-6-v2
+2025-09-12 22:51:46,690 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-12 22:51:46,741 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-12 22:51:46,785 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-12 22:51:46,786 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-12 22:52:07,502 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-12 22:52:07,502 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-12 22:52:07,503 - __main__ - INFO - 静态文件挂载完成
+2025-09-12 22:52:07,546 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-12 22:52:07,709 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-12 22:52:07,710 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-12 22:52:07,711 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-12 22:52:07,712 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-12 22:52:15,139 - __main__ - INFO - 嵌入模型初始化完成: all-MiniLM-L6-v2
+2025-09-12 22:52:18,298 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-12 22:52:18,930 - __main__ - INFO - 重排模型初始化完成: cross-encoder/ms-marco-MiniLM-L-6-v2
+2025-09-12 22:52:18,930 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-12 22:52:18,964 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-12 22:52:18,965 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-12 22:52:18,965 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-12 22:53:15,107 - __main__ - INFO - WebSocket连接已建立
+2025-09-12 22:55:04,024 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-12 22:55:56,098 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-12 22:55:56,098 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-12 22:55:56,099 - __main__ - INFO - 静态文件挂载完成
+2025-09-12 22:55:56,132 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-12 22:55:56,258 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-12 22:55:56,258 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-12 22:55:56,259 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-12 22:55:56,260 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-12 22:56:12,969 - __main__ - INFO - 嵌入模型初始化完成: all-MiniLM-L6-v2
+2025-09-12 22:56:15,870 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-12 22:56:16,503 - __main__ - INFO - 重排模型初始化完成: cross-encoder/ms-marco-MiniLM-L-6-v2
+2025-09-12 22:56:16,505 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-12 22:56:16,537 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-12 22:56:16,538 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-12 22:56:16,538 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-12 22:56:19,324 - __main__ - INFO - WebSocket连接已建立
+2025-09-12 22:57:10,382 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-12 22:57:10,469 - __main__ - INFO - WebSocket连接已建立
+2025-09-12 23:07:56,153 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 00:02:31,809 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 00:02:31,951 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 01:02:28,981 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 01:02:29,342 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 11:59:00,911 - main - INFO - FastAPI应用初始化完成
+2025-09-13 11:59:00,912 - main - INFO - 创建必要的目录: static/uploads, data
+2025-09-13 11:59:00,912 - main - INFO - 静态文件挂载完成
+2025-09-13 11:59:00,944 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-13 11:59:01,152 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 11:59:01,153 - main - INFO - 向量数据库客户端初始化完成
+2025-09-13 11:59:01,154 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-13 11:59:01,155 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-13 11:59:25,475 - main - INFO - 嵌入模型初始化完成: all-MiniLM-L6-v2
+2025-09-13 11:59:28,422 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-13 11:59:29,074 - main - INFO - 重排模型初始化完成: cross-encoder/ms-marco-MiniLM-L-6-v2
+2025-09-13 11:59:29,078 - main - INFO - SQLite数据库初始化完成
+2025-09-13 12:00:05,118 - main - INFO - FastAPI应用初始化完成
+2025-09-13 12:00:05,119 - main - INFO - 创建必要的目录: static/uploads, data
+2025-09-13 12:00:05,119 - main - INFO - 静态文件挂载完成
+2025-09-13 12:00:05,149 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-13 12:00:05,258 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 12:00:05,259 - main - INFO - 向量数据库客户端初始化完成
+2025-09-13 12:00:05,260 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-13 12:00:05,260 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-13 12:00:19,993 - main - INFO - 嵌入模型初始化完成: all-MiniLM-L6-v2
+2025-09-13 12:00:23,559 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-13 12:00:24,223 - main - INFO - 重排模型初始化完成: cross-encoder/ms-marco-MiniLM-L-6-v2
+2025-09-13 12:00:24,224 - main - INFO - SQLite数据库初始化完成
+2025-09-13 12:00:47,212 - main - INFO - FastAPI应用初始化完成
+2025-09-13 12:00:47,213 - main - INFO - 创建必要的目录: static/uploads, data
+2025-09-13 12:00:47,213 - main - INFO - 静态文件挂载完成
+2025-09-13 12:00:47,243 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-13 12:00:47,351 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 12:00:47,352 - main - INFO - 向量数据库客户端初始化完成
+2025-09-13 12:00:47,352 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-13 12:00:47,353 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-13 12:01:02,706 - main - INFO - 嵌入模型初始化完成: all-MiniLM-L6-v2
+2025-09-13 12:01:05,648 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-13 12:01:06,286 - main - INFO - 重排模型初始化完成: cross-encoder/ms-marco-MiniLM-L-6-v2
+2025-09-13 12:01:06,287 - main - INFO - SQLite数据库初始化完成
+2025-09-13 12:06:55,318 - main - INFO - FastAPI应用初始化完成
+2025-09-13 12:06:55,318 - main - INFO - 创建必要的目录: static/uploads, data
+2025-09-13 12:06:55,319 - main - INFO - 静态文件挂载完成
+2025-09-13 12:06:55,348 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-13 12:06:55,451 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 12:06:55,451 - main - INFO - 向量数据库客户端初始化完成
+2025-09-13 12:06:55,452 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-13 12:06:55,452 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-13 12:07:00,883 - main - INFO - 嵌入模型初始化完成: all-MiniLM-L6-v2
+2025-09-13 12:07:03,762 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-13 12:07:04,394 - main - INFO - 重排模型初始化完成: cross-encoder/ms-marco-MiniLM-L-6-v2
+2025-09-13 12:07:04,395 - main - INFO - SQLite数据库初始化完成
+2025-09-13 12:11:44,325 - main - INFO - FastAPI应用初始化完成
+2025-09-13 12:11:44,326 - main - INFO - 创建必要的目录: static/uploads, data
+2025-09-13 12:11:44,326 - main - INFO - 静态文件挂载完成
+2025-09-13 12:11:44,364 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-13 12:11:44,502 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 12:11:44,502 - main - INFO - 向量数据库客户端初始化完成
+2025-09-13 12:11:44,503 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-13 12:11:44,503 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-13 12:11:59,446 - main - INFO - 嵌入模型初始化完成: all-MiniLM-L6-v2
+2025-09-13 12:12:02,294 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-13 12:12:03,000 - main - INFO - 重排模型初始化完成: cross-encoder/ms-marco-MiniLM-L-6-v2
+2025-09-13 12:12:03,002 - main - INFO - SQLite数据库初始化完成
+2025-09-13 12:44:51,539 - main - INFO - FastAPI应用初始化完成
+2025-09-13 12:44:51,540 - main - INFO - 创建必要的目录: static/uploads, data
+2025-09-13 12:44:51,540 - main - INFO - 静态文件挂载完成
+2025-09-13 12:44:51,601 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-13 12:44:51,890 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 12:44:51,890 - main - INFO - 向量数据库客户端初始化完成
+2025-09-13 12:44:51,893 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-13 12:44:51,893 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-13 12:45:00,667 - main - INFO - 嵌入模型初始化完成: all-MiniLM-L6-v2
+2025-09-13 12:45:05,179 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-13 12:45:05,815 - main - INFO - 重排模型初始化完成: cross-encoder/ms-marco-MiniLM-L-6-v2
+2025-09-13 12:45:05,817 - main - INFO - SQLite数据库初始化完成
+2025-09-13 15:14:44,046 - main - INFO - FastAPI应用初始化完成
+2025-09-13 15:14:44,048 - main - INFO - 创建必要的目录: static/uploads, data
+2025-09-13 15:14:44,049 - main - INFO - 静态文件挂载完成
+2025-09-13 15:14:44,143 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-13 15:14:44,632 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 15:14:44,632 - main - INFO - 向量数据库客户端初始化完成
+2025-09-13 15:14:44,635 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-13 15:14:44,636 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-13 15:15:20,355 - main - INFO - 嵌入模型初始化完成: all-MiniLM-L6-v2
+2025-09-13 15:15:23,702 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-13 15:15:24,331 - main - INFO - 重排模型初始化完成: cross-encoder/ms-marco-MiniLM-L-6-v2
+2025-09-13 15:15:24,332 - main - INFO - SQLite数据库初始化完成
+2025-09-13 15:37:19,792 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-13 15:37:19,792 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-13 15:37:19,793 - __main__ - INFO - 静态文件挂载完成
+2025-09-13 15:37:19,833 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-13 15:37:19,989 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 15:37:19,989 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-13 15:37:19,991 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-13 15:37:19,991 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-09-13 15:38:17,109 - __main__ - INFO - 嵌入模型初始化完成: all-MiniLM-L6-v2
+2025-09-13 15:38:20,482 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-13 15:38:21,272 - __main__ - INFO - 重排模型初始化完成: cross-encoder/ms-marco-MiniLM-L-6-v2
+2025-09-13 15:38:21,272 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-13 15:38:21,301 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-13 15:38:21,303 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-13 15:38:21,303 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-13 15:43:04,038 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 15:48:00,221 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 15:48:03,250 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 16:16:26,151 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 16:54:56,868 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 16:59:21,365 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 16:59:49,473 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-13 16:59:49,474 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-13 16:59:49,475 - __main__ - INFO - 静态文件挂载完成
+2025-09-13 16:59:49,573 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-13 16:59:50,119 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 16:59:50,119 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-13 16:59:50,122 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-13 16:59:50,123 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-13 17:00:00,203 - sentence_transformers.SentenceTransformer - WARNING - No sentence-transformers model found with name shibing624/text2vec-base-chinese. Creating a new one with mean pooling.
+2025-09-13 17:00:12,985 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2025-09-13 17:00:59,592 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-13 17:00:59,593 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-13 17:00:59,593 - __main__ - INFO - 静态文件挂载完成
+2025-09-13 17:00:59,634 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-13 17:00:59,804 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 17:00:59,804 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-13 17:00:59,806 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-13 17:00:59,807 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-13 17:01:06,046 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2025-09-13 17:01:47,026 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-13 17:01:48,075 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2025-09-13 17:02:27,125 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2025-09-13 17:02:28,427 - huggingface_hub.file_download - WARNING - Xet Storage is enabled for this repo, but the 'hf_xet' package is not installed. Falling back to regular HTTP download. For better performance, install the package with: `pip install huggingface_hub[hf_xet]` or `pip install hf_xet`
+2025-09-13 17:02:34,275 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-13 17:02:34,672 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-13 17:02:34,673 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-13 17:02:34,712 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-13 17:02:34,712 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-13 17:02:34,712 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-13 17:03:39,439 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-13 17:03:39,448 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-13 17:03:39,449 - __main__ - INFO - 静态文件挂载完成
+2025-09-13 17:03:39,510 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-13 17:03:39,940 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 17:03:39,941 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-13 17:03:39,944 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-13 17:03:39,944 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-13 17:03:46,696 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-13 17:03:50,856 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-13 17:03:51,235 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-13 17:03:51,238 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-13 17:03:51,313 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-13 17:03:51,313 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-13 17:03:51,318 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-13 17:04:43,176 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 17:05:50,854 - __main__ - INFO - 开始删除文档: ID=85587ef2-fadd-4544-b7ec-ee67a98eef13, 文件名=50564435-86bb-4f75-9dff-df7208e2b12c.txt
+2025-09-13 17:05:57,563 - __main__ - INFO - 已删除文件: static/uploads/50564435-86bb-4f75-9dff-df7208e2b12c.txt
+2025-09-13 17:06:22,398 - __main__ - INFO - 已删除向量集合: doc_85587ef2-fadd-4544-b7ec-ee67a98eef13
+2025-09-13 17:06:33,648 - __main__ - INFO - 已删除数据库记录: 文档ID=85587ef2-fadd-4544-b7ec-ee67a98eef13
+2025-09-13 17:06:33,649 - __main__ - INFO - 删除操作结果: 成功
+2025-09-13 17:11:50,223 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 17:12:30,956 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-13 17:12:30,957 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-13 17:12:30,959 - __main__ - INFO - 静态文件挂载完成
+2025-09-13 17:12:31,028 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-13 17:12:31,613 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 17:12:31,614 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-13 17:12:31,616 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-13 17:12:31,616 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-13 17:12:38,345 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-13 17:12:41,665 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-13 17:12:41,987 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-13 17:12:42,005 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-13 17:12:42,073 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-13 17:12:42,075 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-13 17:12:42,075 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-13 17:12:42,146 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 17:12:54,705 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 17:12:55,255 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 17:13:19,356 - __main__ - INFO - 开始处理文件上传: 文件名=发财树.txt, 文件大小=2290
+2025-09-13 17:13:34,404 - __main__ - INFO - 文件保存成功: 存储路径=static/uploads/e9b0daae-f5a2-4c17-868e-9639ae4aecab.txt
+2025-09-13 17:13:42,447 - __main__ - INFO - 添加文档记录: ID=184ad53f-79b6-449a-81d5-81c4a0078f27, 文件名=发财树.txt, 存储名=e9b0daae-f5a2-4c17-868e-9639ae4aecab.txt
+2025-09-13 17:13:58,330 - __main__ - INFO - 文件内容解码成功: 文档ID=184ad53f-79b6-449a-81d5-81c4a0078f27, 文本长度=836
+2025-09-13 17:14:25,524 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 17:14:27,392 - __main__ - INFO - 创建新的向量集合: doc_184ad53f-79b6-449a-81d5-81c4a0078f27
+2025-09-13 17:21:12,073 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-13 17:21:12,074 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-13 17:21:12,075 - __main__ - INFO - 静态文件挂载完成
+2025-09-13 17:21:12,145 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-13 17:21:12,596 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 17:21:12,596 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-13 17:21:12,598 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-13 17:21:12,599 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-13 17:21:19,173 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-13 17:21:22,699 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-13 17:21:23,039 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-13 17:21:23,040 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-13 17:21:23,097 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-13 17:21:23,098 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-13 17:21:23,098 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-13 17:21:44,903 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 17:22:55,811 - __main__ - INFO - 开始处理文件上传: 文件名=发财树.txt, 文件大小=2290
+2025-09-13 17:22:55,812 - __main__ - WARNING - 文档已存在，拒绝重复上传: 发财树.txt
+2025-09-13 17:23:05,442 - __main__ - INFO - 开始删除文档: ID=184ad53f-79b6-449a-81d5-81c4a0078f27, 文件名=e9b0daae-f5a2-4c17-868e-9639ae4aecab.txt
+2025-09-13 17:23:05,442 - __main__ - INFO - 已删除文件: static/uploads/e9b0daae-f5a2-4c17-868e-9639ae4aecab.txt
+2025-09-13 17:23:05,470 - __main__ - INFO - 已删除向量集合: doc_184ad53f-79b6-449a-81d5-81c4a0078f27
+2025-09-13 17:23:05,478 - __main__ - INFO - 已删除数据库记录: 文档ID=184ad53f-79b6-449a-81d5-81c4a0078f27
+2025-09-13 17:23:05,480 - __main__ - INFO - 删除操作结果: 成功
+2025-09-13 17:23:19,529 - __main__ - INFO - 开始处理文件上传: 文件名=发财树.txt, 文件大小=2290
+2025-09-13 17:23:28,619 - __main__ - INFO - 文件保存成功: 存储路径=static/uploads/95e95f78-2961-4365-8c0d-e5d784885ab3.txt
+2025-09-13 17:23:30,018 - __main__ - INFO - 添加文档记录: ID=16cee77e-1cad-4f93-b2db-1fc1f1ca8841, 文件名=发财树.txt, 存储名=95e95f78-2961-4365-8c0d-e5d784885ab3.txt
+2025-09-13 18:47:09,914 - __main__ - INFO - 文件内容解码成功: 文档ID=16cee77e-1cad-4f93-b2db-1fc1f1ca8841, 文本长度=836
+2025-09-13 18:47:09,992 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 18:47:09,994 - __main__ - INFO - 创建新的向量集合: doc_16cee77e-1cad-4f93-b2db-1fc1f1ca8841
+2025-09-13 18:47:14,811 - __main__ - INFO - 文档分块完成: 文档ID=16cee77e-1cad-4f93-b2db-1fc1f1ca8841, 块数=35
+2025-09-13 18:47:18,067 - __main__ - INFO - 嵌入生成完成: 文档ID=16cee77e-1cad-4f93-b2db-1fc1f1ca8841, 嵌入维度=(35, 768)
+2025-09-13 18:47:18,222 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 18:47:18,222 - __main__ - INFO - 文档存储到向量数据库完成: 文档ID=16cee77e-1cad-4f93-b2db-1fc1f1ca8841, 总块数=35
+2025-09-13 18:47:18,223 - __main__ - INFO - 文档处理完成: 文档ID=16cee77e-1cad-4f93-b2db-1fc1f1ca8841, 原始文件名=发财树.txt
+2025-09-13 18:47:18,232 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 18:47:18,238 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 18:47:18,240 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 18:47:18,240 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 18:47:25,950 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 18:47:26,524 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 18:47:35,020 - __main__ - INFO - 开始删除文档: ID=16cee77e-1cad-4f93-b2db-1fc1f1ca8841, 文件名=95e95f78-2961-4365-8c0d-e5d784885ab3.txt
+2025-09-13 18:47:35,021 - __main__ - INFO - 已删除文件: static/uploads/95e95f78-2961-4365-8c0d-e5d784885ab3.txt
+2025-09-13 18:47:35,058 - __main__ - INFO - 已删除向量集合: doc_16cee77e-1cad-4f93-b2db-1fc1f1ca8841
+2025-09-13 18:47:35,065 - __main__ - INFO - 已删除数据库记录: 文档ID=16cee77e-1cad-4f93-b2db-1fc1f1ca8841
+2025-09-13 18:47:35,066 - __main__ - INFO - 删除操作结果: 成功
+2025-09-13 18:47:47,870 - __main__ - INFO - 开始处理文件上传: 文件名=发财树.txt, 文件大小=2290
+2025-09-13 18:48:02,038 - __main__ - INFO - 文件保存成功: 存储路径=static/uploads/bde63e7e-046e-4672-a298-a899af30a335.txt
+2025-09-13 18:48:14,062 - __main__ - INFO - 添加文档记录: ID=d5552590-7b23-4289-b6e9-5320c31e3731, 文件名=发财树.txt, 存储名=bde63e7e-046e-4672-a298-a899af30a335.txt
+2025-09-13 18:48:16,721 - __main__ - INFO - 文件内容解码成功: 文档ID=d5552590-7b23-4289-b6e9-5320c31e3731, 文本长度=836
+2025-09-13 18:48:35,581 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 18:48:36,323 - __main__ - INFO - 创建新的向量集合: doc_d5552590-7b23-4289-b6e9-5320c31e3731
+2025-09-13 18:49:26,917 - sentence_transformers.SentenceTransformer - WARNING - `SentenceTransformer._target_device` has been deprecated, please use `SentenceTransformer.device` instead.
+2025-09-13 19:38:40,403 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-13 19:38:40,409 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-13 19:38:40,411 - __main__ - INFO - 静态文件挂载完成
+2025-09-13 19:38:40,502 - chromadb.telemetry.posthog - INFO - Anonymized telemetry enabled. See https://docs.trychroma.com/telemetry for more information.
+2025-09-13 19:38:41,095 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 19:38:41,096 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-13 19:38:41,098 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-13 19:38:41,098 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-13 19:38:56,926 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-13 19:39:00,818 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-13 19:39:01,269 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-13 19:39:01,275 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-13 19:39:01,398 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-13 19:39:01,399 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-13 19:39:01,399 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-13 19:39:05,716 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 19:39:16,990 - __main__ - INFO - 开始删除文档: ID=d5552590-7b23-4289-b6e9-5320c31e3731, 文件名=bde63e7e-046e-4672-a298-a899af30a335.txt
+2025-09-13 19:39:16,991 - __main__ - INFO - 已删除文件: static/uploads/bde63e7e-046e-4672-a298-a899af30a335.txt
+2025-09-13 19:39:17,020 - __main__ - INFO - 已删除向量集合: doc_d5552590-7b23-4289-b6e9-5320c31e3731
+2025-09-13 19:39:17,029 - __main__ - INFO - 已删除数据库记录: 文档ID=d5552590-7b23-4289-b6e9-5320c31e3731
+2025-09-13 19:39:17,030 - __main__ - INFO - 删除操作结果: 成功
+2025-09-13 19:39:33,458 - __main__ - INFO - 开始处理文件上传: 文件名=发财树.txt, 文件大小=2143
+2025-09-13 19:39:33,460 - __main__ - INFO - 文件保存成功: 存储路径=static/uploads/54800af3-bfaf-4c2f-a5fc-2b7f7ac8b16d.txt
+2025-09-13 19:39:33,468 - __main__ - INFO - 添加文档记录: ID=142e50ab-b3f5-4afe-99d5-91d8373ba238, 文件名=发财树.txt, 存储名=54800af3-bfaf-4c2f-a5fc-2b7f7ac8b16d.txt
+2025-09-13 19:39:33,469 - __main__ - INFO - 文件内容解码成功: 文档ID=142e50ab-b3f5-4afe-99d5-91d8373ba238, 文本长度=783
+2025-09-13 19:39:33,585 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 19:39:33,586 - __main__ - INFO - 创建新的向量集合: doc_142e50ab-b3f5-4afe-99d5-91d8373ba238
+2025-09-13 19:39:33,587 - __main__ - INFO - 文档分块完成: 文档ID=142e50ab-b3f5-4afe-99d5-91d8373ba238, 块数=7
+2025-09-13 19:39:38,309 - __main__ - INFO - 嵌入生成完成: 文档ID=142e50ab-b3f5-4afe-99d5-91d8373ba238, 嵌入维度=(7, 768)
+2025-09-13 19:39:38,450 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 19:39:38,450 - __main__ - INFO - 文档存储到向量数据库完成: 文档ID=142e50ab-b3f5-4afe-99d5-91d8373ba238, 总块数=7
+2025-09-13 19:39:38,451 - __main__ - INFO - 文档处理完成: 文档ID=142e50ab-b3f5-4afe-99d5-91d8373ba238, 原始文件名=发财树.txt
+2025-09-13 19:40:12,798 - __main__ - INFO - 开始删除文档: ID=142e50ab-b3f5-4afe-99d5-91d8373ba238, 文件名=54800af3-bfaf-4c2f-a5fc-2b7f7ac8b16d.txt
+2025-09-13 19:40:12,800 - __main__ - INFO - 已删除文件: static/uploads/54800af3-bfaf-4c2f-a5fc-2b7f7ac8b16d.txt
+2025-09-13 19:40:12,843 - __main__ - INFO - 已删除向量集合: doc_142e50ab-b3f5-4afe-99d5-91d8373ba238
+2025-09-13 19:40:12,851 - __main__ - INFO - 已删除数据库记录: 文档ID=142e50ab-b3f5-4afe-99d5-91d8373ba238
+2025-09-13 19:40:12,851 - __main__ - INFO - 删除操作结果: 成功
+2025-09-13 19:40:19,055 - __main__ - INFO - 开始处理文件上传: 文件名=发财树.txt, 文件大小=2143
+2025-09-13 19:40:19,057 - __main__ - INFO - 文件保存成功: 存储路径=static/uploads/6cddce4e-8a16-4ce3-b93b-bf0563361e61.txt
+2025-09-13 19:40:19,066 - __main__ - INFO - 添加文档记录: ID=fc5233f5-680f-4e0e-bd02-5793a9411f91, 文件名=发财树.txt, 存储名=6cddce4e-8a16-4ce3-b93b-bf0563361e61.txt
+2025-09-13 19:40:19,068 - __main__ - INFO - 文件内容解码成功: 文档ID=fc5233f5-680f-4e0e-bd02-5793a9411f91, 文本长度=783
+2025-09-13 19:40:19,102 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 19:40:19,103 - __main__ - INFO - 创建新的向量集合: doc_fc5233f5-680f-4e0e-bd02-5793a9411f91
+2025-09-13 19:40:52,350 - __main__ - INFO - 文档分块完成: 文档ID=fc5233f5-680f-4e0e-bd02-5793a9411f91, 块数=7
+2025-09-13 19:40:53,479 - __main__ - INFO - 嵌入生成完成: 文档ID=fc5233f5-680f-4e0e-bd02-5793a9411f91, 嵌入维度=(7, 768)
+2025-09-13 19:40:53,548 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 19:40:53,549 - __main__ - INFO - 文档存储到向量数据库完成: 文档ID=fc5233f5-680f-4e0e-bd02-5793a9411f91, 总块数=7
+2025-09-13 19:40:53,549 - __main__ - INFO - 文档处理完成: 文档ID=fc5233f5-680f-4e0e-bd02-5793a9411f91, 原始文件名=发财树.txt
+2025-09-13 19:42:01,260 - __main__ - INFO - 开始删除文档: ID=fc5233f5-680f-4e0e-bd02-5793a9411f91, 文件名=6cddce4e-8a16-4ce3-b93b-bf0563361e61.txt
+2025-09-13 19:42:01,260 - __main__ - INFO - 已删除文件: static/uploads/6cddce4e-8a16-4ce3-b93b-bf0563361e61.txt
+2025-09-13 19:42:01,292 - __main__ - INFO - 已删除向量集合: doc_fc5233f5-680f-4e0e-bd02-5793a9411f91
+2025-09-13 19:42:01,300 - __main__ - INFO - 已删除数据库记录: 文档ID=fc5233f5-680f-4e0e-bd02-5793a9411f91
+2025-09-13 19:42:01,301 - __main__ - INFO - 删除操作结果: 成功
+2025-09-13 19:42:20,684 - __main__ - INFO - 开始处理文件上传: 文件名=发财树.txt, 文件大小=2143
+2025-09-13 19:42:20,686 - __main__ - INFO - 文件保存成功: 存储路径=static/uploads/85f87f0a-d77f-4583-b3a4-a01602339472.txt
+2025-09-13 19:42:20,694 - __main__ - INFO - 添加文档记录: ID=aaa124cc-bf0b-410b-92f4-85dddaadb6c2, 文件名=发财树.txt, 存储名=85f87f0a-d77f-4583-b3a4-a01602339472.txt
+2025-09-13 19:42:20,695 - __main__ - INFO - 文件内容解码成功: 文档ID=aaa124cc-bf0b-410b-92f4-85dddaadb6c2, 文本长度=783
+2025-09-13 19:42:20,730 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 19:42:20,731 - __main__ - INFO - 创建新的向量集合: doc_aaa124cc-bf0b-410b-92f4-85dddaadb6c2
+2025-09-13 19:42:20,731 - __main__ - INFO - 文档分块完成: 文档ID=aaa124cc-bf0b-410b-92f4-85dddaadb6c2, 块数=7
+2025-09-13 19:42:22,894 - __main__ - INFO - 嵌入生成完成: 文档ID=aaa124cc-bf0b-410b-92f4-85dddaadb6c2, 嵌入维度=(7, 768)
+2025-09-13 19:42:23,061 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 19:42:23,063 - __main__ - INFO - 文档存储到向量数据库完成: 文档ID=aaa124cc-bf0b-410b-92f4-85dddaadb6c2, 总块数=7
+2025-09-13 19:42:23,063 - __main__ - INFO - 文档处理完成: 文档ID=aaa124cc-bf0b-410b-92f4-85dddaadb6c2, 原始文件名=发财树.txt
+2025-09-13 19:42:52,971 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-13 19:42:52,992 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 19:43:03,261 - __main__ - ERROR - 检索文档 aaa124cc-bf0b-410b-92f4-85dddaadb6c2 时出错: HTTPSConnectionPool(host='chroma-onnx-models.s3.amazonaws.com', port=443): Max retries exceeded with url: /all-MiniLM-L6-v2/onnx.tar.gz (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1002)')))
+2025-09-13 19:43:03,262 - __main__ - INFO - 多路召回检索完成: 检索到 0 条结果
+2025-09-13 19:43:03,265 - __main__ - INFO - 重排完成: 保留 0 条最相关结果
+2025-09-13 19:43:55,485 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 19:49:44,658 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-13 19:49:44,659 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-13 19:49:44,660 - __main__ - INFO - 静态文件挂载完成
+2025-09-13 19:49:44,661 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-13 19:49:44,662 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-13 19:49:50,280 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-13 19:49:50,594 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 19:49:50,594 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-13 19:49:53,725 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-13 19:49:54,064 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-13 19:49:54,066 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-13 19:49:54,130 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-13 19:49:54,130 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-13 19:49:54,130 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-13 19:49:59,576 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 19:50:39,357 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 19:50:39,963 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 19:50:49,094 - __main__ - INFO - 开始删除文档: ID=aaa124cc-bf0b-410b-92f4-85dddaadb6c2, 文件名=85f87f0a-d77f-4583-b3a4-a01602339472.txt
+2025-09-13 19:50:49,095 - __main__ - INFO - 已删除文件: static/uploads/85f87f0a-d77f-4583-b3a4-a01602339472.txt
+2025-09-13 19:50:49,096 - __main__ - ERROR - 删除向量集合时出错: Collection doc_aaa124cc-bf0b-410b-92f4-85dddaadb6c2 does not exist.
+2025-09-13 19:50:49,104 - __main__ - INFO - 已删除数据库记录: 文档ID=aaa124cc-bf0b-410b-92f4-85dddaadb6c2
+2025-09-13 19:50:49,105 - __main__ - INFO - 删除操作结果: 成功
+2025-09-13 19:50:59,268 - __main__ - INFO - 开始处理文件上传: 文件名=发财树.txt, 文件大小=2143
+2025-09-13 19:50:59,270 - __main__ - INFO - 文件保存成功: 存储路径=static/uploads/91b4449b-5836-4319-8bbb-717eeb807efe.txt
+2025-09-13 19:50:59,279 - __main__ - INFO - 添加文档记录: ID=cf25bdcf-281d-4c9f-ae66-b1144b3bfff0, 文件名=发财树.txt, 存储名=91b4449b-5836-4319-8bbb-717eeb807efe.txt
+2025-09-13 19:50:59,280 - __main__ - INFO - 文件内容解码成功: 文档ID=cf25bdcf-281d-4c9f-ae66-b1144b3bfff0, 文本长度=783
+2025-09-13 19:50:59,335 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 19:50:59,336 - __main__ - INFO - 创建新的向量集合: doc_cf25bdcf-281d-4c9f-ae66-b1144b3bfff0
+2025-09-13 19:50:59,337 - __main__ - INFO - 文档分块完成: 文档ID=cf25bdcf-281d-4c9f-ae66-b1144b3bfff0, 块数=7
+2025-09-13 19:51:01,756 - __main__ - INFO - 嵌入生成完成: 文档ID=cf25bdcf-281d-4c9f-ae66-b1144b3bfff0, 嵌入维度=(7, 768)
+2025-09-13 19:51:01,916 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 19:51:01,916 - __main__ - INFO - 文档存储到向量数据库完成: 文档ID=cf25bdcf-281d-4c9f-ae66-b1144b3bfff0, 总块数=7
+2025-09-13 19:51:01,917 - __main__ - INFO - 文档处理完成: 文档ID=cf25bdcf-281d-4c9f-ae66-b1144b3bfff0, 原始文件名=发财树.txt
+2025-09-13 19:51:16,520 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-13 19:51:16,532 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 19:51:26,787 - __main__ - ERROR - 检索文档 cf25bdcf-281d-4c9f-ae66-b1144b3bfff0 时出错: HTTPSConnectionPool(host='chroma-onnx-models.s3.amazonaws.com', port=443): Max retries exceeded with url: /all-MiniLM-L6-v2/onnx.tar.gz (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:1002)')))
+2025-09-13 19:51:26,788 - __main__ - INFO - 多路召回检索完成: 检索到 0 条结果
+2025-09-13 19:51:26,788 - __main__ - INFO - 重排完成: 保留 0 条最相关结果
+2025-09-13 19:51:43,650 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 19:53:09,385 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-13 19:53:09,386 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-13 19:53:09,386 - __main__ - INFO - 静态文件挂载完成
+2025-09-13 19:53:09,388 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-13 19:53:09,388 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-13 19:53:24,931 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-13 19:53:25,266 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 19:53:25,266 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-13 19:53:28,399 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-13 19:53:29,129 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-13 19:53:29,134 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-13 19:53:29,214 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-13 19:53:29,214 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-13 19:53:29,215 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-13 19:53:30,618 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 19:53:39,640 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 19:53:40,051 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 19:53:44,744 - __main__ - INFO - 开始删除文档: ID=cf25bdcf-281d-4c9f-ae66-b1144b3bfff0, 文件名=91b4449b-5836-4319-8bbb-717eeb807efe.txt
+2025-09-13 19:53:44,745 - __main__ - INFO - 已删除文件: static/uploads/91b4449b-5836-4319-8bbb-717eeb807efe.txt
+2025-09-13 19:53:44,748 - __main__ - ERROR - 删除向量集合时出错: Collection doc_cf25bdcf-281d-4c9f-ae66-b1144b3bfff0 does not exist.
+2025-09-13 19:53:44,758 - __main__ - INFO - 已删除数据库记录: 文档ID=cf25bdcf-281d-4c9f-ae66-b1144b3bfff0
+2025-09-13 19:53:44,759 - __main__ - INFO - 删除操作结果: 成功
+2025-09-13 19:53:52,694 - __main__ - INFO - 开始处理文件上传: 文件名=发财树.txt, 文件大小=2143
+2025-09-13 19:53:52,700 - __main__ - INFO - 文件保存成功: 存储路径=static/uploads/f3d34f48-2e3a-4b76-bb1b-4f7e5cd7fe0d.txt
+2025-09-13 19:53:52,708 - __main__ - INFO - 添加文档记录: ID=38e46be4-c673-4139-9a23-adcfc508ff4f, 文件名=发财树.txt, 存储名=f3d34f48-2e3a-4b76-bb1b-4f7e5cd7fe0d.txt
+2025-09-13 19:53:52,712 - __main__ - INFO - 文件内容解码成功: 文档ID=38e46be4-c673-4139-9a23-adcfc508ff4f, 文本长度=783
+2025-09-13 19:53:52,773 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 19:53:52,774 - __main__ - INFO - 创建新的向量集合: doc_38e46be4-c673-4139-9a23-adcfc508ff4f
+2025-09-13 19:53:52,777 - __main__ - INFO - 文档分块完成: 文档ID=38e46be4-c673-4139-9a23-adcfc508ff4f, 块数=7
+2025-09-13 19:53:55,131 - __main__ - INFO - 嵌入生成完成: 文档ID=38e46be4-c673-4139-9a23-adcfc508ff4f, 嵌入维度=(7, 768)
+2025-09-13 19:53:55,267 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 19:53:55,268 - __main__ - INFO - 文档存储到向量数据库完成: 文档ID=38e46be4-c673-4139-9a23-adcfc508ff4f, 总块数=7
+2025-09-13 19:53:55,268 - __main__ - INFO - 文档处理完成: 文档ID=38e46be4-c673-4139-9a23-adcfc508ff4f, 原始文件名=发财树.txt
+2025-09-13 19:54:02,205 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-13 19:54:02,222 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 19:54:02,223 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-13 19:54:03,959 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-13 20:04:26,164 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 20:38:12,826 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 20:39:05,844 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 20:45:30,344 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 20:45:37,245 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 21:47:21,133 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 21:48:45,580 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-13 21:48:45,698 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-13 21:48:45,705 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 21:48:45,705 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-13 21:48:46,181 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-13 21:48:46,182 - __main__ - INFO - 开始生成AI回复
+2025-09-13 21:48:47,297 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-13 21:49:05,753 - __main__ - INFO - AI回复生成完成: 回复长度=517
+2025-09-13 21:52:10,326 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-13 21:52:10,327 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-13 21:52:10,329 - __main__ - INFO - 静态文件挂载完成
+2025-09-13 21:52:10,332 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-13 21:52:10,332 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-13 21:56:15,436 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 21:56:59,152 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-13 21:56:59,153 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-13 21:56:59,154 - __main__ - INFO - 静态文件挂载完成
+2025-09-13 21:56:59,158 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-13 21:56:59,159 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-13 21:57:04,463 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-13 21:57:05,011 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 21:57:05,012 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-13 21:57:08,233 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-13 21:57:08,552 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-13 21:57:08,564 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-13 21:57:08,648 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-13 21:57:08,649 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-13 21:57:08,649 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-13 21:57:09,139 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 21:57:15,191 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 21:57:15,740 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 21:57:52,204 - __main__ - INFO - 开始处理文件上传: 文件名=发财树.txt, 文件大小=2143
+2025-09-13 21:57:52,206 - __main__ - INFO - 文件保存成功: 存储路径=static/uploads/dac317fd-9eff-4ada-87cc-8a7eddb3d96c.txt
+2025-09-13 21:57:52,214 - __main__ - INFO - 添加文档记录: ID=c8abf429-3e8c-494f-9ec5-9277706b3743, 文件名=发财树.txt, 存储名=dac317fd-9eff-4ada-87cc-8a7eddb3d96c.txt
+2025-09-13 21:57:52,215 - __main__ - INFO - 文件内容解码成功: 文档ID=c8abf429-3e8c-494f-9ec5-9277706b3743, 文本长度=783
+2025-09-13 21:57:52,326 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 21:57:52,328 - __main__ - INFO - 创建新的向量集合: doc_c8abf429-3e8c-494f-9ec5-9277706b3743
+2025-09-13 21:57:52,330 - __main__ - INFO - 文档分块完成: 文档ID=c8abf429-3e8c-494f-9ec5-9277706b3743, 块数=7
+2025-09-13 21:57:54,442 - __main__ - INFO - 嵌入生成完成: 文档ID=c8abf429-3e8c-494f-9ec5-9277706b3743, 嵌入维度=(7, 768)
+2025-09-13 21:57:54,550 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 21:57:54,551 - __main__ - INFO - 文档存储到向量数据库完成: 文档ID=c8abf429-3e8c-494f-9ec5-9277706b3743, 总块数=7
+2025-09-13 21:57:54,551 - __main__ - INFO - 文档处理完成: 文档ID=c8abf429-3e8c-494f-9ec5-9277706b3743, 原始文件名=发财树.txt
+2025-09-13 21:58:00,075 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-13 21:58:00,090 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 21:58:00,091 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-13 21:58:00,807 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-13 21:58:47,033 - __main__ - INFO - 开始删除文档: ID=c8abf429-3e8c-494f-9ec5-9277706b3743, 文件名=dac317fd-9eff-4ada-87cc-8a7eddb3d96c.txt
+2025-09-13 21:58:47,033 - __main__ - INFO - 已删除文件: static/uploads/dac317fd-9eff-4ada-87cc-8a7eddb3d96c.txt
+2025-09-13 21:58:47,081 - __main__ - INFO - 已删除向量集合: doc_c8abf429-3e8c-494f-9ec5-9277706b3743
+2025-09-13 21:58:47,090 - __main__ - INFO - 已删除数据库记录: 文档ID=c8abf429-3e8c-494f-9ec5-9277706b3743
+2025-09-13 21:58:47,092 - __main__ - INFO - 删除操作结果: 成功
+2025-09-13 22:00:27,774 - __main__ - INFO - 开始处理文件上传: 文件名=新建文本文档.txt, 文件大小=0
+2025-09-13 22:00:27,783 - __main__ - INFO - 文件保存成功: 存储路径=static/uploads/56764403-8ac3-47e6-a32f-8ab053c161fc.txt
+2025-09-13 22:00:27,804 - __main__ - INFO - 添加文档记录: ID=26afc526-bc06-4b25-a922-f410c04c40a9, 文件名=新建文本文档.txt, 存储名=56764403-8ac3-47e6-a32f-8ab053c161fc.txt
+2025-09-13 22:00:27,810 - __main__ - INFO - 文件内容解码成功: 文档ID=26afc526-bc06-4b25-a922-f410c04c40a9, 文本长度=0
+2025-09-13 22:00:27,849 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 22:00:27,850 - __main__ - INFO - 创建新的向量集合: doc_26afc526-bc06-4b25-a922-f410c04c40a9
+2025-09-13 22:00:27,851 - __main__ - INFO - 文档分块完成: 文档ID=26afc526-bc06-4b25-a922-f410c04c40a9, 块数=1
+2025-09-13 22:00:27,984 - __main__ - INFO - 嵌入生成完成: 文档ID=26afc526-bc06-4b25-a922-f410c04c40a9, 嵌入维度=(1, 768)
+2025-09-13 22:00:28,064 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 22:00:28,065 - __main__ - INFO - 文档存储到向量数据库完成: 文档ID=26afc526-bc06-4b25-a922-f410c04c40a9, 总块数=1
+2025-09-13 22:00:28,065 - __main__ - INFO - 文档处理完成: 文档ID=26afc526-bc06-4b25-a922-f410c04c40a9, 原始文件名=新建文本文档.txt
+2025-09-13 22:00:57,471 - __main__ - INFO - 开始处理文件上传: 文件名=发财树.txt, 文件大小=2143
+2025-09-13 22:00:57,472 - __main__ - INFO - 文件保存成功: 存储路径=static/uploads/14032462-4c04-4bfc-a139-269023a9beb3.txt
+2025-09-13 22:00:57,484 - __main__ - INFO - 添加文档记录: ID=278a5e6f-d610-44e1-90d2-df603845487e, 文件名=发财树.txt, 存储名=14032462-4c04-4bfc-a139-269023a9beb3.txt
+2025-09-13 22:00:57,485 - __main__ - INFO - 文件内容解码成功: 文档ID=278a5e6f-d610-44e1-90d2-df603845487e, 文本长度=783
+2025-09-13 22:00:57,515 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 22:00:57,516 - __main__ - INFO - 创建新的向量集合: doc_278a5e6f-d610-44e1-90d2-df603845487e
+2025-09-13 22:00:57,517 - __main__ - INFO - 文档分块完成: 文档ID=278a5e6f-d610-44e1-90d2-df603845487e, 块数=7
+2025-09-13 22:01:00,097 - __main__ - INFO - 嵌入生成完成: 文档ID=278a5e6f-d610-44e1-90d2-df603845487e, 嵌入维度=(7, 768)
+2025-09-13 22:01:00,218 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 22:01:00,220 - __main__ - INFO - 文档存储到向量数据库完成: 文档ID=278a5e6f-d610-44e1-90d2-df603845487e, 总块数=7
+2025-09-13 22:01:00,220 - __main__ - INFO - 文档处理完成: 文档ID=278a5e6f-d610-44e1-90d2-df603845487e, 原始文件名=发财树.txt
+2025-09-13 22:01:23,684 - __main__ - INFO - 开始删除文档: ID=26afc526-bc06-4b25-a922-f410c04c40a9, 文件名=56764403-8ac3-47e6-a32f-8ab053c161fc.txt
+2025-09-13 22:01:23,685 - __main__ - INFO - 已删除文件: static/uploads/56764403-8ac3-47e6-a32f-8ab053c161fc.txt
+2025-09-13 22:01:23,722 - __main__ - INFO - 已删除向量集合: doc_26afc526-bc06-4b25-a922-f410c04c40a9
+2025-09-13 22:01:23,730 - __main__ - INFO - 已删除数据库记录: 文档ID=26afc526-bc06-4b25-a922-f410c04c40a9
+2025-09-13 22:01:23,731 - __main__ - INFO - 删除操作结果: 成功
+2025-09-13 22:01:26,788 - __main__ - INFO - 开始删除文档: ID=278a5e6f-d610-44e1-90d2-df603845487e, 文件名=14032462-4c04-4bfc-a139-269023a9beb3.txt
+2025-09-13 22:01:26,789 - __main__ - INFO - 已删除文件: static/uploads/14032462-4c04-4bfc-a139-269023a9beb3.txt
+2025-09-13 22:01:26,829 - __main__ - INFO - 已删除向量集合: doc_278a5e6f-d610-44e1-90d2-df603845487e
+2025-09-13 22:01:26,838 - __main__ - INFO - 已删除数据库记录: 文档ID=278a5e6f-d610-44e1-90d2-df603845487e
+2025-09-13 22:01:26,839 - __main__ - INFO - 删除操作结果: 成功
+2025-09-13 22:02:27,538 - __main__ - INFO - 开始处理文件上传: 文件名=doc.md, 文件大小=4586
+2025-09-13 22:02:27,541 - __main__ - INFO - 文件保存成功: 存储路径=static/uploads/ac650820-8a3d-4b9c-8069-4963dac4c63e.md
+2025-09-13 22:02:27,550 - __main__ - INFO - 添加文档记录: ID=668cb323-3288-4dcb-b993-68149085ae90, 文件名=doc.md, 存储名=ac650820-8a3d-4b9c-8069-4963dac4c63e.md
+2025-09-13 22:02:27,553 - __main__ - INFO - 文件内容解码成功: 文档ID=668cb323-3288-4dcb-b993-68149085ae90, 文本长度=1550
+2025-09-13 22:02:27,588 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 22:02:27,589 - __main__ - INFO - 创建新的向量集合: doc_668cb323-3288-4dcb-b993-68149085ae90
+2025-09-13 22:02:27,593 - __main__ - INFO - 文档分块完成: 文档ID=668cb323-3288-4dcb-b993-68149085ae90, 块数=17
+2025-09-13 22:02:31,558 - __main__ - INFO - 嵌入生成完成: 文档ID=668cb323-3288-4dcb-b993-68149085ae90, 嵌入维度=(17, 768)
+2025-09-13 22:02:31,702 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 22:02:31,703 - __main__ - INFO - 文档存储到向量数据库完成: 文档ID=668cb323-3288-4dcb-b993-68149085ae90, 总块数=17
+2025-09-13 22:02:31,704 - __main__ - INFO - 文档处理完成: 文档ID=668cb323-3288-4dcb-b993-68149085ae90, 原始文件名=doc.md
+2025-09-13 22:02:48,871 - __main__ - INFO - 开始删除文档: ID=668cb323-3288-4dcb-b993-68149085ae90, 文件名=ac650820-8a3d-4b9c-8069-4963dac4c63e.md
+2025-09-13 22:02:48,872 - __main__ - INFO - 已删除文件: static/uploads/ac650820-8a3d-4b9c-8069-4963dac4c63e.md
+2025-09-13 22:02:48,911 - __main__ - INFO - 已删除向量集合: doc_668cb323-3288-4dcb-b993-68149085ae90
+2025-09-13 22:02:48,919 - __main__ - INFO - 已删除数据库记录: 文档ID=668cb323-3288-4dcb-b993-68149085ae90
+2025-09-13 22:02:48,920 - __main__ - INFO - 删除操作结果: 成功
+2025-09-13 22:03:04,821 - __main__ - INFO - 开始处理文件上传: 文件名=发财树.txt, 文件大小=2143
+2025-09-13 22:03:04,823 - __main__ - INFO - 文件保存成功: 存储路径=static/uploads/8fcba1ab-04b8-48f7-9479-d2e0f473af7e.txt
+2025-09-13 22:03:04,833 - __main__ - INFO - 添加文档记录: ID=8706f5ee-d0ce-4026-a9ba-82af158f27ed, 文件名=发财树.txt, 存储名=8fcba1ab-04b8-48f7-9479-d2e0f473af7e.txt
+2025-09-13 22:03:04,835 - __main__ - INFO - 文件内容解码成功: 文档ID=8706f5ee-d0ce-4026-a9ba-82af158f27ed, 文本长度=783
+2025-09-13 22:03:04,869 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 22:03:04,870 - __main__ - INFO - 创建新的向量集合: doc_8706f5ee-d0ce-4026-a9ba-82af158f27ed
+2025-09-13 22:03:04,870 - __main__ - INFO - 文档分块完成: 文档ID=8706f5ee-d0ce-4026-a9ba-82af158f27ed, 块数=7
+2025-09-13 22:03:06,603 - __main__ - INFO - 嵌入生成完成: 文档ID=8706f5ee-d0ce-4026-a9ba-82af158f27ed, 嵌入维度=(7, 768)
+2025-09-13 22:03:06,731 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 22:03:06,736 - __main__ - INFO - 文档存储到向量数据库完成: 文档ID=8706f5ee-d0ce-4026-a9ba-82af158f27ed, 总块数=7
+2025-09-13 22:03:06,737 - __main__ - INFO - 文档处理完成: 文档ID=8706f5ee-d0ce-4026-a9ba-82af158f27ed, 原始文件名=发财树.txt
+2025-09-13 22:03:20,573 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-13 22:03:20,674 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-13 22:03:20,681 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 22:03:20,684 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-13 22:03:21,243 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-13 22:03:21,244 - __main__ - INFO - 开始生成AI回复
+2025-09-13 22:03:22,328 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-13 22:03:38,423 - __main__ - INFO - AI回复生成完成: 回复长度=467
+2025-09-13 22:18:29,358 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 22:18:29,927 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 22:18:40,464 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-13 22:18:40,588 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-13 22:18:40,593 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 22:18:40,595 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-13 22:18:41,077 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-13 22:18:41,079 - __main__ - INFO - 开始生成AI回复
+2025-09-13 22:18:41,307 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-13 22:18:59,257 - __main__ - INFO - AI回复生成完成: 回复长度=517
+2025-09-13 22:19:12,844 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 22:19:13,266 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 22:19:19,802 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-13 22:19:19,941 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-13 22:19:19,959 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 22:19:19,961 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-13 22:19:20,420 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-13 22:19:20,421 - __main__ - INFO - 开始生成AI回复
+2025-09-13 22:19:20,651 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-13 22:19:39,488 - __main__ - INFO - AI回复生成完成: 回复长度=557
+2025-09-13 22:22:21,163 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-13 22:22:21,164 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-13 22:22:21,165 - __main__ - INFO - 静态文件挂载完成
+2025-09-13 22:22:21,169 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-13 22:22:21,170 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-13 22:22:26,483 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-13 22:22:26,956 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 22:22:26,956 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-13 22:22:30,303 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-13 22:22:30,681 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-13 22:22:30,683 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-13 22:22:30,754 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-13 22:22:30,755 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-13 22:22:30,755 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-13 22:22:50,271 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 22:23:27,815 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-13 22:23:28,336 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-13 22:23:28,349 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 22:23:28,361 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-13 22:23:28,855 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-13 22:23:28,858 - __main__ - INFO - 开始生成AI回复
+2025-09-13 22:23:30,056 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-13 22:23:45,719 - __main__ - INFO - AI回复生成完成: 回复长度=486
+2025-09-13 22:25:30,959 - __main__ - INFO - 开始处理文件上传: 文件名=发财树2.txt, 文件大小=2143
+2025-09-13 22:25:30,964 - __main__ - INFO - 文件保存成功: 存储路径=static/uploads/07f5b31b-4b8c-43d5-8e19-9a156ce3e505.txt
+2025-09-13 22:25:30,974 - __main__ - INFO - 添加文档记录: ID=7dba9ec9-9e3c-41a5-8b61-29f5f4b39350, 文件名=发财树2.txt, 存储名=07f5b31b-4b8c-43d5-8e19-9a156ce3e505.txt
+2025-09-13 22:25:30,976 - __main__ - INFO - 文件内容解码成功: 文档ID=7dba9ec9-9e3c-41a5-8b61-29f5f4b39350, 文本长度=783
+2025-09-13 22:25:31,018 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 22:25:31,024 - __main__ - INFO - 创建新的向量集合: doc_7dba9ec9-9e3c-41a5-8b61-29f5f4b39350
+2025-09-13 22:25:31,029 - __main__ - INFO - 文档分块完成: 文档ID=7dba9ec9-9e3c-41a5-8b61-29f5f4b39350, 块数=7
+2025-09-13 22:25:33,085 - __main__ - INFO - 嵌入生成完成: 文档ID=7dba9ec9-9e3c-41a5-8b61-29f5f4b39350, 嵌入维度=(7, 768)
+2025-09-13 22:25:33,211 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 22:25:33,212 - __main__ - INFO - 文档存储到向量数据库完成: 文档ID=7dba9ec9-9e3c-41a5-8b61-29f5f4b39350, 总块数=7
+2025-09-13 22:25:33,212 - __main__ - INFO - 文档处理完成: 文档ID=7dba9ec9-9e3c-41a5-8b61-29f5f4b39350, 原始文件名=发财树2.txt
+2025-09-13 22:25:42,948 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 22:25:43,541 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 22:25:52,510 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=2
+2025-09-13 22:25:52,670 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-13 22:25:52,679 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 22:25:52,804 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-13 22:25:52,811 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 22:25:52,811 - __main__ - INFO - 多路召回检索完成: 检索到 14 条结果
+2025-09-13 22:25:53,849 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-13 22:25:53,851 - __main__ - INFO - 开始生成AI回复
+2025-09-13 22:25:54,337 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-13 22:26:05,326 - __main__ - INFO - AI回复生成完成: 回复长度=279
+2025-09-13 22:57:59,359 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-13 22:57:59,360 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-13 22:57:59,361 - __main__ - INFO - 静态文件挂载完成
+2025-09-13 22:57:59,364 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-13 22:57:59,365 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-13 22:58:08,875 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-13 22:58:09,499 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 22:58:09,500 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-13 22:58:13,356 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-13 22:58:13,815 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-13 22:58:13,819 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-13 22:58:13,928 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-13 22:58:13,928 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-13 22:58:13,931 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-13 22:59:14,772 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 22:59:25,499 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=2
+2025-09-13 22:59:26,874 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-13 22:59:26,898 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 22:59:27,101 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-13 22:59:27,116 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-13 22:59:27,118 - __main__ - INFO - 多路召回检索完成: 检索到 14 条结果
+2025-09-13 22:59:29,246 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-13 22:59:29,251 - __main__ - INFO - 开始生成AI回复
+2025-09-13 22:59:32,088 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-13 22:59:46,838 - __main__ - INFO - AI回复生成完成: 回复长度=370
+2025-09-13 23:19:52,737 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-13 23:28:16,821 - __main__ - INFO - WebSocket连接已建立
+2025-09-13 23:56:22,629 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 00:40:57,272 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 00:40:57,478 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 00:41:02,850 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 00:41:04,927 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 01:17:00,120 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 01:17:03,607 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 02:03:27,827 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 02:08:56,047 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 02:08:56,695 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 02:09:15,592 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=0
+2025-09-14 02:09:15,599 - __main__ - INFO - 开始生成AI回复
+2025-09-14 02:09:16,167 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 02:09:19,320 - __main__ - INFO - AI回复生成完成: 回复长度=21
+2025-09-14 02:09:27,429 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 02:09:27,810 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 02:09:27,834 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 02:09:27,836 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 02:09:28,548 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 02:09:28,559 - __main__ - INFO - 开始生成AI回复
+2025-09-14 02:09:28,902 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 02:09:41,375 - __main__ - INFO - AI回复生成完成: 回复长度=319
+2025-09-14 02:34:20,717 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 02:34:21,552 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 02:34:52,734 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 02:34:53,217 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 02:35:00,583 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 02:35:00,825 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 02:35:00,839 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 02:35:00,840 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 02:35:01,568 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 02:35:01,572 - __main__ - INFO - 开始生成AI回复
+2025-09-14 02:35:01,886 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 02:35:16,614 - __main__ - INFO - AI回复生成完成: 回复长度=394
+2025-09-14 02:35:47,430 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-14 02:35:47,434 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-14 02:35:47,436 - __main__ - INFO - 静态文件挂载完成
+2025-09-14 02:35:47,439 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-14 02:35:47,439 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-14 02:36:02,701 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-14 02:36:03,176 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 02:36:03,177 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-14 02:36:07,106 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-14 02:36:07,472 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-14 02:36:07,480 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-14 02:36:07,670 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-14 02:36:07,670 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-14 02:36:07,673 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-14 02:36:08,184 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 02:40:16,981 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 02:40:17,641 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 02:40:24,359 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=0
+2025-09-14 02:40:24,363 - __main__ - INFO - 开始生成AI回复
+2025-09-14 02:40:26,713 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 02:40:29,814 - __main__ - INFO - AI回复生成完成: 回复长度=22
+2025-09-14 02:46:46,214 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 02:46:46,751 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 02:46:46,769 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 02:46:46,770 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 02:46:47,639 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 02:46:47,643 - __main__ - INFO - 开始生成AI回复
+2025-09-14 02:46:47,962 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 02:47:01,823 - __main__ - INFO - AI回复生成完成: 回复长度=389
+2025-09-14 02:51:25,937 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-14 02:51:25,939 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-14 02:51:25,941 - __main__ - INFO - 静态文件挂载完成
+2025-09-14 02:51:25,945 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-14 02:51:25,946 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-14 02:51:31,213 - sentence_transformers.SentenceTransformer - WARNING - No sentence-transformers model found with name shibing624/text2vec-base-chinese. Creating a new one with mean pooling.
+2025-09-14 02:51:43,855 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-14 02:51:44,975 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 02:51:44,975 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-14 02:51:50,225 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-14 02:51:50,539 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-14 02:51:50,543 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-14 02:51:50,762 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-14 02:51:50,765 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-14 02:51:50,766 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-14 02:51:51,800 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 02:51:56,273 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=0
+2025-09-14 02:51:56,280 - __main__ - INFO - 开始生成AI回复
+2025-09-14 02:51:58,634 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 02:52:02,436 - __main__ - INFO - AI回复生成完成: 回复长度=21
+2025-09-14 02:52:52,000 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 02:52:52,444 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 02:52:56,860 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=0
+2025-09-14 02:52:56,861 - __main__ - INFO - 开始生成AI回复
+2025-09-14 02:52:57,166 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 02:53:00,581 - __main__ - INFO - AI回复生成完成: 回复长度=21
+2025-09-14 03:03:53,623 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 03:07:16,594 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 03:10:32,376 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 03:10:33,255 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 03:10:38,017 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=0
+2025-09-14 03:10:38,018 - __main__ - INFO - 开始生成AI回复
+2025-09-14 03:10:38,297 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 03:10:41,674 - __main__ - INFO - AI回复生成完成: 回复长度=21
+2025-09-14 03:10:47,509 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 03:10:48,099 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 03:10:48,124 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 03:10:48,124 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 03:10:48,884 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 03:10:48,886 - __main__ - INFO - 开始生成AI回复
+2025-09-14 03:10:49,189 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 03:11:04,392 - __main__ - INFO - AI回复生成完成: 回复长度=503
+2025-09-14 03:11:34,184 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-14 03:11:34,187 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-14 03:11:34,188 - __main__ - INFO - 静态文件挂载完成
+2025-09-14 03:11:34,190 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-14 03:11:34,190 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-14 03:11:49,520 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-14 03:11:49,993 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 03:11:49,993 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-14 03:11:53,363 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-14 03:11:53,995 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-14 03:11:53,996 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-14 03:11:54,070 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-14 03:11:54,070 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-14 03:11:54,074 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-14 03:11:54,681 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 03:13:10,709 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 03:13:11,408 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 03:13:17,211 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=0
+2025-09-14 03:13:17,214 - __main__ - INFO - 开始生成AI回复
+2025-09-14 03:13:19,274 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 03:13:22,568 - __main__ - INFO - AI回复生成完成: 回复长度=21
+2025-09-14 03:13:32,066 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 03:13:32,546 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 03:13:32,562 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 03:13:32,562 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 03:13:33,261 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 03:13:33,265 - __main__ - INFO - 开始生成AI回复
+2025-09-14 03:13:33,628 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 03:13:49,293 - __main__ - INFO - AI回复生成完成: 回复长度=516
+2025-09-14 03:24:48,822 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-14 03:24:48,826 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-14 03:24:48,829 - __main__ - INFO - 静态文件挂载完成
+2025-09-14 03:24:48,833 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-14 03:24:48,834 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-14 03:25:03,852 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-14 03:25:04,320 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 03:25:04,320 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-14 03:25:07,636 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-14 03:25:07,933 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-14 03:25:07,937 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-14 03:25:08,151 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-14 03:25:08,152 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-14 03:25:08,152 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-14 03:25:08,705 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 03:25:19,102 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 03:25:19,764 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 03:25:26,529 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 03:25:27,074 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 03:25:27,090 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 03:25:27,092 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 03:25:27,774 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 03:25:27,777 - __main__ - INFO - 开始生成AI回复
+2025-09-14 03:25:29,943 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 03:25:44,800 - __main__ - INFO - AI回复生成完成: 回复长度=478
+2025-09-14 03:26:10,132 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 03:26:10,286 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 03:26:10,299 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 03:26:10,302 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 03:26:11,041 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 03:26:11,049 - __main__ - INFO - 开始生成AI回复
+2025-09-14 03:26:11,338 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 03:26:33,155 - __main__ - ERROR - WebSocket处理异常: 
+2025-09-14 03:26:36,518 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 03:26:50,024 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 03:26:50,246 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 03:26:50,256 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 03:26:50,256 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 03:26:51,054 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 03:26:51,055 - __main__ - INFO - 开始生成AI回复
+2025-09-14 03:26:51,565 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 03:27:00,491 - __main__ - INFO - AI回复生成完成: 回复长度=210
+2025-09-14 03:27:04,696 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 03:27:05,378 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 03:27:10,230 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 03:27:10,383 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 03:27:10,391 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 03:27:10,391 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 03:27:11,074 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 03:27:11,077 - __main__ - INFO - 开始生成AI回复
+2025-09-14 03:27:11,391 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 03:27:24,113 - __main__ - INFO - AI回复生成完成: 回复长度=367
+2025-09-14 03:27:29,655 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 03:27:29,842 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 03:27:29,857 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 03:27:29,858 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 03:27:30,400 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 03:27:30,404 - __main__ - INFO - 开始生成AI回复
+2025-09-14 03:27:30,712 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 03:27:42,806 - __main__ - INFO - AI回复生成完成: 回复长度=369
+2025-09-14 03:34:14,149 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-14 03:34:14,151 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-14 03:34:14,152 - __main__ - INFO - 静态文件挂载完成
+2025-09-14 03:34:14,154 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-14 03:34:14,155 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-14 03:34:19,296 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-14 03:34:19,873 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 03:34:19,873 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-14 03:34:23,289 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-14 03:34:23,593 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-14 03:34:23,595 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-14 03:34:23,672 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-14 03:34:23,672 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-14 03:34:23,676 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-14 03:34:24,192 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 03:35:50,877 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 03:35:51,548 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 03:35:59,551 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 03:36:00,114 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 03:36:00,123 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 03:36:00,123 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 03:36:00,811 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 03:36:00,812 - __main__ - INFO - 开始生成AI回复
+2025-09-14 03:36:03,064 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 03:36:20,612 - __main__ - INFO - AI回复生成完成: 回复长度=573
+2025-09-14 03:36:24,688 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 03:36:24,933 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 03:36:24,951 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 03:36:24,952 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 03:36:25,613 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 03:36:25,622 - __main__ - INFO - 开始生成AI回复
+2025-09-14 03:36:25,951 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 03:36:38,127 - __main__ - INFO - AI回复生成完成: 回复长度=348
+2025-09-14 03:47:08,558 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-14 03:47:08,558 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-14 03:47:08,559 - __main__ - INFO - 静态文件挂载完成
+2025-09-14 03:47:08,563 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-14 03:47:08,563 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-14 03:47:23,852 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-14 03:47:24,308 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 03:47:24,309 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-14 03:47:27,824 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-14 03:47:28,253 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-14 03:47:28,256 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-14 03:47:28,328 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-14 03:47:28,328 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-14 03:47:28,329 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-14 03:47:28,690 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 03:47:53,791 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 03:47:54,522 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 03:48:01,193 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 03:48:01,738 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 03:48:01,749 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 03:48:01,749 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 03:48:02,348 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 03:48:02,352 - __main__ - INFO - 开始生成AI回复
+2025-09-14 03:48:04,564 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 03:48:20,276 - __main__ - INFO - AI回复生成完成: 回复长度=478
+2025-09-14 03:49:35,954 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=0
+2025-09-14 03:49:35,959 - __main__ - INFO - 开始生成AI回复
+2025-09-14 03:49:36,361 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 03:49:39,819 - __main__ - INFO - AI回复生成完成: 回复长度=21
+2025-09-14 03:49:56,973 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 03:49:57,458 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 03:50:03,030 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=0
+2025-09-14 03:50:03,034 - __main__ - INFO - 开始生成AI回复
+2025-09-14 03:50:03,342 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 03:50:06,765 - __main__ - INFO - AI回复生成完成: 回复长度=21
+2025-09-14 03:56:57,681 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 03:56:58,347 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 03:57:02,640 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=0
+2025-09-14 03:57:02,644 - __main__ - INFO - 开始生成AI回复
+2025-09-14 03:57:03,024 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 03:57:06,186 - __main__ - INFO - AI回复生成完成: 回复长度=21
+2025-09-14 03:58:04,049 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-14 03:58:04,053 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-14 03:58:04,054 - __main__ - INFO - 静态文件挂载完成
+2025-09-14 03:58:04,056 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-14 03:58:04,056 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-14 03:58:09,291 - sentence_transformers.SentenceTransformer - WARNING - No sentence-transformers model found with name shibing624/text2vec-base-chinese. Creating a new one with mean pooling.
+2025-09-14 03:59:43,121 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-14 03:59:43,122 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-14 03:59:43,123 - __main__ - INFO - 静态文件挂载完成
+2025-09-14 03:59:43,125 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-14 03:59:43,125 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-14 03:59:48,382 - sentence_transformers.SentenceTransformer - WARNING - No sentence-transformers model found with name shibing624/text2vec-base-chinese. Creating a new one with mean pooling.
+2025-09-14 04:14:40,292 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-14 04:14:40,293 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-14 04:14:40,294 - __main__ - INFO - 静态文件挂载完成
+2025-09-14 04:14:40,297 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-14 04:14:40,298 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-14 04:14:45,249 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-14 04:14:45,747 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 04:14:45,747 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-14 04:14:49,194 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-14 04:14:49,487 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-14 04:14:49,491 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-14 04:14:49,576 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-14 04:14:49,576 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-14 04:14:49,577 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-14 04:14:49,903 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 04:14:56,725 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 04:14:57,374 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 04:15:03,561 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=0
+2025-09-14 04:15:03,564 - __main__ - INFO - 开始生成AI回复
+2025-09-14 04:15:05,718 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 04:15:09,108 - __main__ - INFO - AI回复生成完成: 回复长度=21
+2025-09-14 04:18:12,142 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-14 04:18:12,142 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-14 04:18:12,145 - __main__ - INFO - 静态文件挂载完成
+2025-09-14 04:18:12,149 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-14 04:18:12,150 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-14 04:18:17,752 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-14 04:18:18,460 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 04:18:18,461 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-14 04:18:21,943 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-14 04:18:22,254 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-14 04:18:22,255 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-14 04:18:22,327 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-14 04:18:22,327 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-14 04:18:22,330 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-14 04:18:22,607 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 04:18:58,321 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 04:18:58,794 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 04:19:12,022 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 04:19:12,513 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 04:19:12,531 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 04:19:12,532 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 04:19:13,302 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 04:19:13,306 - __main__ - INFO - 开始生成AI回复
+2025-09-14 04:19:15,170 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 04:19:30,388 - __main__ - INFO - AI回复生成完成: 回复长度=451
+2025-09-14 04:19:58,013 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=1
+2025-09-14 04:19:58,249 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 04:19:58,271 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 04:19:58,298 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 04:19:59,150 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 04:19:59,153 - __main__ - INFO - 开始生成AI回复
+2025-09-14 04:19:59,444 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 04:20:04,398 - __main__ - INFO - AI回复生成完成: 回复长度=73
+2025-09-14 04:20:14,227 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 04:20:14,716 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 04:20:19,207 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=0
+2025-09-14 04:20:19,212 - __main__ - INFO - 开始生成AI回复
+2025-09-14 04:20:19,592 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 04:20:23,485 - __main__ - INFO - AI回复生成完成: 回复长度=23
+2025-09-14 04:20:38,474 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 04:20:38,721 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 04:20:38,738 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 04:20:38,741 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 04:20:39,504 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 04:20:39,509 - __main__ - INFO - 开始生成AI回复
+2025-09-14 04:20:39,789 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 04:20:54,202 - __main__ - INFO - AI回复生成完成: 回复长度=397
+2025-09-14 04:21:14,958 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 04:21:15,133 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 04:21:15,144 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 04:21:15,145 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 04:21:15,923 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 04:21:15,926 - __main__ - INFO - 开始生成AI回复
+2025-09-14 04:21:16,271 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 04:21:28,798 - __main__ - INFO - AI回复生成完成: 回复长度=366
+2025-09-14 04:27:26,251 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-14 04:27:26,253 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-14 04:27:26,254 - __main__ - INFO - 静态文件挂载完成
+2025-09-14 04:27:26,257 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-14 04:27:26,258 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-14 04:27:31,991 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-14 04:27:32,641 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 04:27:32,641 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-14 04:27:36,010 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-14 04:27:36,314 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-14 04:27:36,316 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-14 04:27:36,442 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-14 04:27:36,443 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-14 04:27:36,443 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-14 04:27:36,654 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 04:28:31,021 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 04:28:31,688 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 04:28:36,065 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=0
+2025-09-14 04:28:36,069 - __main__ - INFO - 开始生成AI回复
+2025-09-14 04:28:38,263 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 04:28:42,252 - __main__ - INFO - AI回复生成完成: 回复长度=21
+2025-09-14 04:28:51,123 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 04:28:51,683 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 04:28:51,698 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 04:28:51,701 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 04:28:52,399 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 04:28:52,405 - __main__ - INFO - 开始生成AI回复
+2025-09-14 04:28:52,984 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 04:29:11,280 - __main__ - INFO - AI回复生成完成: 回复长度=596
+2025-09-14 04:29:13,576 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 04:29:13,831 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 04:29:13,839 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 04:29:13,839 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 04:29:14,443 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 04:29:14,444 - __main__ - INFO - 开始生成AI回复
+2025-09-14 04:29:14,769 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 04:29:26,792 - __main__ - INFO - AI回复生成完成: 回复长度=356
+2025-09-14 04:41:12,604 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-14 04:41:12,605 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-14 04:41:12,606 - __main__ - INFO - 静态文件挂载完成
+2025-09-14 04:41:12,608 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-14 04:41:12,608 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-14 04:41:19,239 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-14 04:41:19,769 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 04:41:19,769 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-14 04:41:23,591 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-14 04:41:23,944 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-14 04:41:23,949 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-14 04:41:24,154 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-14 04:41:24,158 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-14 04:41:24,158 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-14 04:41:27,471 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 04:41:42,126 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 04:41:42,616 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 04:41:51,326 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=0
+2025-09-14 04:41:51,329 - __main__ - INFO - 开始生成AI回复
+2025-09-14 04:41:53,452 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 04:41:56,911 - __main__ - INFO - AI回复生成完成: 回复长度=21
+2025-09-14 04:42:05,972 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 04:42:06,505 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 04:42:06,524 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 04:42:06,525 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 04:42:07,203 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 04:42:07,207 - __main__ - INFO - 开始生成AI回复
+2025-09-14 04:42:07,493 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 04:42:19,986 - __main__ - INFO - AI回复生成完成: 回复长度=338
+2025-09-14 04:42:23,541 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 04:42:23,703 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 04:42:23,719 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 04:42:23,726 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 04:42:24,291 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 04:42:24,293 - __main__ - INFO - 开始生成AI回复
+2025-09-14 04:42:24,546 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 04:42:37,113 - __main__ - INFO - AI回复生成完成: 回复长度=373
+2025-09-14 04:50:38,314 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 04:50:38,918 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 04:50:48,374 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 04:50:48,611 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 04:50:48,620 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 04:50:48,621 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 04:50:49,350 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 04:50:49,357 - __main__ - INFO - 开始生成AI回复
+2025-09-14 04:50:50,619 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 04:51:02,296 - __main__ - INFO - AI回复生成完成: 回复长度=311
+2025-09-14 04:51:23,651 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-14 04:51:23,652 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-14 04:51:23,653 - __main__ - INFO - 静态文件挂载完成
+2025-09-14 04:51:23,656 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-14 04:51:23,656 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-14 04:51:39,415 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-14 04:51:39,991 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 04:51:39,992 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-14 04:51:43,385 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-14 04:51:43,717 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-14 04:51:43,721 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-14 04:51:43,891 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-14 04:51:43,891 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-14 04:51:43,892 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-14 04:51:45,152 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 04:51:52,518 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=0
+2025-09-14 04:51:52,522 - __main__ - INFO - 开始生成AI回复
+2025-09-14 04:51:53,676 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 06:20:06,120 - __main__ - ERROR - WebSocket处理异常: 
+2025-09-14 06:20:12,774 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 06:23:06,510 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-14 06:23:06,512 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-14 06:23:06,513 - __main__ - INFO - 静态文件挂载完成
+2025-09-14 06:23:06,514 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-14 06:23:06,514 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-14 06:23:12,253 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-14 06:23:12,540 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 06:23:12,541 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-14 06:23:17,935 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-14 06:23:18,556 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-14 06:23:18,559 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-14 06:23:18,721 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-14 06:23:18,722 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-14 06:23:18,726 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-14 06:23:19,183 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 06:23:28,901 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 06:23:42,758 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 06:23:43,209 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 06:23:43,226 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 06:23:43,227 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 06:23:43,991 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 06:23:43,994 - __main__ - INFO - 开始生成AI回复
+2025-09-14 06:23:46,213 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 06:24:02,454 - __main__ - INFO - AI回复生成完成: 回复长度=513
+2025-09-14 06:26:05,513 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 06:26:05,867 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 06:26:14,727 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=1
+2025-09-14 06:26:14,873 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 06:26:14,879 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 06:26:14,879 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 06:26:15,687 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 06:26:15,689 - __main__ - INFO - 开始生成AI回复
+2025-09-14 06:26:16,086 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 06:26:28,047 - __main__ - INFO - AI回复生成完成: 回复长度=297
+2025-09-14 06:26:59,244 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 06:26:59,459 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 06:27:05,261 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=1
+2025-09-14 06:27:05,395 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 06:27:05,401 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 06:27:05,403 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 06:27:06,142 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 06:27:06,146 - __main__ - INFO - 开始生成AI回复
+2025-09-14 06:27:06,445 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 06:27:18,763 - __main__ - INFO - AI回复生成完成: 回复长度=339
+2025-09-14 06:27:26,382 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 06:27:26,590 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 06:27:32,613 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=1
+2025-09-14 06:27:32,787 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 06:27:32,793 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 06:27:32,794 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 06:27:33,474 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 06:27:33,476 - __main__ - INFO - 开始生成AI回复
+2025-09-14 06:27:33,827 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 06:27:51,132 - __main__ - INFO - AI回复生成完成: 回复长度=503
+2025-09-14 06:28:19,289 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 06:28:19,509 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 06:28:27,480 - __main__ - INFO - 处理用户消息: 消息长度=2, 选择文档数=1
+2025-09-14 06:28:27,813 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 06:28:27,818 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 06:28:27,820 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 06:28:28,698 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 06:28:28,699 - __main__ - INFO - 开始生成AI回复
+2025-09-14 06:28:29,023 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 06:28:41,304 - __main__ - INFO - AI回复生成完成: 回复长度=325
+2025-09-14 06:30:21,125 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 06:30:21,400 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 06:30:27,599 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 06:30:27,834 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 06:30:27,841 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 06:30:27,841 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 06:30:28,574 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 06:30:28,575 - __main__ - INFO - 开始生成AI回复
+2025-09-14 06:30:28,882 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 06:30:44,607 - __main__ - INFO - AI回复生成完成: 回复长度=455
+2025-09-14 06:34:31,968 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 06:34:34,991 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 06:35:13,643 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 06:35:13,657 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 06:35:13,661 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 06:35:14,381 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 06:36:01,479 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 06:36:02,026 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 06:36:06,444 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=0
+2025-09-14 06:36:06,445 - __main__ - INFO - 开始生成AI回复
+2025-09-14 06:36:06,956 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 06:36:26,944 - __main__ - ERROR - WebSocket处理异常: received 1001 (going away); then sent 1001 (going away)
+2025-09-14 06:36:27,192 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 06:36:35,544 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 06:36:35,749 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 06:36:35,753 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 06:36:35,758 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 06:36:36,493 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 06:36:36,495 - __main__ - INFO - 开始生成AI回复
+2025-09-14 06:36:36,828 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 06:36:52,673 - __main__ - INFO - AI回复生成完成: 回复长度=469
+2025-09-14 06:41:31,346 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 06:41:31,639 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 06:41:39,819 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 06:41:40,001 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 06:41:40,008 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 06:41:40,010 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 06:41:40,814 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 06:41:40,816 - __main__ - INFO - 开始生成AI回复
+2025-09-14 06:41:41,133 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 06:41:56,820 - __main__ - INFO - AI回复生成完成: 回复长度=474
+2025-09-14 07:03:15,232 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 07:03:15,945 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 07:03:28,744 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 07:03:28,819 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 07:03:28,822 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 07:03:28,822 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 07:03:29,208 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 07:03:29,210 - __main__ - INFO - 开始生成AI回复
+2025-09-14 07:03:29,465 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 07:03:44,500 - __main__ - INFO - AI回复生成完成: 回复长度=486
+2025-09-14 07:03:57,485 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 07:03:57,585 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 07:03:57,590 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 07:03:57,591 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 07:03:58,041 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 07:03:58,042 - __main__ - INFO - 开始生成AI回复
+2025-09-14 07:03:58,253 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 07:04:11,918 - __main__ - INFO - AI回复生成完成: 回复长度=374
+2025-09-14 07:12:24,934 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 07:12:25,574 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 07:12:35,445 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 07:12:35,522 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 07:12:35,525 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 07:12:35,525 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 07:12:35,916 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 07:12:35,916 - __main__ - INFO - 开始生成AI回复
+2025-09-14 07:12:36,152 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 07:12:48,020 - __main__ - INFO - AI回复生成完成: 回复长度=289
+2025-09-14 07:12:51,402 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 07:12:51,499 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 07:12:51,504 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 07:12:51,504 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 07:12:51,970 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 07:12:51,971 - __main__ - INFO - 开始生成AI回复
+2025-09-14 07:12:52,210 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 07:13:04,939 - __main__ - INFO - AI回复生成完成: 回复长度=362
+2025-09-14 07:13:10,150 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 07:13:10,590 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 07:13:14,127 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=0
+2025-09-14 07:13:14,128 - __main__ - INFO - 开始生成AI回复
+2025-09-14 07:13:14,352 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 07:13:17,816 - __main__ - INFO - AI回复生成完成: 回复长度=24
+2025-09-14 07:32:48,020 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 07:32:48,020 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 07:35:54,740 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-14 07:35:54,741 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-14 07:35:54,741 - __main__ - INFO - 静态文件挂载完成
+2025-09-14 07:35:54,743 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-14 07:35:54,743 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-14 07:35:59,389 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-14 07:35:59,621 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 07:35:59,622 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-14 07:36:02,564 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-14 07:36:02,842 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-14 07:36:02,843 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-14 07:36:02,896 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-14 07:36:02,896 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-14 07:36:02,897 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-14 07:36:05,308 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 07:36:06,749 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 07:36:09,204 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 07:36:09,851 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 07:50:52,678 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 07:50:52,682 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 07:56:00,832 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 07:56:01,134 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 07:56:04,494 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 07:56:04,499 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 07:56:21,111 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 07:56:21,407 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 07:56:24,541 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 07:56:24,559 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 13:08:04,114 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 13:08:04,235 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 13:09:33,789 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 13:10:58,712 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 13:11:11,062 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 13:11:14,602 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 13:11:39,778 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 13:11:43,607 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 13:14:22,200 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 13:14:22,763 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 13:14:35,154 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 13:15:34,158 - __main__ - INFO - 开始删除文档: ID=7dba9ec9-9e3c-41a5-8b61-29f5f4b39350, 文件名=07f5b31b-4b8c-43d5-8e19-9a156ce3e505.txt
+2025-09-14 13:15:34,160 - __main__ - INFO - 已删除文件: static/uploads/07f5b31b-4b8c-43d5-8e19-9a156ce3e505.txt
+2025-09-14 13:15:34,227 - __main__ - INFO - 已删除向量集合: doc_7dba9ec9-9e3c-41a5-8b61-29f5f4b39350
+2025-09-14 13:15:34,233 - __main__ - INFO - 已删除数据库记录: 文档ID=7dba9ec9-9e3c-41a5-8b61-29f5f4b39350
+2025-09-14 13:15:34,236 - __main__ - INFO - 删除操作结果: 成功
+2025-09-14 13:15:36,805 - __main__ - INFO - 开始删除文档: ID=8706f5ee-d0ce-4026-a9ba-82af158f27ed, 文件名=8fcba1ab-04b8-48f7-9479-d2e0f473af7e.txt
+2025-09-14 13:15:36,806 - __main__ - INFO - 已删除文件: static/uploads/8fcba1ab-04b8-48f7-9479-d2e0f473af7e.txt
+2025-09-14 13:15:36,838 - __main__ - INFO - 已删除向量集合: doc_8706f5ee-d0ce-4026-a9ba-82af158f27ed
+2025-09-14 13:15:36,847 - __main__ - INFO - 已删除数据库记录: 文档ID=8706f5ee-d0ce-4026-a9ba-82af158f27ed
+2025-09-14 13:15:36,851 - __main__ - INFO - 删除操作结果: 成功
+2025-09-14 13:19:22,666 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 13:19:26,608 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 13:19:29,003 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 13:19:32,612 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 13:33:24,027 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 13:33:24,461 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 13:34:01,671 - __main__ - INFO - 开始处理文件上传: 文件名=发财树.txt, 文件大小=2143
+2025-09-14 13:34:01,674 - __main__ - INFO - 文件保存成功: 存储路径=static/uploads/a01b6591-6f79-4ac4-ae8c-bb47d2fc193b.txt
+2025-09-14 13:34:01,690 - __main__ - INFO - 添加文档记录: ID=120ba4f0-6ffa-493e-a9e3-7646c6240943, 文件名=发财树.txt, 存储名=a01b6591-6f79-4ac4-ae8c-bb47d2fc193b.txt
+2025-09-14 13:34:01,694 - __main__ - INFO - 文件内容解码成功: 文档ID=120ba4f0-6ffa-493e-a9e3-7646c6240943, 文本长度=783
+2025-09-14 13:34:01,863 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 13:34:01,871 - __main__ - INFO - 创建新的向量集合: doc_120ba4f0-6ffa-493e-a9e3-7646c6240943
+2025-09-14 13:34:01,875 - __main__ - INFO - 文档分块完成: 文档ID=120ba4f0-6ffa-493e-a9e3-7646c6240943, 块数=7
+2025-09-14 13:34:08,171 - __main__ - INFO - 嵌入生成完成: 文档ID=120ba4f0-6ffa-493e-a9e3-7646c6240943, 嵌入维度=(7, 768)
+2025-09-14 13:34:08,330 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 13:34:08,332 - __main__ - INFO - 文档存储到向量数据库完成: 文档ID=120ba4f0-6ffa-493e-a9e3-7646c6240943, 总块数=7
+2025-09-14 13:34:08,334 - __main__ - INFO - 文档处理完成: 文档ID=120ba4f0-6ffa-493e-a9e3-7646c6240943, 原始文件名=发财树.txt
+2025-09-14 13:34:25,802 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 13:34:25,830 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 13:34:25,831 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 13:34:27,524 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 13:34:43,729 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 13:34:43,889 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 13:34:43,894 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 13:34:43,895 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 13:34:44,628 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 13:34:44,631 - __main__ - INFO - 开始生成AI回复
+2025-09-14 13:34:54,659 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 13:35:09,157 - __main__ - INFO - AI回复生成完成: 回复长度=440
+2025-09-14 13:43:04,680 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 13:53:41,532 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-14 13:53:41,533 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-14 13:53:41,534 - __main__ - INFO - 静态文件挂载完成
+2025-09-14 13:53:41,536 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-14 13:53:41,536 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-14 13:54:00,838 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-14 13:54:01,437 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 13:54:01,437 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-14 13:54:13,252 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-14 13:54:14,001 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-14 13:54:14,007 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-14 13:54:14,257 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-14 13:54:14,258 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-14 13:54:14,258 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-14 13:54:37,077 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 13:55:00,860 - __main__ - INFO - 开始删除文档: ID=120ba4f0-6ffa-493e-a9e3-7646c6240943, 文件名=a01b6591-6f79-4ac4-ae8c-bb47d2fc193b.txt
+2025-09-14 13:55:00,863 - __main__ - INFO - 已删除文件: static/uploads/a01b6591-6f79-4ac4-ae8c-bb47d2fc193b.txt
+2025-09-14 13:55:00,936 - __main__ - INFO - 已删除向量集合: doc_120ba4f0-6ffa-493e-a9e3-7646c6240943
+2025-09-14 13:55:00,945 - __main__ - INFO - 已删除数据库记录: 文档ID=120ba4f0-6ffa-493e-a9e3-7646c6240943
+2025-09-14 13:55:00,946 - __main__ - INFO - 删除操作结果: 成功
+2025-09-14 13:55:44,121 - __main__ - INFO - 开始处理文件上传: 文件名=发财树.txt, 文件大小=2143
+2025-09-14 13:55:44,130 - __main__ - INFO - 文件保存成功: 存储路径=static/uploads/49226c3b-9416-4e6c-93a2-598a76efd6e5.txt
+2025-09-14 13:55:44,146 - __main__ - INFO - 添加文档记录: ID=7d55192c-4391-4e3a-a47b-9f446cbf23c4, 文件名=发财树.txt, 存储名=49226c3b-9416-4e6c-93a2-598a76efd6e5.txt
+2025-09-14 13:55:44,148 - __main__ - INFO - 文件内容解码成功: 文档ID=7d55192c-4391-4e3a-a47b-9f446cbf23c4, 文本长度=783
+2025-09-14 13:55:44,343 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 13:55:44,345 - __main__ - INFO - 创建新的向量集合: doc_7d55192c-4391-4e3a-a47b-9f446cbf23c4
+2025-09-14 13:55:44,347 - __main__ - INFO - 文档分块完成: 文档ID=7d55192c-4391-4e3a-a47b-9f446cbf23c4, 块数=7
+2025-09-14 13:55:46,972 - __main__ - INFO - 嵌入生成完成: 文档ID=7d55192c-4391-4e3a-a47b-9f446cbf23c4, 嵌入维度=(7, 768)
+2025-09-14 13:55:47,184 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionAddEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 13:55:47,186 - __main__ - INFO - 文档存储到向量数据库完成: 文档ID=7d55192c-4391-4e3a-a47b-9f446cbf23c4, 总块数=7
+2025-09-14 13:55:47,188 - __main__ - INFO - 文档处理完成: 文档ID=7d55192c-4391-4e3a-a47b-9f446cbf23c4, 原始文件名=发财树.txt
+2025-09-14 13:56:01,795 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 13:56:01,836 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 13:56:01,843 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 13:56:02,762 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 13:56:13,589 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 13:56:13,904 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 13:56:13,928 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 13:56:13,934 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 13:56:14,627 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 13:56:14,629 - __main__ - INFO - 开始生成AI回复
+2025-09-14 13:56:23,234 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 13:56:36,095 - __main__ - INFO - AI回复生成完成: 回复长度=341
+2025-09-14 14:08:17,464 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 14:08:33,435 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 14:14:41,292 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 14:14:41,302 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 14:14:41,303 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 14:14:41,776 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 14:15:58,088 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 14:15:58,108 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 14:15:58,110 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 14:15:58,909 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 14:22:08,696 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 14:27:41,212 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 14:30:24,113 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-14 14:30:24,114 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-14 14:30:24,115 - __main__ - INFO - 静态文件挂载完成
+2025-09-14 14:30:24,117 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-14 14:30:24,117 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-14 14:30:32,352 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-14 14:30:32,686 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 14:30:32,687 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-14 14:30:37,704 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-14 14:30:38,066 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-14 14:30:38,070 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-14 14:30:38,215 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-14 14:30:38,216 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-14 14:30:38,217 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-14 14:30:39,915 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 14:31:27,250 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 14:31:27,997 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 14:31:37,793 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 14:31:38,176 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 14:31:38,188 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 14:31:38,191 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 14:31:38,855 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 14:31:38,857 - __main__ - INFO - 开始生成AI回复
+2025-09-14 14:31:40,449 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 14:31:54,004 - __main__ - INFO - AI回复生成完成: 回复长度=400
+2025-09-14 14:32:12,295 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 14:32:12,303 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 14:32:12,303 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 14:32:13,141 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 14:33:08,599 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 14:33:08,605 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 14:33:08,606 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 14:33:09,309 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 14:49:56,275 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 14:50:26,931 - __main__ - INFO - FastAPI应用初始化完成
+2025-09-14 14:50:26,932 - __main__ - INFO - 创建必要的目录: static/uploads, data
+2025-09-14 14:50:26,934 - __main__ - INFO - 静态文件挂载完成
+2025-09-14 14:50:26,938 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device_name: cpu
+2025-09-14 14:50:26,939 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: shibing624/text2vec-base-chinese
+2025-09-14 14:50:34,428 - __main__ - INFO - 嵌入模型初始化完成: shibing624/text2vec-base-chinese
+2025-09-14 14:50:35,104 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 14:50:35,106 - __main__ - INFO - 向量数据库客户端初始化完成
+2025-09-14 14:50:41,410 - sentence_transformers.cross_encoder.CrossEncoder - INFO - Use pytorch device: cpu
+2025-09-14 14:50:41,815 - __main__ - INFO - 重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+2025-09-14 14:50:41,819 - __main__ - INFO - SQLite数据库初始化完成
+2025-09-14 14:50:41,945 - __main__ - INFO - 启动FastAPI应用服务器...
+2025-09-14 14:50:41,945 - __main__ - INFO - 服务器地址: http://0.0.0.0:8000
+2025-09-14 14:50:41,946 - __main__ - INFO - API文档地址: http://0.0.0.0:8000/docs
+2025-09-14 14:50:42,453 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 14:53:42,604 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 14:53:43,791 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 14:54:28,797 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 14:54:29,793 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 14:54:37,000 - __main__ - INFO - 处理用户消息: 消息长度=3, 选择文档数=1
+2025-09-14 14:54:37,634 - chromadb.segment.impl.vector.local_persistent_hnsw - WARNING - Number of requested results 10 is greater than number of elements in index 7, updating n_results = 7
+2025-09-14 14:54:37,645 - chromadb.telemetry.posthog - ERROR - Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+2025-09-14 14:54:37,646 - __main__ - INFO - 多路召回检索完成: 检索到 7 条结果
+2025-09-14 14:54:38,649 - __main__ - INFO - 重排完成: 保留 5 条最相关结果
+2025-09-14 14:54:38,662 - __main__ - INFO - 开始生成AI回复
+2025-09-14 14:54:40,954 - httpx - INFO - HTTP Request: POST https://api.deepseek.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-14 14:54:57,067 - __main__ - INFO - AI回复生成完成: 回复长度=517
+2025-09-14 15:06:51,022 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 15:12:28,094 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 15:17:00,037 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 15:37:28,818 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 15:56:24,017 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 15:56:27,608 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 16:00:57,850 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 16:01:01,608 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 16:02:05,344 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 16:02:09,675 - __main__ - INFO - WebSocket连接已建立
+2025-09-14 16:03:09,819 - __main__ - INFO - 客户端断开WebSocket连接
+2025-09-14 19:11:17,420 - __main__ - INFO - WebSocket连接已建立

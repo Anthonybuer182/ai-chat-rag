@@ -1,5 +1,7 @@
 # RAG 知识库系统
 
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/Anthonybuer182/ai-chat-rag)
+
 一个基于 FastAPI + WebSocket + ChromaDB 的智能检索增强生成（RAG）知识库系统，支持文档上传、智能搜索和对话式问答。
 
 <p align="center">
@@ -265,3 +267,5 @@ async def stream_llm(messages):
 ---
 
 **注意**: 使用前请确保已配置正确的 API 密钥，并遵守相关服务的使用条款。
+
+**恳求**: ❤️喜欢ai-chat-rag这个项目？那就给它星星🌟吧

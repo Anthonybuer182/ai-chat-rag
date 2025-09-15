@@ -3,13 +3,17 @@
 一个基于 FastAPI + WebSocket + ChromaDB 的智能检索增强生成（RAG）知识库系统，支持文档上传、智能搜索和对话式问答。
 
 <p align="center">
+  <!-- GitHub 不会渲染视频标签，但保留给其他平台使用 -->
   <video width="800" controls>
-    <source src="docs/RAG.mp4" type="video/mp4">
+    <source src="https://anthonybuer182.github.io/ai-chat-rag/RAG.mp4" type="video/mp4">
     您的浏览器不支持视频播放。
   </video>
 </p>
 
-> **注意**: 视频已直接嵌入到项目中，现在应该可以正常播放。
+> **注意**: GitHub README 不支持直接显示视频。请使用以下方式观看：
+> 
+> - [📺 点击这里直接观看视频](https://anthonybuer182.github.io/ai-chat-rag/RAG.mp4)
+> - 或者下载项目后本地查看 `docs/RAG.mp4` 文件
 
 ## 🌟 功能特性
 

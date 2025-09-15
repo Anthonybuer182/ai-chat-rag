@@ -2,12 +2,12 @@
 
 一个基于 FastAPI + WebSocket + ChromaDB 的智能检索增强生成（RAG）知识库系统，支持文档上传、智能搜索和对话式问答。
 
-<!-- <p align="center">
+<p align="center">
   <video width="800" controls>
-    <source src="./assets/RAG.mp4" type="video/mp4">
+    <source src="./assets/RAG.mov" type="video/mp4">
     您的浏览器不支持视频播放。
   </video>
-</p> -->
+</p>
 
 ## 🌟 功能特性
 

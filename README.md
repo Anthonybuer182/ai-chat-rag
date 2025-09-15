@@ -166,8 +166,7 @@ flowchart TD
         B2 --> B3[查询向量化<br>Query Embedding]
         B3 --> B4[相似性检索<br>Similarity Search]
         B4 --> C1[重排序<br>Re-ranking]
-        C1 --> C2[选择最相关片段]
-        C2 --> D1[组合查询与上下文]
+        C1 --> D1[组合查询与上下文]
         D1 --> D2[LLM生成回答<br>Large Language Model]
         D2 --> D3[✅ 返回最终答案]
     end

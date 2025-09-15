@@ -49,3 +49,4 @@ data/
 static/
 .env
 *.log
+docs/.nojekyll

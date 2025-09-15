@@ -4,12 +4,12 @@
 
 <p align="center">
   <!-- GitHub 不会渲染视频标签，显示图片作为替代 -->
-  <img src="docs/RAG.png" alt="RAG 系统演示" width="800">
+  <img src="docs/RAG.gif" alt="RAG 系统演示" width="800">
 </p>
 
 <p align="center">
   <!-- 保留视频标签给其他平台使用 -->
-  <video width="800" controls style="display:none;">
+  <video width="800" controls >
     <source src="https://anthonybuer182.github.io/ai-chat-rag/RAG.mp4" type="video/mp4">
     您的浏览器不支持视频播放。
   </video>

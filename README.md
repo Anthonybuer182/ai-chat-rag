@@ -1,4 +1,4 @@
-# PocketFlow RAG 知识库系统
+# RAG 知识库系统
 
 一个基于 FastAPI + WebSocket + ChromaDB 的智能检索增强生成（RAG）知识库系统，支持文档上传、智能搜索和对话式问答。
 
@@ -112,7 +112,7 @@ python main.py
 
 ### 目录结构
 ```
-pocketflow-fastapi-websocket-rag2/
+ai-chat-rag/
 ├── main.py                 # 主应用文件
 ├── requirements.txt        # 依赖包列表
 ├── text_chunk.py          # 文本分块处理
@@ -330,7 +330,7 @@ async def stream_llm(messages):
 
 如有问题或建议，请通过以下方式联系：
 
-- 提交 [Issue](https://github.com/Anthonybuer182/PocketFlow/issues)
+- 提交 [Issue](https://github.com/Anthonybuer182/ai-chat-rag/issues)
 
 ## 🎯 路线图
 

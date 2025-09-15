@@ -19,7 +19,6 @@
 > 
 > - [📺 点击这里直接观看视频](https://anthonybuer182.github.io/ai-chat-rag/RAG.mp4)
 > - 或者下载项目后本地查看 `docs/RAG.mp4` 文件
-> - 上图是系统界面的静态截图
 
 ## 🌟 功能特性
 

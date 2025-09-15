@@ -162,8 +162,7 @@ flowchart TD
     %% 右侧列 - 查询与响应流程
     subgraph RightColumn [查询与响应流程]
         direction TB
-        B1[❓ 用户输入查询] --> B2[查询预处理]
-        B2 --> B3[查询向量化<br>Query Embedding]
+        B1[❓ 用户输入查询] --> B3[查询向量化<br>Query Embedding]
         B3 --> B4[相似性检索<br>Similarity Search]
         B4 --> C1[重排序<br>Re-ranking]
         C1 --> D1[组合查询与上下文]
@@ -190,27 +189,6 @@ flowchart TD
     class B1,B2,B3,B4 queryProcess;
     class C1,C2 rerankProcess;
     class D1,D2,D3 responseProcess;
-```
-
-### 数据处理流程
-```mermaid
-flowchart TD
-    Start[用户上传文档] --> Validate[文件验证]
-    Validate -->|无效| Error[返回错误]
-    Validate -->|有效| Store[存储文件]
-    Store --> Meta[保存元数据到SQLite]
-    Meta --> Split[文本分块处理]
-    Split --> Embed[生成向量嵌入]
-    Embed --> VectorDB[存储到ChromaDB]
-    VectorDB --> Success[上传成功]
-
-    Question[用户提问] --> Select[选择参考文档]
-    Select --> Retrieve[向量召回检索]
-    Retrieve --> Rerank[重排优化]
-    Rerank --> Context[构建上下文]
-    Context --> LLM[调用LLM生成回答]
-    LLM --> Stream[流式返回响应]
-    Stream --> Display[前端显示]
 ```
 
 ## 🔧 配置说明

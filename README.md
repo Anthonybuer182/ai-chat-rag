@@ -331,17 +331,14 @@ async def stream_llm(messages):
 如有问题或建议，请通过以下方式联系：
 
 - 提交 [Issue](https://github.com/Anthonybuer182/PocketFlow/issues)
-- 发送邮件至项目维护者
 
 ## 🎯 路线图
 
-- [ ] 支持更多文件格式解析
-- [ ] 添加用户认证系统
-- [ ] 实现文档版本管理
-- [ ] 添加批量处理功能
 - [ ] 支持多语言界面
-- [ ] 提供移动端应用
+- [ ] 支持更多文件格式解析
 - [ ] 集成更多 LLM 提供商
+- [ ] 支持自主配置BASE_URL，API_KEY和模型参数
+
 
 ---
 

@@ -4,10 +4,12 @@
 
 <p align="center">
   <video width="800" controls>
-    <source src="./assets/RAG.mp4" type="video/mp4">
+    <source src="https://anthonybuer182.github.io/ai-chat-rag/RAG.mp4" type="video/mp4">
     您的浏览器不支持视频播放。
   </video>
 </p>
+
+> **注意**: 视频托管在 GitHub Pages 上。如果视频无法播放，请确保 GitHub Pages 已启用。
 
 ## 🌟 功能特性
 

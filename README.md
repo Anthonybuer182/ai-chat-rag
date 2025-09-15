@@ -39,7 +39,7 @@
 - **Markdown 渲染**: 支持富文本格式显示
 
 ### 🔍 高级检索
-- **多路召回**: 结合嵌入相似度和语义检索
+- **向量召回**: 结合嵌入相似度和语义检索
 - **重排优化**: 使用交叉编码器提升结果相关性
 - **中文优化**: 针对中文内容优化的嵌入模型
 
@@ -191,52 +191,6 @@ flowchart TD
     class C1,C2 rerankProcess;
     class D1,D2,D3 responseProcess;
 ```
-### 系统架构图
-```mermaid
-graph TB
-    subgraph "前端 Frontend"
-        A[用户界面<br>HTML/CSS/JS]
-        B[WebSocket客户端]
-    end
-
-    subgraph "后端 Backend"
-        C[FastAPI服务器]
-        D[WebSocket处理器]
-        E[文档管理API]
-        F[向量检索API]
-    end
-
-    subgraph "数据处理 Data Processing"
-        G[文本分块模块]
-        H[嵌入模型<br>Sentence Transformers]
-        I[重排模型<br>Cross Encoder]
-    end
-
-    subgraph "数据存储 Data Storage"
-        J[ChromaDB<br>向量数据库]
-        K[SQLite<br>文档元数据]
-        L[文件系统<br>上传文件存储]
-    end
-
-    subgraph "AI服务 AI Services"
-        M[DeepSeek API<br>大语言模型]
-    end
-
-    A --> C
-    B --> D
-    C --> E
-    C --> F
-    E --> G
-    G --> H
-    H --> J
-    F --> H
-    F --> I
-    I --> J
-    E --> K
-    E --> L
-    D --> M
-    F --> M
-```
 
 ### 数据处理流程
 ```mermaid
@@ -251,7 +205,7 @@ flowchart TD
     VectorDB --> Success[上传成功]
 
     Question[用户提问] --> Select[选择参考文档]
-    Select --> Retrieve[多路召回检索]
+    Select --> Retrieve[向量召回检索]
     Retrieve --> Rerank[重排优化]
     Rerank --> Context[构建上下文]
     Context --> LLM[调用LLM生成回答]
@@ -348,7 +302,7 @@ async def stream_llm(messages):
 - [ ] 支持多语言界面
 - [ ] 支持更多文件格式解析
 - [ ] 集成更多 LLM 提供商
-- [ ] 支持自主配置BASE_URL，API_KEY和模型参数
+- [ ] 支持自主配置模型参数
 
 
 ---

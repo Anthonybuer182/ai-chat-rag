@@ -202,7 +202,7 @@ def store_document_in_vector_db(doc_id, text):
     )
     logger.info(f"文档存储到向量数据库完成: 文档ID={doc_id}, 总块数={len(chunks)}")
 
-# 多路召回检索（仅使用嵌入相似度，避免ChromaDB自动下载模型）
+# 向量召回检索（使用自定义嵌入函数，避免ChromaDB自动下载模型）
 def multi_retrieval(query, doc_ids, top_k=5):
     results = []
     
@@ -472,9 +472,9 @@ async def search_document_api(doc_id: str, request: Request):
         return JSONResponse(content={"status": "error", "message": "无效的请求格式"}, status_code=400)
     
     try:
-        # 使用多路召回检索
+        # 使用向量召回检索
         retrieved_docs = multi_retrieval(query, [doc_id], top_k=10)
-        logger.info(f"多路召回检索完成: 检索到 {len(retrieved_docs)} 条结果")
+        logger.info(f"检索向量召回完成: 检索到 {len(retrieved_docs)} 条结果")
         
         # 重排检索结果
         reranked_docs = rerank_results(query, retrieved_docs, top_k=5)
@@ -532,9 +532,9 @@ async def websocket_endpoint(websocket: WebSocket):
                                 "name": doc_info['original_filename']
                             })
                     
-                    # 多路召回检索
+                    # 检索向量召回检索
                     retrieved_docs = multi_retrieval(message, selected_docs, top_k=10)
-                    logger.info(f"多路召回检索完成: 检索到 {len(retrieved_docs)} 条结果")
+                    logger.info(f"检索向量召回检索完成: 检索到 {len(retrieved_docs)} 条结果")
                     
                     # 重排检索结果
                     reranked_docs = rerank_results(message, retrieved_docs, top_k=5)

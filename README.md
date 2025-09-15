@@ -4,7 +4,7 @@
 
 <p align="center">
   <video width="800" controls>
-    <source src="https://anthonybuer182.github.io/ai-chat-rag/RAG.mp4" type="video/mp4">
+    <source src="https://anthonybuer182.github.io/ai-chat-rag/RAG.mov" type="video/quicktime">
     您的浏览器不支持视频播放。
   </video>
 </p>

@@ -14,7 +14,7 @@
 ## 访问视频
 
 GitHub Pages 启用后，视频将通过以下 URL 访问：
-`https://anthonybuer182.github.io/ai-chat-rag/RAG.mp4`
+`https://anthonybuer182.github.io/ai-chat-rag/RAG.mov`
 
 ## 验证设置
 

@@ -6,7 +6,7 @@
 
 <p align="center">
   <!-- GitHub 不会渲染视频标签，显示图片作为替代 -->
-  <img src="docs/RAG.gif" alt="RAG 系统演示" width="800">
+  <img src="assets/RAG.gif" alt="RAG 系统演示" width="800">
 </p>
 
 <p align="center">
@@ -20,7 +20,7 @@
 > **注意**: GitHub README 不支持直接显示视频。请使用以下方式观看完整演示：
 > 
 > - [📺 点击这里直接观看视频](https://anthonybuer182.github.io/ai-chat-rag/RAG.mp4)
-> - 或者下载项目后本地查看 `docs/RAG.mp4` 文件
+> - 或者下载项目后本地查看 `assets/RAG.mp4` 文件
 
 ## 🌟 功能特性
 
@@ -100,8 +100,6 @@ python main.py
 
 应用将在 `http://0.0.0.0:8000` 启动，访问该地址即可使用。
 
-### 5. API 文档
-访问 `http://0.0.0.0:8000/docs` 查看完整的 API 文档。
 
 ## 🚀 使用指南
 

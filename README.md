@@ -2,7 +2,7 @@
 
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/Anthonybuer182/ai-chat-rag)
 
-一个基于 FastAPI + WebSocket + ChromaDB 的智能检索增强生成（RAG）知识库系统，支持文档上传、智能搜索和对话式问答。
+一个基于 FastAPI + WebSocket + ChromaDB + LLM 的智能检索增强生成（RAG）知识库系统，支持文档上传、智能搜索和对话式问答。
 
 <p align="center">
   <!-- GitHub 不会渲染视频标签，显示图片作为替代 -->
@@ -17,10 +17,7 @@
   </video>
 </p>
 
-> **注意**: GitHub README 不支持直接显示视频。请使用以下方式观看完整演示：
-> 
 > - [📺 点击这里直接观看视频](https://anthonybuer182.github.io/ai-chat-rag/RAG.mp4)
-> - 或者下载项目后本地查看 `assets/RAG.mp4` 文件
 
 ## 🌟 功能特性
 
@@ -252,7 +249,7 @@ async def stream_llm(messages):
 
 如有问题或建议，请通过以下方式联系：
 
-- 提交 [Issue](https://github.com/Anthonybuer182/ai-chat-rag/issues)
+- 提交 [GitHub Issue](https://github.com/Anthonybuer182/ai-chat-rag/issues)
 
 ## 🎯 路线图
 

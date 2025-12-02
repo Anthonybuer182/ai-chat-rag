@@ -83,10 +83,12 @@ pip install -r requirements.txt
 ### 3. 配置环境变量
 创建 `.env` 文件并设置 DeepSeek API 密钥：
 ```bash
-DEEPSEEK_API_KEY=your_deepseek_api_key_here
+API_KEY=your_deepseek_api_key_here
+BASE_URL=https://api.deepseek.com/v1
+MODEL=deepseek-chat
 ```
 
-> **注意**: 项目使用 DeepSeek API，需要注册并获取 API 密钥
+> **注意**: 项目如果使用 DeepSeek API，需要注册并获取 API 密钥
 > 
 > **获取 API 密钥**: 访问 [DeepSeek 平台](https://platform.deepseek.com/) 注册账号并获取 API 密钥
 

@@ -1,12 +1,16 @@
 import os
 from openai import AsyncOpenAI
+from dotenv import load_dotenv
+
+# 加载环境变量
+load_dotenv()
 
 async def stream_llm(messages):
-    client = AsyncOpenAI( api_key=os.environ.get("DEEPSEEK_API_KEY"),
-        base_url="https://api.deepseek.com/v1")
+    client = AsyncOpenAI( api_key=os.environ.get("API_KEY"),
+        base_url=os.environ.get("BASE_URL"))
     
     stream = await client.chat.completions.create(
-        model="deepseek-chat",
+        model=os.environ.get("MODEL"),
         messages=messages,
         stream=True,
         temperature=0.7

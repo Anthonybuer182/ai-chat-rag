@@ -25,7 +25,7 @@ def recursive_text_split(
     """
     # 默认分隔符：段落、句子、单词、字符
     if separators is None:
-        separators = ["\n\n", "\n", ". ", " ", ""]
+        separators = ["\r\n\r\n", "\n\n", "\r\n", "\n", ". ", "? ", "! ", " "]
     
     # 如果文本已经足够小，直接返回
     if length_function(text) <= chunk_size:

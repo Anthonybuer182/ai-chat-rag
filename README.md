@@ -88,7 +88,7 @@ BASE_URL=https://api.deepseek.com/v1
 MODEL=deepseek-chat
 ```
 
-> **注意**: 项目如果使用 DeepSeek API和 QWEN API，需要注册并获取 API 密钥
+> **注意**: 项目如果使用 DeepSeek API和 阿里百炼 API，需要注册并获取 API 密钥
 > 
 > **获取 API 密钥**: 访问 [DeepSeek 平台](https://platform.deepseek.com/api_keys) 注册账号并获取 API 密钥
 > 

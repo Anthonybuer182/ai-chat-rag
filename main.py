@@ -339,7 +339,7 @@ def store_document_in_vector_db(doc_id, text):
     # 分块处理文本
     chunks = recursive_text_split(
         text=text,
-        chunk_size=2024,
+        chunk_size=4000,
         chunk_overlap=0,
         separators=["**********","\r\n\r\n", "\n\n", "\r\n", "\n", ". ", "? ", "! ", " "]
     )
@@ -361,6 +361,37 @@ def store_document_in_vector_db(doc_id, text):
         ids=ids
     )
     logger.info(f"文档存储到向量数据库完成: 文档ID={doc_id}, 总块数={len(chunks)}")
+
+# 获取文档所有分块
+def get_document_chunks(doc_id):
+    """获取指定文档的所有分块内容"""
+    try:
+        collection_name = f"doc_{doc_id}"
+        collection = chroma_client.get_collection(collection_name)
+        
+        # 获取集合中的所有文档（分块）
+        results = collection.get()
+        
+        if not results['documents']:
+            return []
+        
+        # 整理分块信息
+        chunks = []
+        for i, (chunk_id, document, metadata) in enumerate(zip(results['ids'], results['documents'], results['metadatas'])):
+            chunks.append({
+                "chunk_id": chunk_id,
+                "chunk_index": i,
+                "content": document,
+                "metadata": metadata,
+                "length": len(document)
+            })
+        
+        logger.info(f"获取文档分块成功: 文档ID={doc_id}, 分块数={len(chunks)}")
+        return chunks
+        
+    except Exception as e:
+        logger.error(f"获取文档 {doc_id} 分块时出错: {e}")
+        return []
 
 # 向量召回检索（使用自定义嵌入函数，避免ChromaDB自动下载模型）
 def multi_retrieval(query, doc_ids, top_k=10):
@@ -468,6 +499,26 @@ async def download_document(doc_id: str):
         media_type='application/octet-stream'
     )
 
+# 获取文档分块详情API
+@app.get("/api/documents/{doc_id}/chunks")
+async def get_document_chunks_api(doc_id: str):
+    """
+    获取指定文档的所有分块详情
+    """
+    document = get_document(doc_id)
+    if not document:
+        return JSONResponse(content={"status": "error", "message": "文档不存在"}, status_code=404)
+    
+    chunks = get_document_chunks(doc_id)
+    
+    return JSONResponse(content={
+        "status": "success",
+        "document_id": doc_id,
+        "document_name": document['original_filename'],
+        "total_chunks": len(chunks),
+        "chunks": chunks
+    })
+
 # 查看文档内容API
 @app.get("/api/documents/{doc_id}/view")
 async def view_document(doc_id: str):
@@ -492,14 +543,18 @@ async def view_document(doc_id: str):
             # 如果还是失败，返回错误信息
             return JSONResponse(content={"status": "error", "message": "无法读取文件内容（不支持的编码格式）"}, status_code=400)
     
-    # 返回HTML页面显示文档内容
+    # 获取文档所有分块
+    chunks = get_document_chunks(doc_id)
+    
+    # 返回HTML页面显示文档内容和分块详情
     html_content = f"""
     <!DOCTYPE html>
     <html lang="zh-CN">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{document['original_filename']} - 文档查看</title>
+        <title>{document['original_filename']} - 文档详情查看</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <style>
             body {{
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -509,7 +564,7 @@ async def view_document(doc_id: str):
                 min-height: 100vh;
             }}
             .container {{
-                max-width: 1000px;
+                max-width: 1200px;
                 margin: 0 auto;
                 background: white;
                 border-radius: 12px;
@@ -529,6 +584,62 @@ async def view_document(doc_id: str):
             .filename {{
                 color: #6c757d;
                 font-size: 1.1rem;
+                margin-bottom: 15px;
+            }}
+            .stats {{
+                display: flex;
+                justify-content: center;
+                gap: 30px;
+                margin-bottom: 20px;
+                flex-wrap: wrap;
+            }}
+            .stat-item {{
+                background: linear-gradient(135deg, #6e8efb 0%, #a777e3 100%);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 8px;
+                text-align: center;
+                min-width: 120px;
+            }}
+            .stat-value {{
+                font-size: 1.5rem;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }}
+            .stat-label {{
+                font-size: 0.9rem;
+                opacity: 0.9;
+            }}
+            .tabs {{
+                display: flex;
+                margin-bottom: 20px;
+                border-bottom: 1px solid #e2e8f0;
+            }}
+            .tab {{
+                padding: 15px 25px;
+                cursor: pointer;
+                border: none;
+                background: none;
+                font-size: 16px;
+                color: #6c757d;
+                border-bottom: 3px solid transparent;
+                transition: all 0.3s ease;
+            }}
+            .tab.active {{
+                color: #6e8efb;
+                border-bottom-color: #6e8efb;
+                font-weight: 600;
+            }}
+            .tab-content {{
+                display: none;
+            }}
+            .tab-content.active {{
+                display: block;
+                animation: fadeIn 0.5s ease;
+            }}
+            @keyframes fadeIn {{
+                from {{ opacity: 0; }}
+                to {{ opacity: 1; }}
             }}
             .content {{
                 line-height: 1.6;
@@ -539,17 +650,53 @@ async def view_document(doc_id: str):
                 padding: 25px;
                 border-radius: 8px;
                 border-left: 4px solid #6e8efb;
-                max-height: 70vh;
+                max-height: 60vh;
                 overflow-y: auto;
             }}
-            .content::-webkit-scrollbar {{
+            .chunks-container {{
+                max-height: 60vh;
+                overflow-y: auto;
+            }}
+            .chunk-item {{
+                background: #fafbfc;
+                border: 1px solid #e2e8f0;
+                border-radius: 8px;
+                padding: 20px;
+                margin-bottom: 15px;
+                transition: all 0.3s ease;
+            }}
+            .chunk-item:hover {{
+                border-color: #6e8efb;
+                box-shadow: 0 4px 15px rgba(110, 142, 251, 0.1);
+            }}
+            .chunk-header {{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #e2e8f0;
+            }}
+            .chunk-title {{
+                font-weight: 600;
+                color: #6e8efb;
+            }}
+            .chunk-meta {{
+                font-size: 0.9rem;
+                color: #6c757d;
+            }}
+            .chunk-content {{
+                line-height: 1.6;
+                color: #495057;
+            }}
+            .content::-webkit-scrollbar, .chunks-container::-webkit-scrollbar {{
                 width: 8px;
             }}
-            .content::-webkit-scrollbar-track {{
+            .content::-webkit-scrollbar-track, .chunks-container::-webkit-scrollbar-track {{
                 background: #f1f3f5;
                 border-radius: 4px;
             }}
-            .content::-webkit-scrollbar-thumb {{
+            .content::-webkit-scrollbar-thumb, .chunks-container::-webkit-scrollbar-thumb {{
                 background: #6e8efb;
                 border-radius: 4px;
             }}
@@ -568,19 +715,79 @@ async def view_document(doc_id: str):
                 transform: translateY(-2px);
                 box-shadow: 0 4px 15px rgba(110, 142, 251, 0.3);
             }}
+            .no-chunks {{
+                text-align: center;
+                color: #6c757d;
+                font-style: italic;
+                padding: 40px;
+            }}
         </style>
     </head>
     <body>
         <div class="container">
             <div class="header">
-                <h1><i class="fas fa-file-alt"></i> 文档内容查看</h1>
+                <h1><i class="fas fa-file-alt"></i> 文档详情查看</h1>
                 <div class="filename">{document['original_filename']}</div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-value">{len(content)}</div>
+                        <div class="stat-label">总字符数</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">{len(chunks)}</div>
+                        <div class="stat-label">分块数量</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">{sum(len(chunk['content']) for chunk in chunks) if chunks else len(content)}</div>
+                        <div class="stat-label">分块总字符</div>
+                    </div>
+                </div>
             </div>
-            <div class="content">{content}</div>
+            
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('original')">原始文档</button>
+                <button class="tab" onclick="switchTab('chunks')">文档分块 ({len(chunks)})</button>
+            </div>
+            
+            <div id="original" class="tab-content active">
+                <div class="content">{content}</div>
+            </div>
+            
+            <div id="chunks" class="tab-content">
+                <div class="chunks-container">
+                    {f''.join([f'''
+                    <div class="chunk-item">
+                        <div class="chunk-header">
+                            <div class="chunk-title">分块 #{i+1}</div>
+                            <div class="chunk-meta">ID: {chunk['chunk_id']} | 长度: {chunk['length']} 字符</div>
+                        </div>
+                        <div class="chunk-content">{chunk['content']}</div>
+                    </div>
+                    ''' for i, chunk in enumerate(chunks)]) if chunks else '<div class="no-chunks"><i class="fas fa-info-circle"></i> 该文档暂无分块信息</div>'}
+                </div>
+            </div>
+            
             <div style="text-align: center; margin-top: 30px;">
                 <a href="javascript:window.close()" class="back-btn">关闭窗口</a>
             </div>
         </div>
+        
+        <script>
+            function switchTab(tabName) {{
+                // 隐藏所有标签内容
+                document.querySelectorAll('.tab-content').forEach(tab => {{
+                    tab.classList.remove('active');
+                }});
+                // 移除所有标签的激活状态
+                document.querySelectorAll('.tab').forEach(tab => {{
+                    tab.classList.remove('active');
+                }});
+                // 显示选中的标签内容
+                document.getElementById(tabName).classList.add('active');
+                // 激活选中的标签
+                event.target.classList.add('active');
+            }}
+        </script>
     </body>
     </html>
     """

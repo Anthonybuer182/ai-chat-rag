@@ -4,6 +4,7 @@ import sqlite3
 import re
 import logging
 import requests
+import concurrent.futures
 from datetime import datetime
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, File, UploadFile, Form, Request
 from fastapi.responses import HTMLResponse, JSONResponse
@@ -45,12 +46,68 @@ templates = Jinja2Templates(directory="templates")
 logger.info("静态文件挂载完成")
 
 # 阿里百炼嵌入模型配置
-DASHSCOPE_API_KEY = os.getenv("API_KEY")
-DASHSCOPE_BASE_URL = os.getenv("BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1")
+DASHSCOPE_API_KEY = os.getenv("DASHSCOPE_API_KEY")
+DASHSCOPE_EMBEDDING_API_URL = os.getenv("DASHSCOPE_EMBEDDING_API_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1/embeddings")
+DASHSCOPE_RERANK_API_URL = os.getenv("DASHSCOPE_RERANK_API_URL", "https://dashscope.aliyuncs.com/api/v1/services/rerank/text-rerank/text-rerank")
 
 # 自定义嵌入函数（使用阿里百炼text-embedding-v4）
-def custom_embedding_function(texts):
-    """使用阿里百炼text-embedding-v4生成文本嵌入"""
+def batch_embedding_api_call(batch_texts, max_retries=3):
+    """单批次嵌入API调用，包含重试机制"""
+    for attempt in range(max_retries):
+        try:
+            headers = {
+                "Authorization": f"Bearer {DASHSCOPE_API_KEY}",
+                "Content-Type": "application/json"
+            }
+            
+            data = {
+                "model": "text-embedding-v4",
+                "input": batch_texts
+            }
+            
+            response = requests.post(f"{DASHSCOPE_EMBEDDING_API_URL}/compatible-mode/v1/embeddings", 
+                                   headers=headers, 
+                                   json=data,
+                                   timeout=30)
+            
+            if response.status_code == 200:
+                result = response.json()
+                if "data" not in result:
+                    raise Exception("嵌入API返回格式异常")
+                
+                embeddings = [item["embedding"] for item in result["data"]]
+                logger.info(f"批次嵌入API调用成功: 文本数={len(batch_texts)}, 嵌入维度={len(embeddings[0]) if embeddings else 0}")
+                return embeddings
+            else:
+                error_msg = f"嵌入API调用失败: {response.status_code} - {response.text}"
+                logger.warning(f"批次嵌入API调用失败 (尝试 {attempt + 1}/{max_retries}): {error_msg}")
+                
+                # 如果是参数错误（如批量大小超限），立即失败不重试
+                if "batch size is invalid" in response.text:
+                    raise Exception(error_msg)
+                
+                # 等待后重试
+                if attempt < max_retries - 1:
+                    import time
+                    time.sleep(2 ** attempt)  # 指数退避
+        
+        except requests.exceptions.Timeout:
+            logger.warning(f"批次嵌入API请求超时 (尝试 {attempt + 1}/{max_retries})")
+            if attempt == max_retries - 1:
+                raise Exception("嵌入API请求超时")
+            import time
+            time.sleep(2 ** attempt)
+        
+        except Exception as e:
+            if attempt == max_retries - 1:
+                raise e
+            import time
+            time.sleep(2 ** attempt)
+    
+    raise Exception("批次嵌入API调用达到最大重试次数")
+
+def custom_embedding_function(texts, max_batch_size=10, max_workers=5):
+    """使用阿里百炼text-embedding-v4生成文本嵌入，支持分批处理和多线程"""
     if not DASHSCOPE_API_KEY:
         raise ValueError("DASHSCOPE_API_KEY环境变量未设置")
     
@@ -62,48 +119,38 @@ def custom_embedding_function(texts):
     if not texts:
         return []
     
-    try:
-        # 调用阿里百炼嵌入API
-        headers = {
-            "Authorization": f"Bearer {DASHSCOPE_API_KEY}",
-            "Content-Type": "application/json"
-        }
-        
-        data = {
-            "model": "text-embedding-v4",
-            "input": texts
-        }
-        
-        response = requests.post(f"{DASHSCOPE_BASE_URL}/embeddings", 
-                               headers=headers, 
-                               json=data,
-                               timeout=30)
-        
-        if response.status_code != 200:
-            logger.error(f"阿里百炼嵌入API调用失败: {response.status_code} - {response.text}")
-            raise Exception(f"嵌入API调用失败: {response.text}")
-        
-        result = response.json()
-        
-        # 检查响应格式
-        if "data" not in result:
-            logger.error(f"嵌入API返回格式异常: {result}")
-            raise Exception("嵌入API返回格式异常")
-        
-        embeddings = [item["embedding"] for item in result["data"]]
-        
-        logger.info(f"阿里百炼嵌入生成完成: 文本数={len(texts)}, 嵌入维度={len(embeddings[0]) if embeddings else 0}")
-        return embeddings
+    # 如果文本数量小于等于批量大小，直接调用
+    if len(texts) <= max_batch_size:
+        return batch_embedding_api_call(texts)
     
-    except requests.exceptions.Timeout:
-        logger.error("嵌入API请求超时")
-        raise Exception("嵌入API请求超时")
-    except requests.exceptions.RequestException as e:
-        logger.error(f"嵌入API网络请求异常: {e}")
-        raise Exception(f"嵌入API网络请求异常: {e}")
-    except Exception as e:
-        logger.error(f"嵌入生成过程中发生未知错误: {e}")
-        raise Exception(f"嵌入生成失败: {e}")
+    logger.info(f"开始分批处理嵌入: 总文本数={len(texts)}, 批量大小={max_batch_size}, 最大线程数={max_workers}")
+    
+    # 分批处理
+    batches = []
+    for i in range(0, len(texts), max_batch_size):
+        batch = texts[i:i + max_batch_size]
+        batches.append(batch)
+    
+    all_embeddings = []
+    
+    # 使用线程池并发处理
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+        # 提交所有批次任务
+        future_to_batch = {executor.submit(batch_embedding_api_call, batch): batch for batch in batches}
+        
+        # 收集结果
+        for future in concurrent.futures.as_completed(future_to_batch):
+            batch = future_to_batch[future]
+            try:
+                embeddings = future.result()
+                all_embeddings.extend(embeddings)
+                logger.info(f"批次处理完成: 文本数={len(batch)}, 累计嵌入数={len(all_embeddings)}")
+            except Exception as e:
+                logger.error(f"批次处理失败: 文本数={len(batch)}, 错误={e}")
+                raise Exception(f"嵌入生成过程中发生错误: {e}")
+    
+    logger.info(f"阿里百炼嵌入生成完成: 总文本数={len(texts)}, 嵌入维度={len(all_embeddings[0]) if all_embeddings else 0}")
+    return all_embeddings
 
 # 初始化向量数据库客户端，使用自定义嵌入函数
 chroma_client = chromadb.PersistentClient(
@@ -141,7 +188,7 @@ def rerank_results(query, retrieved_docs, top_k=5):
         }
     }
     
-    response = requests.post(f"{DASHSCOPE_BASE_URL}/rerank/text-rerank/text-rerank",
+    response = requests.post(f"{DASHSCOPE_RERANK_API_URL}/api/v1/services/rerank/text-rerank/text-rerank",
                            headers=headers,
                            json=data,
                            timeout=30)

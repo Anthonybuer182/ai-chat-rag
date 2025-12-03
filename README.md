@@ -89,9 +89,9 @@ cp .env.example .env
 编辑 `.env` 文件并设置 API 密钥：
 ```bash
 # DeepSeek API 配置
-API_KEY=your_deepseek_api_key_here
-BASE_URL=https://api.deepseek.com/v1
-MODEL=deepseek-chat
+DASHSCOPE_API_KEY=your_deepseek_api_key_here
+DASHSCOPE_API_BASE_URL=https://api.deepseek.com/v1
+DASHSCOPE_MODEL=deepseek-chat
 
 # 阿里百炼 API 配置
 DASHSCOPE_API_KEY=your_dashscope_api_key_here

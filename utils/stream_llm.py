@@ -6,11 +6,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 async def stream_llm(messages):
-    client = AsyncOpenAI( api_key=os.environ.get("API_KEY"),
-        base_url=os.environ.get("BASE_URL"))
-    
+    client = AsyncOpenAI( api_key=os.environ.get("DASHSCOPE_API_KEY"),
+        base_url=os.environ.get("DASHSCOPE_API_BASE_URL"))
+   
     stream = await client.chat.completions.create(
-        model=os.environ.get("MODEL"),
+        model=os.environ.get("DASHSCOPE_MODEL"),
         messages=messages,
         stream=True,
         temperature=0.7

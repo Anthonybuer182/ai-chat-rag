@@ -142,7 +142,7 @@ if __name__ == "__main__":
         text=sample_text,
         chunk_size=150,
         chunk_overlap=30,
-        separators=["\r\n\r\n", "\n\n", "\r\n", "\n", ". ", "? ", "! ", " "]
+        separators=["**********","\r\n\r\n", "\n\n", "\r\n", "\n", ". ", "? ", "! ", " "]
     )
     
     # 打印结果

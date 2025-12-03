@@ -3,6 +3,7 @@ import uuid
 import sqlite3
 import re
 import logging
+import requests
 from datetime import datetime
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, File, UploadFile, Form, Request
 from fastapi.responses import HTMLResponse, JSONResponse
@@ -12,9 +13,12 @@ import numpy as np
 from typing import List, Optional, Callable
 import chromadb
 from chromadb.config import Settings
-from sentence_transformers import SentenceTransformer, CrossEncoder
 from text_chunk import recursive_text_split
 from utils.stream_llm import stream_llm
+from dotenv import load_dotenv
+
+# 加载环境变量
+load_dotenv()
 
 # 配置日志
 logging.basicConfig(
@@ -40,14 +44,66 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 logger.info("静态文件挂载完成")
 
-# 初始化嵌入模型
-embedding_model = SentenceTransformer('shibing624/text2vec-base-chinese')
-logger.info("嵌入模型初始化完成: shibing624/text2vec-base-chinese")
+# 阿里百炼嵌入模型配置
+DASHSCOPE_API_KEY = os.getenv("API_KEY")
+DASHSCOPE_BASE_URL = os.getenv("BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1")
 
-# 自定义嵌入函数
+# 自定义嵌入函数（使用阿里百炼text-embedding-v4）
 def custom_embedding_function(texts):
-    embeddings = embedding_model.encode(texts)
-    return embeddings.tolist()
+    """使用阿里百炼text-embedding-v4生成文本嵌入"""
+    if not DASHSCOPE_API_KEY:
+        raise ValueError("DASHSCOPE_API_KEY环境变量未设置")
+    
+    # 将文本列表转换为字符串列表
+    if isinstance(texts, str):
+        texts = [texts]
+    
+    # 检查文本是否为空
+    if not texts:
+        return []
+    
+    try:
+        # 调用阿里百炼嵌入API
+        headers = {
+            "Authorization": f"Bearer {DASHSCOPE_API_KEY}",
+            "Content-Type": "application/json"
+        }
+        
+        data = {
+            "model": "text-embedding-v4",
+            "input": texts
+        }
+        
+        response = requests.post(f"{DASHSCOPE_BASE_URL}/embeddings", 
+                               headers=headers, 
+                               json=data,
+                               timeout=30)
+        
+        if response.status_code != 200:
+            logger.error(f"阿里百炼嵌入API调用失败: {response.status_code} - {response.text}")
+            raise Exception(f"嵌入API调用失败: {response.text}")
+        
+        result = response.json()
+        
+        # 检查响应格式
+        if "data" not in result:
+            logger.error(f"嵌入API返回格式异常: {result}")
+            raise Exception("嵌入API返回格式异常")
+        
+        embeddings = [item["embedding"] for item in result["data"]]
+        
+        logger.info(f"阿里百炼嵌入生成完成: 文本数={len(texts)}, 嵌入维度={len(embeddings[0]) if embeddings else 0}")
+        return embeddings
+    
+    except requests.exceptions.Timeout:
+        logger.error("嵌入API请求超时")
+        raise Exception("嵌入API请求超时")
+    except requests.exceptions.RequestException as e:
+        logger.error(f"嵌入API网络请求异常: {e}")
+        raise Exception(f"嵌入API网络请求异常: {e}")
+    except Exception as e:
+        logger.error(f"嵌入生成过程中发生未知错误: {e}")
+        raise Exception(f"嵌入生成失败: {e}")
 
 # 初始化向量数据库客户端，使用自定义嵌入函数
 chroma_client = chromadb.PersistentClient(
@@ -55,9 +111,70 @@ chroma_client = chromadb.PersistentClient(
     settings=Settings(anonymized_telemetry=False)  # 禁用遥测
 )
 logger.info("向量数据库客户端初始化完成")
-# 初始化重排模型
-reranker = CrossEncoder('cross-encoder/mmarco-mMiniLMv2-L12-H384-v1')
-logger.info("重排模型初始化完成: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1")
+# 阿里百炼重排模型配置（使用gte-rerank-v2）
+def rerank_results(query, retrieved_docs, top_k=5):
+    """使用阿里百炼gte-rerank-v2进行重排"""
+    if not retrieved_docs:
+        return []
+    
+    if not DASHSCOPE_API_KEY:
+        raise ValueError("DASHSCOPE_API_KEY环境变量未设置")
+    
+    # 准备文档列表
+    documents = [doc["text"] for doc in retrieved_docs]
+    
+    # 调用阿里百炼重排API
+    headers = {
+        "Authorization": f"Bearer {DASHSCOPE_API_KEY}",
+        "Content-Type": "application/json"
+    }
+    
+    data = {
+        "model": "gte-rerank-v2",
+        "input": {
+            "query": query,
+            "documents": documents
+        },
+        "parameters": {
+            "return_documents": True,
+            "top_n": top_k
+        }
+    }
+    
+    response = requests.post(f"{DASHSCOPE_BASE_URL}/rerank/text-rerank/text-rerank",
+                           headers=headers,
+                           json=data,
+                           timeout=30)
+    
+    if response.status_code != 200:
+        logger.error(f"阿里百炼重排API调用失败: {response.status_code} - {response.text}")
+        # 如果重排失败，返回原始结果的前top_k个
+        logger.warning("重排API调用失败，返回原始检索结果")
+        return retrieved_docs[:top_k]
+    
+    result = response.json()
+    
+    # 处理重排结果 - 根据gte-rerank-v2的实际返回格式
+    if "output" not in result or "results" not in result["output"]:
+        logger.warning("重排API返回结果格式异常，返回原始检索结果")
+        return retrieved_docs[:top_k]
+    
+    reranked_results = result["output"]["results"]
+    
+    # 将重排结果与原始文档关联
+    reranked_docs = []
+    for rerank_item in reranked_results:
+        original_index = rerank_item["index"]
+        if original_index < len(retrieved_docs):
+            original_doc = retrieved_docs[original_index]
+            # 更新文档文本为重排后的文本（如果API返回了重排后的文本）
+            if "document" in rerank_item and "text" in rerank_item["document"]:
+                original_doc["text"] = rerank_item["document"]["text"]
+            original_doc["rerank_score"] = rerank_item["relevance_score"]
+            reranked_docs.append(original_doc)
+    
+    logger.info(f"阿里百炼重排完成: 查询='{query}', 输入文档数={len(retrieved_docs)}, 输出文档数={len(reranked_docs)}")
+    return reranked_docs
 
 # 初始化SQLite数据库
 def init_db():
@@ -175,15 +292,15 @@ def store_document_in_vector_db(doc_id, text):
     # 分块处理文本
     chunks = recursive_text_split(
         text=text,
-        chunk_size=150,
-        chunk_overlap=30,
-        separators=["\r\n\r\n", "\n\n", "\r\n", "\n", ". ", "? ", "! ", " "]
+        chunk_size=2024,
+        chunk_overlap=0,
+        separators=["**********","\r\n\r\n", "\n\n", "\r\n", "\n", ". ", "? ", "! ", " "]
     )
     logger.info(f"文档分块完成: 文档ID={doc_id}, 块数={len(chunks)}")
     
-    # 生成嵌入
-    embeddings = embedding_model.encode(chunks)
-    logger.info(f"嵌入生成完成: 文档ID={doc_id}, 嵌入维度={embeddings.shape}")
+    # 生成嵌入（使用阿里百炼text-embedding-v4）
+    embeddings = custom_embedding_function(chunks)
+    logger.info(f"嵌入生成完成: 文档ID={doc_id}, 嵌入维度={len(embeddings[0]) if embeddings else 0}")
     
     # 准备元数据
     metadatas = [{"doc_id": doc_id, "chunk_index": i} for i in range(len(chunks))]
@@ -191,7 +308,7 @@ def store_document_in_vector_db(doc_id, text):
     
     # 添加到集合
     collection.add(
-        embeddings=embeddings.tolist(),
+        embeddings=embeddings,
         metadatas=metadatas,
         documents=chunks,
         ids=ids
@@ -207,7 +324,7 @@ def multi_retrieval(query, doc_ids, top_k=5):
             collection = chroma_client.get_collection(f"doc_{doc_id}")
             
             # 仅使用基于嵌入相似度的检索，避免文本检索触发模型下载
-            query_embedding = embedding_model.encode([query]).tolist()
+            query_embedding = custom_embedding_function([query])
             embedding_results = collection.query(
                 query_embeddings=query_embedding,
                 n_results=top_k
@@ -230,25 +347,7 @@ def multi_retrieval(query, doc_ids, top_k=5):
     
     return results
 
-# 重排检索结果
-def rerank_results(query, retrieved_docs, top_k=5):
-    if not retrieved_docs:
-        return []
-    
-    # 准备用于重排的数据
-    pairs = [(query, doc["text"]) for doc in retrieved_docs]
-    
-    # 使用交叉编码器进行重排
-    scores = reranker.predict(pairs)
-    
-    # 将分数与文档关联
-    for i, doc in enumerate(retrieved_docs):
-        doc["rerank_score"] = float(scores[i])
-    
-    # 按重排分数排序
-    reranked_docs = sorted(retrieved_docs, key=lambda x: x["rerank_score"], reverse=True)
-    
-    return reranked_docs[:top_k]
+
 
 # 首页路由
 @app.get("/", response_class=HTMLResponse)

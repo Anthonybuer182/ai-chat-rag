@@ -60,8 +60,8 @@
 
 ### AI 集成
 - **DeepSeek API**: 大语言模型服务
-- **中文优化模型**: shibing624/text2vec-base-chinese
-- **重排模型**: cross-encoder/mmarco-mMiniLMv2-L12-H384-v1
+- **阿里百炼嵌入模型**: text-embedding-v4 (中文优化)
+- **阿里百炼重排模型**: gte-rerank-v2
 
 ## 📦 安装部署
 
@@ -81,16 +81,27 @@ pip install -r requirements.txt
 ```
 
 ### 3. 配置环境变量
-创建 `.env` 文件并设置 DeepSeek API 密钥：
+复制环境变量模板文件：
 ```bash
+cp .env.example .env
+```
+
+编辑 `.env` 文件并设置 API 密钥：
+```bash
+# DeepSeek API 配置
 API_KEY=your_deepseek_api_key_here
 BASE_URL=https://api.deepseek.com/v1
 MODEL=deepseek-chat
+
+# 阿里百炼 API 配置
+DASHSCOPE_API_KEY=your_dashscope_api_key_here
+# 可选：如果使用新加坡地域，取消注释下面一行
+# BASE_URL_BAILIAN=https://dashscope-intl.aliyuncs.com/compatible-mode/v1
 ```
 
-> **注意**: 项目如果使用 DeepSeek API和 阿里百炼 API，需要注册并获取 API 密钥
+> **注意**: 项目需要 DeepSeek API 和阿里百炼 API，需要注册并获取 API 密钥
 > 
-> **获取 API 密钥**: 访问 [DeepSeek 平台](https://platform.deepseek.com/api_keys) 注册账号并获取 API 密钥
+> **获取 DeepSeek API 密钥**: 访问 [DeepSeek 平台](https://platform.deepseek.com/api_keys) 注册账号并获取 API 密钥
 > 
 > **获取 阿里百炼 API 密钥**: 访问 [阿里百炼平台](https://bailian.console.aliyun.com/?tab=model#/api-key) 注册账号并获取 API 密钥
 

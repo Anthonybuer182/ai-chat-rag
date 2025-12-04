@@ -75,12 +75,32 @@ git clone https://github.com/Anthonybuer182/ai-chat-rag.git
 cd ai-chat-rag
 ```
 
-### 2. 安装依赖
+### 2. 创建虚拟环境
+
+**macOS / Linux:**
+```bash
+# 创建虚拟环境
+python3 -m venv venv
+
+# 激活虚拟环境
+source venv/bin/activate
+```
+
+**Windows:**
+```bash
+# 创建虚拟环境
+python3 -m venv venv
+
+# 激活虚拟环境
+venv\\Scripts\\activate
+```
+
+### 3. 安装依赖
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. 配置环境变量
+### 4. 配置环境变量
 创建 `.env` 文件并设置 DeepSeek API 密钥：
 ```bash
 API_KEY=your_deepseek_api_key_here
@@ -94,7 +114,7 @@ MODEL=deepseek-chat
 > 
 > **获取 阿里百炼 API 密钥**: 访问 [阿里百炼平台](https://bailian.console.aliyun.com/?tab=model#/api-key) 注册账号并获取 API 密钥
 
-### 4. 启动应用
+### 5. 启动应用
 ```bash
 python main.py
 ```

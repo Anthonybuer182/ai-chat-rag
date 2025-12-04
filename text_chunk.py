@@ -60,7 +60,7 @@ def recursive_text_split(
                             keep_separator
                         )
                     )
-            return chunks
+            return chunks[:-1]
 
             # # 合并小块并处理重叠
             # return _merge_splits_with_overlap(chunks, chunk_size, chunk_overlap, length_function)
